@@ -17,6 +17,11 @@ require_once "../Model/Model_accueil.php";
       $resultat=$model->get_annonces_by_emplacement($emplacement_depart,$emplcement_arrive);
       return $resultat;
   }
+ public  function  get_images_annonces(){
+   $model=new ModelAccueil();
+   $resultat=$model->get_images_annonces();
+   return $resultat;
+ }
      public function afficher_list_annonces(){
         ($this->view)->get_list_annonces();
      }
@@ -37,7 +42,5 @@ require_once "../Model/Model_accueil.php";
      }
      public function afficher_annonces_by_emplacement($emplacement_depart,$emplcement_arrive){
       ($this->view)->get_annonces_by_emplacement($emplacement_depart,$emplcement_arrive);
-
      }
  }
-?>

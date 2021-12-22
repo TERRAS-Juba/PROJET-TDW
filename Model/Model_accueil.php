@@ -23,5 +23,11 @@ public function get_annonces_by_emplacement($emplacement_depart,$emplacement_arr
     ($this->connexion)->deconnexion();
     return $resultat;
     }
+    public function get_images_annonces(){
+    $qtf="select * from annonce_image  inner join image on image.id_image= annonce_image.id_image";
+    $resultat=(($this->connexion)->connexion())->query($qtf);
+    ($this->connexion)->deconnexion();
+    return $resultat;
+    }
 }
 ?>

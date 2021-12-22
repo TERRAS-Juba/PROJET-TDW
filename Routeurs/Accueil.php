@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="../Style/Style.css">
     <title>Nexus Express</title>
 </head>
+
 <body>
     <?php
     session_start();
     require_once "../Controller/Controller_accueil.php";
-    if(isset($_GET["id_annonce"])){
-        $_SESSION["id_annonce"]=$_GET["id_annonce"];
+    if (isset($_GET["id_annonce"])) {
+        $_SESSION["id_annonce"] = $_GET["id_annonce"];
         header("location:../Routeurs/DetailsAnnonce.php");
     }
     $controlleur_accueil = new ControllerAccueil();
@@ -23,21 +24,15 @@
     $controlleur_accueil->afficher_diaporama();
     $controlleur_accueil->afficher_menu();
     $controlleur_accueil->afficher_zone_recherche();
-    if(isset($_POST["recherche"])){
-        $controlleur_accueil->afficher_annonces_by_emplacement($_POST['emplacement_depart'],$_POST['emplacement_arrive']);
-    }else{
+    if (isset($_POST["recherche"])) {
+        $controlleur_accueil->afficher_annonces_by_emplacement($_POST['emplacement_depart'], $_POST['emplacement_arrive']);
+    } else {
         $controlleur_accueil->afficher_list_annonces();
     }
     $controlleur_accueil->afficher_footer();
     ?>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-6">
-                
-            </div>
-        </div>
-    </div>
-     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </body>
 
 </html>

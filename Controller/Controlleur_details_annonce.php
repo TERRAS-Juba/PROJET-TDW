@@ -12,6 +12,11 @@ class ControllerDetailsAnnonce{
          $resultat=$model->get_annonce_by_id($id);
          return $resultat;
      }
+     public function get_image_annonce_by_id($id){
+      $model=new ModelDetailsAnnonce();
+      $resultat=$model->get_image_annonce_by_id($id);
+      return $resultat;
+  }
      public function afficher_annonce_by_id($id){
         ($this->view)->get_annonce_by_id($id);
      }

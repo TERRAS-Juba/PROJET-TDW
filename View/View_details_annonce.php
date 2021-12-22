@@ -27,31 +27,31 @@ class ViewDetailsAnnonce
     public function get_menu()
     {
         echo '
-        <div class="container" id="navbar">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
-            <a class="navbar-brand" href="">Nexus Express</a>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top my-2">
+        <div class="container-fluid" id="navbar">
+            <a class="navbar-brand" href="../Routeurs/Accueil.php">Nexus Express</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="menu">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="">Presentation</a>
+                        <a class="nav-link" href="../Routeurs/Presentation.php">Presentation</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">News</a>
+                        <a class="nav-link" href="../Routeurs/News.php">News</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Inscription</a>
+                        <a class="nav-link" href=../Routeurs/Inscription.php"">Inscription</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Contactez nous</a>
+                        <a class="nav-link" href="../Routeurs/Contact.php">Contactez nous</a>
                     </li>
 
                 </ul>
             </div>
-        </nav>
-    </div>';
+            </div>
+        </nav>';
     }
     public function get_footer()
     {
@@ -60,21 +60,21 @@ class ViewDetailsAnnonce
         <div class="container text-center" id="bas-page">
             <div class="row border border-dark rounded my-2">
                 <div class=" col-sm-4">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="../Routeurs/Accueil.php">
                     <h4 class="text-dark">Nexus Express</h4>
                 </a>
             </div>
             <div class="col-sm-2">
-                <a class="nav-link" href=""><p class="text-dark">Presentation</p></a>
+                <a class="nav-link" href="../Routeurs/Presentation.php"><p class="text-dark">Presentation</p></a>
             </div>
             <div class="col-sm-2">
-                <a class="nav-link " href=""><p class="text-dark">News</p></a>
+                <a class="nav-link " href="../Routeurs/News.php"><p class="text-dark">News</p></a>
             </div>
             <div class="col-sm-2">
-                <a class="nav-link " href=""><p class="text-dark">Inscription</p></a>
+                <a class="nav-link " href="../Routeurs/Inscription.php"><p class="text-dark">Inscription</p></a>
             </div>
             <div class="col-sm-2">
-                <a class="nav-link" href=""><p class="text-dark">Contactez nous</p></a>
+                <a class="nav-link" href="../Routeurs/Contact.php"><p class="text-dark">Contactez nous</p></a>
             </div>
         </div>
         <div class="row">
@@ -93,12 +93,19 @@ class ViewDetailsAnnonce
     {
         $controller_details_annonce = new ControllerDetailsAnnonce();
         $resultat = $controller_details_annonce->get_annonce_by_id($id);
+        $images=$controller_details_annonce->get_image_annonce_by_id($id);
+        foreach($images as $image){
+            if($image["id_annonce"]==$id){
+                $chemin=$image["chemin"];
+            }
+        }
         foreach ($resultat as $row) {
             echo '<div class="Container">
             <div class="row" id="details_annonce">
               <div class="col">
                 <div class="card" id="' . $row["id_annonce"] . '">
                 <div class="card-header"><h2>' . $row["titre"] . '</h2></div>
+                <img class="card-img-top img-fluid" src="'.$chemin.'" alt="Card image cap">
                 <div class="card-body">
                                 <h3>Description :</h3>
                                 <p class="card-text">' . $row["description"] . '</p>

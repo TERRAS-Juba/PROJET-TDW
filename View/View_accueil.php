@@ -58,31 +58,31 @@ class ViewAccueil
     public function get_menu()
     {
         echo '
-        <div class="container" id="navbar">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
-            <a class="navbar-brand" href="">Nexus Express</a>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top my-2">
+        <div class="container-fluid" id="navbar">
+            <a class="navbar-brand" href="../Routeurs/Accueil.php">Nexus Express</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="menu">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="">Presentation</a>
+                        <a class="nav-link" href="../Routeurs/Presentation.php">Presentation</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">News</a>
+                        <a class="nav-link" href="../Routeurs/News.php">News</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Inscription</a>
+                        <a class="nav-link" href=../Routeurs/Inscription.php"">Inscription</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Contactez nous</a>
+                        <a class="nav-link" href="../Routeurs/Contact.php">Contactez nous</a>
                     </li>
 
                 </ul>
             </div>
-        </nav>
-    </div>';
+            </div>
+        </nav>';
     }
     public function get_footer()
     {
@@ -91,21 +91,21 @@ class ViewAccueil
         <div class="container text-center" id="bas-page">
             <div class="row border border-dark rounded my-2">
                 <div class=" col-sm-4">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="../Routeurs/Accueil.php">
                     <h4 class="text-dark">Nexus Express</h4>
                 </a>
             </div>
             <div class="col-sm-2">
-                <a class="nav-link" href=""><p class="text-dark">Presentation</p></a>
+                <a class="nav-link" href="../Routeurs/Presentation.php"><p class="text-dark">Presentation</p></a>
             </div>
             <div class="col-sm-2">
-                <a class="nav-link " href=""><p class="text-dark">News</p></a>
+                <a class="nav-link " href="../Routeurs/News.php"><p class="text-dark">News</p></a>
             </div>
             <div class="col-sm-2">
-                <a class="nav-link " href=""><p class="text-dark">Inscription</p></a>
+                <a class="nav-link " href="../Routeurs/Inscription.php"><p class="text-dark">Inscription</p></a>
             </div>
             <div class="col-sm-2">
-                <a class="nav-link" href=""><p class="text-dark">Contactez nous</p></a>
+                <a class="nav-link" href="../Routeurs/Contact.php"><p class="text-dark">Contactez nous</p></a>
             </div>
         </div>
         <div class="row">
@@ -157,7 +157,12 @@ class ViewAccueil
     {
         $controller = new ControllerAccueil();
         $resultat = $controller->get_list_annonces();
-        $tab = array();
+        $images = $controller->get_images_annonces();
+        $tab = [];
+        $tab_images = [];
+        foreach ($images as $image) {
+            $tab_images[$image["id_annonce"]] = $image["chemin"];
+        }
         foreach ($resultat as $row) {
             array_push($tab, $row);
         }
@@ -178,6 +183,7 @@ class ViewAccueil
                 echo '<div class="col-sm-3 my-2">';
                 echo '<div class="card" id="' . $row["id_annonce"] . '">';
                 echo '<div class="card-header">' . $row["titre"] . '</div>';
+                echo '<img class="card-img-top img-fluid" style="height: 250px" src="' . $tab_images[$row["id_annonce"]] . '" alt="Card image cap">';
                 echo '<div class="card-body">
                         <p class="card-text">' . substr($row["description"], 0, 40) . '</p>
                      </div>';
@@ -205,6 +211,7 @@ class ViewAccueil
                 echo '<div class="col-sm-3 my-2">';
                 echo '<div class="card" id="' . $row["id_annonce"] . '">';
                 echo '<div class="card-header">' . $row["titre"] . '</div>';
+                echo '<img class="card-img-top img-fluid" style="height: 250px" src="' . $tab_images[$row["id_annonce"]] . '" alt="Card image cap">';
                 echo '<div class="card-body">
                         <p class="card-text">' . substr($row["description"], 0, 40) . '</p>
                      </div>';
@@ -217,12 +224,22 @@ class ViewAccueil
             echo "</div>";
             echo '</div>';
         }
+        echo '<div class="row ">
+        <div class="col-12 text-center">
+        <a href="../Routeurs/Presentation.php" class="btn btn-primary rounded-pill text-center my-2 ">Comment sa marche ?</a>
+        </div>
+        </row>';
         $_GET["id_annonce"] = "";
     }
     public function get_annonces_by_emplacement($emplacement_depart, $emplcement_arrive)
     {
         $controller = new ControllerAccueil();
         $resultat = $controller->get_annonces_by_emplacement($emplacement_depart, $emplcement_arrive);
+        $images = $controller->get_images_annonces();
+        $tab_images = [];
+        foreach ($images as $image) {
+            $tab_images[$image["id_annonce"]] = $image["chemin"];
+        }
         echo '
         <div class="container-fluid border bg-white text-dark my-3" id="resultats_recherche">
         <div class="row">
@@ -234,7 +251,7 @@ class ViewAccueil
         </div>';
         echo '<div class="row">';
         if ($resultat->rowCount() == 0) {
-            echo '<div class="colmy-2">';
+            echo '<div class="col my-2">';
             echo '<h1 class="text-center text-danger">Aucun résultat ne correspond a votre recherche</h1>';
             echo '</div>';
         } else {
@@ -242,8 +259,11 @@ class ViewAccueil
                 echo '<div class="col-sm-3 my-2">';
                 echo '<div class="card" id="' . $row["id_annonce"] . '">';
                 echo '<div class="card-header">' . $row["titre"] . '</div>';
+                echo '<img class="card-img-top img-fluid" style="height: 250px" src="' . $tab_images[$row["id_annonce"]] . '" alt="Card image cap">';
                 echo '<div class="card-body"><p class="card-text">' . substr($row["description"], 0, 40) . '</p></div>';
-                echo '<div class="card-footer">';echo "<a href='../Routeurs/Accueil.php?id_annonce=" . $row["id_annonce"] . "'>Lire la suite ...</a>";echo '</div>';
+                echo '<div class="card-footer">';
+                echo "<a href='../Routeurs/Accueil.php?id_annonce=" . $row["id_annonce"] . "'>Lire la suite ...</a>";
+                echo '</div>';
                 echo '</div>';
                 echo "</div>";
             }
