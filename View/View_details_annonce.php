@@ -115,6 +115,8 @@ class ViewDetailsAnnonce
                                 <p class="card-text">' . $row["fourchette_poid"] . '</p>
                                 <h3>Volume :</h3>
                                 <p class="card-text">' . $row["fourchette_volume"] . '</p>
+                                <h3>Nombres de vues :</h3>
+                                <p class="card-text">' . $row["nombre_vues"] . '</p>
                              </div>
                              <div class="card-footer">
                                 <h3>Point de depart :</h3>

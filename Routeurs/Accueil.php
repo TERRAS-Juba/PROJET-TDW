@@ -15,11 +15,12 @@
     <?php
     session_start();
     require_once "../Controller/Controller_accueil.php";
+    $controlleur_accueil = new ControllerAccueil();
     if (isset($_GET["id_annonce"])) {
         $_SESSION["id_annonce"] = $_GET["id_annonce"];
+        $controlleur_accueil->set_nb_vues($_GET["id_annonce"]);
         header("location:../Routeurs/DetailsAnnonce.php");
     }
-    $controlleur_accueil = new ControllerAccueil();
     $controlleur_accueil->afficher_header();
     $controlleur_accueil->afficher_diaporama();
     $controlleur_accueil->afficher_menu();

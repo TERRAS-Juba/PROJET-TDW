@@ -22,6 +22,10 @@ require_once "../Model/Model_accueil.php";
    $resultat=$model->get_images_annonces();
    return $resultat;
  }
+ public function set_nb_vues($id){
+   $model=new ModelAccueil();
+   $model->set_nb_vues($id);
+ }
      public function afficher_list_annonces(){
         ($this->view)->get_list_annonces();
      }

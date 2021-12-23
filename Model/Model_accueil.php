@@ -29,5 +29,13 @@ public function get_annonces_by_emplacement($emplacement_depart,$emplacement_arr
     ($this->connexion)->deconnexion();
     return $resultat;
     }
+    public function set_nb_vues($id){
+        $conn=($this->connexion)->connexion();
+        $prepare=$conn->prepare("UPDATE annonce SET nombre_vues=nombre_vues+1 where id_annonce=?");
+        $prepare->bindParam(1,$id);
+        $prepare->execute();
+        ($this->connexion)->deconnexion();
+    }
+
 }
 ?>
