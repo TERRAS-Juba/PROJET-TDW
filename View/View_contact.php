@@ -95,6 +95,44 @@ class ViewContact{
         ';
 }
 public function get_contenu(){
+    echo '
+    <div class="container-fluid my-5">
+        <div class="row">
+            <div class="col-12 text-center my-auto ">
+                <h1>Vous rencontrez des problemes ?</h1>
+                <p>Veuillez nous contacter aux coordonées suivants
+                </p>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-10 m-auto">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Contact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row">Adresse mail</td>
+                            <td><a href="mailto:adminnexus@gmail.com">adminnexus@gmail.com</a></td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Service client</td>
+                            <td>020904129</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Notre siege social</td>
+                            <td>30 Rue des freres Kadri, Hydra, Alger.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    ';
+
 }
 }
 ?>
