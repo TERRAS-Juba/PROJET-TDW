@@ -1,6 +1,5 @@
 <?php
-class ViewDetailsNews
-{
+class ViewStatistiques{
     public function get_header()
     {
         echo '
@@ -94,36 +93,68 @@ class ViewDetailsNews
         </div>
     </footer>
         ';
-    }
-    function get_news_by_id($id)
-    {
-        $controller_details_annonce = new ControllerDetailsNews();
-        $resultat = $controller_details_annonce->get_news_by_id($id);
-        $images=$controller_details_annonce->get_image_news_by_id($id);
-        foreach ($resultat as $row) {
-            echo '<div class="Container">
-            <div class="row" id="details_news">
-              <div class="col">
-                <div class="card" id="' . $row["id_news"] . '">
-                <div class="card-header"><h2>' . $row["titre"] . '</h2></div>';
-                foreach($images as $image){
-                    if($image["id_news"]==$id){
-                        $chemin=$image["chemin"];
-                         echo '<img class="card-img-top img-fluid" src="'.$chemin.'">';
-                    }
-                }
-                echo '<div class="card-body">
-                                <h3>Description :</h3>
-                                <p class="card-text">' . $row["description"] . '</p>
-                             </div>
-                             <div class="card-footer">
-                             <h3>Nombres de vues :</h3>
-                             <p class="card-text">' . $row["nombre_vues"] . '</p>
-                </div>
-                </div>
-              </div>
-          </div>
-          </div>';
-        }
-    }
 }
+public function get_contenu(){
+    $controller_statistiques=new ControllerStatistiques();
+    foreach($controller_statistiques->get_nombre_annonces() as $row){
+        $nombre_annonces=$row["nb"];
+    }
+    foreach($controller_statistiques->get_nombre_transporteurs() as $row){
+        $nombre_transporteurs=$row["nb"];
+    }
+    foreach($controller_statistiques->get_nombre_news() as $row){
+        $nombre_news=$row["nb"];
+    }
+    foreach($controller_statistiques->get_nombre_transporteurs_certifies() as $row){
+        $nombre_transporteurs_certifies=$row["nb"];
+    }
+    foreach($controller_statistiques->get_nombre_clients() as $row){
+        $nombre_clients=$row["nb"];
+    }
+    echo '
+    <div class="container-fluid">
+        <div class="row bg-dark">
+            <div class="col-sm-6">
+                <img src="../Assets/image6.jpg" class="img-fluid ">
+            </div>
+            <div class="col-sm-6 text-center my-auto text-light">
+                <h1>Quelques statistiques sur notre site web</h1>
+                <p>Nous vous présentons quelques chiffres qui reflete la qualité des services proposés par notre site web et témoigne sur notre efficacité et la confiance que nous accorde nos clients.</p>
+            </div>
+        </div>
+    </div>
+    ';
+    echo '
+    <div class="container-fluid">
+        <div class="row my-5">
+            <div class="col-sm-4 text-center my-auto">
+                <img src="../Assets/client.png" class="img-fluid rounded-circle my-auto" style="height: 300px;">
+                <h1>Nombre de clients</h1>
+                <p>Plus de '.$nombre_clients.' clients inscrits sur notre site.</p>
+            </div>
+            <div class="col-sm-4 text-center my-auto">
+                <img src="../Assets/driver.png" class="img-fluid rounded-circle my-auto" style="height: 300px;">
+                <h1>Nombre de transporteurs</h1>
+                <p>Plus de '.$nombre_transporteurs.' transporteurs inscrits sur notre site.</p>
+            </div>
+            <div class="col-sm-4 text-center my-auto">
+                <img src="../Assets/certificate.png" class="img-fluid rounded-circle my-auto" style="height: 300px;">
+                <h1>Nombre de transporteurs certfiés</h1>
+                <p>Plus de '.$nombre_transporteurs_certifies.' transporteurs certfiés par notre site.</p>
+            </div>
+            <div class="col-sm-6 text-center my-auto">
+                <img src="../Assets/annoncement.png" class="img-fluid rounded-circle my-auto" style="height: 300px;">
+                <h1>Nombre d\'annonces</h1>
+                <p>Plus de '.$nombre_annonces.' annonces publiées sur notre site.</p>
+            </div>
+            <div class="col-sm-6 text-center my-auto">
+                <img src="../Assets/news.png" class="img-fluid rounded-circle my-auto" style="height: 300px;">
+                <h1>Nombre de news</h1>
+                <p>Restez d\'actualités avec plus de '.$nombre_news.' news.</p>
+            </div>
+        </div>
+    </div>
+    ';
+}
+}
+?>

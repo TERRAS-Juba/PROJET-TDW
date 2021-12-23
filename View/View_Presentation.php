@@ -41,7 +41,10 @@ class ViewPresentation{
                         <a class="nav-link" href="../Routeurs/News.php">News</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href=../Routeurs/Inscription.php"">Inscription</a>
+                        <a class="nav-link" href="../Routeurs/Inscription.php">Inscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Routeurs/Statistiques.php">Statistiques</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/Contact.php">Contactez nous</a>
@@ -58,7 +61,7 @@ class ViewPresentation{
         <footer>
         <div class="container text-center" id="bas-page">
             <div class="row border border-dark rounded my-2">
-                <div class=" col-sm-4">
+                <div class=" col-sm-2">
                 <a class="nav-link" href="../Routeurs/Accueil.php">
                     <h4 class="text-dark">Nexus Express</h4>
                 </a>
@@ -72,6 +75,9 @@ class ViewPresentation{
             <div class="col-sm-2">
                 <a class="nav-link " href="../Routeurs/Inscription.php"><p class="text-dark">Inscription</p></a>
             </div>
+            <div class="col-sm-2">
+            <a class="nav-link" href="../Routeurs/Statistiques.php"><p class="text-dark">Statistiques</p></a>
+        </div>
             <div class="col-sm-2">
                 <a class="nav-link" href="../Routeurs/Contact.php"><p class="text-dark">Contactez nous</p></a>
             </div>
@@ -92,10 +98,10 @@ public function get_contenu(){
     echo '
     <div class="container-fluid">
         <div class="row bg-dark">
-            <div class="col-6" id="presentation">
-                <img src="../Assets/image5.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+            <div class="col-sm-6">
+                <img src="../Assets/image5.jpg" class="img-fluid">
             </div>
-            <div class="col-6 text-center my-auto text-light">
+            <div class="col-sm-6 text-center my-auto text-light">
                 <h1>Presentation de Nexus Express</h1>
                 <p>Nexus Express est une application de mise en relation de chauffeur de véhicule de
                     divers types (Voitures, Camions, motos…) pour le transport de matériels ou de colis selon un tarif prédéfini.</p>

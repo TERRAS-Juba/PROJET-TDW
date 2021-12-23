@@ -73,7 +73,10 @@ class ViewAccueil
                         <a class="nav-link" href="../Routeurs/News.php">News</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href=../Routeurs/Inscription.php"">Inscription</a>
+                        <a class="nav-link" href="../Routeurs/Inscription.php">Inscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Routeurs/Statistiques.php">Statistiques</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/Contact.php">Contactez nous</a>
@@ -90,7 +93,7 @@ class ViewAccueil
         <footer>
         <div class="container text-center" id="bas-page">
             <div class="row border border-dark rounded my-2">
-                <div class=" col-sm-4">
+                <div class=" col-sm-2">
                 <a class="nav-link" href="../Routeurs/Accueil.php">
                     <h4 class="text-dark">Nexus Express</h4>
                 </a>
@@ -105,8 +108,11 @@ class ViewAccueil
                 <a class="nav-link " href="../Routeurs/Inscription.php"><p class="text-dark">Inscription</p></a>
             </div>
             <div class="col-sm-2">
-                <a class="nav-link" href="../Routeurs/Contact.php"><p class="text-dark">Contactez nous</p></a>
+                <a class="nav-link" href="../Routeurs/Statistiques.php"><p class="text-dark">Statistiques</p></a>
             </div>
+            <div class="col-sm-2">
+            <a class="nav-link" href="../Routeurs/Contact.php"><p class="text-dark">Contactez nous</p></a>
+        </div>
         </div>
         <div class="row">
             <p class="text-center">
