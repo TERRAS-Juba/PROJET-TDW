@@ -1,5 +1,5 @@
 <?php
-class ViewDetailsAnnonce
+class ViewNews
 {
     public function get_header()
     {
@@ -89,45 +89,47 @@ class ViewDetailsAnnonce
     </footer>
         ';
     }
-    function get_annonce_by_id($id)
+
+    public function get_list_news()
     {
-        $controller_details_annonce = new ControllerDetailsAnnonce();
-        $resultat = $controller_details_annonce->get_annonce_by_id($id);
-        $images=$controller_details_annonce->get_image_annonce_by_id($id);
-        foreach ($resultat as $row) {
-            echo '<div class="Container">
-            <div class="row" id="details_annonce">
-              <div class="col">
-                <div class="card" id="' . $row["id_annonce"] . '">
-                <div class="card-header"><h2>' . $row["titre"] . '</h2></div>';
-                foreach($images as $image){
-                    if($image["id_annonce"]==$id){
-                        $chemin=$image["chemin"];
-                        echo '<img class="card-img-top img-fluid" src="'.$chemin.'" alt="Card image cap">';
-                    }
-                }
-                echo '<div class="card-body">
-                                <h3>Description :</h3>
-                                <p class="card-text">' . $row["description"] . '</p>
-                                <h3>Type de transport :</h3>
-                                <p class="card-text">' . $row["type_transport"] . '</p>
-                                <h3>Poid :</h3>
-                                <p class="card-text">' . $row["fourchette_poid"] . '</p>
-                                <h3>Volume :</h3>
-                                <p class="card-text">' . $row["fourchette_volume"] . '</p>
-                                <h3>Nombres de vues :</h3>
-                                <p class="card-text">' . $row["nombre_vues"] . '</p>
-                             </div>
-                             <div class="card-footer">
-                                <h3>Point de depart :</h3>
-                                <p class="card-text">' . $row["emplacement_depart"] . '</p>
-                                <h3>Point d\' arrivée :</h3>
-                  <p class="card-text">' . $row["emplacement_arrive"] . '</p>
-                </div>
-                </div>
-              </div>
-          </div>
-          </div>';
+        $controller = new ControllerNews();
+        $resultat = $controller->get_list_news();
+        $images = $controller->get_images_news();
+        $tab = [];
+        $tab_images = [];
+        foreach ($images as $image) {
+            $tab_images[$image["id_news"]] = $image["chemin"];
         }
+        foreach ($resultat as $row) {
+            array_push($tab, $row);
+        }
+            echo '
+        <div class="container-fluid border bg-white text-dark my-3" id="catalogue_annonces">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">
+                    Consultez les derniers annonces.
+                </h1>
+                <p class="text-center">Vous pouvez consulter les derniers actualites en relation avec notre site web</p>
+            </div>
+        </div>';
+            echo '<div class="row">';
+            foreach ($tab as $row) {
+                echo '<div class="col-sm-6 my-2">';
+                echo '<div class="card" id="' . $row["id_news"] . '">';
+                echo '<div class="card-header"><h2>' . $row["titre"] . '</h2></div>';
+                echo '<img class="card-img-top img-fluid" style="height:350px" src="' . $tab_images[$row["id_news"]] . '">';
+                echo '<div class="card-body">
+                        <p class="card-text">' . substr($row["description"], 0, 40) . '</p>
+                     </div>';
+                echo '<div class="card-footer">';
+                echo "<a href='../Routeurs/News.php?id_news=" . $row["id_news"] . "'>Lire la suite ...</a>";
+                echo '</div>';
+                echo '</div>';
+                echo "</div>";
+            }
+            echo "</div>";
+            echo '</div>';
+        $_GET["id_annonce"] = "";
     }
 }
