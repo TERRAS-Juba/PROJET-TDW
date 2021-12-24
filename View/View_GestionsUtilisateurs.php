@@ -13,6 +13,11 @@ public function get_contenu(){
       <button type="button" class="btn-close text-reset btn-light bg-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body  bg-dark">
+    <div class="list-group-flush my-3">
+        <a href="../Routeurs/GestionUtilisateurs.php" class="list-group-item list-group-item-action text-dark bg-light ">
+          <h5>Accueil</h5>
+        </a>
+      </div>
       <div class="list-group-flush my-3">
         <a href="../Routeurs/GestionClients.php" class="list-group-item list-group-item-action text-dark bg-light ">
           <h5>Gestion des clients</h5>
@@ -30,7 +35,7 @@ public function get_contenu(){
     <div class="row my-5">
       <div class="col-sm-6 text-center my-auto border">
         <a href="../Routeurs/GestionClients.php"> <img src="../Assets/client.png" class="img-fluid rounded-circle my-auto" style="height: 300px;"></a>
-        <h1>Gestion des utilisateurs</h1>
+        <h1>Gestion des clients</h1>
       </div>
       <div class="col-sm-6 text-center my-auto border">
         <a href="../Routeurs/GestionTransporteurs.php"><img src="../Assets/driver.png" class="img-fluid rounded-circle my-auto" style="height: 300px;"></a>

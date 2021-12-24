@@ -11,7 +11,7 @@ function __destruct()
     
 }
 public function get_list_annonces(){
-    $qtf="SELECT  * FROM annonce";
+    $qtf="SELECT  * FROM annonce where statut='valide'";
     $resultat=(($this->connexion)->connexion())->query($qtf);
     ($this->connexion)->deconnexion();
     return $resultat;
