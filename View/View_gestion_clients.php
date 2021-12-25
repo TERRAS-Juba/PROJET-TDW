@@ -44,7 +44,7 @@ echo '
     </div>
 </div>
 <div class="row">
-    <div class="col my-auto">
+<div class="table-responsive">
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -66,8 +66,8 @@ echo '
                 <td>'.$row["adresse"].'</td>
                 <td>'.$row["email"].'</td>
                 <td>
-                <a  class="btn btn-warning "href="../Routeurs/GestionClients.php?edit='.$row["id_client"].'" onclick="return confirm(\'Voulez-vous vraiment modifier ce transporteur ?\')">Modifier</a>
-                <a  class="btn btn-danger "href="../Routeurs/GestionClients.php?remove='.$row["id_client"].'" onclick="return confirm(\'Voulez-vous vraiment supprimer ce transporteur ?\')">Supprimer</a>
+                <a style="width:200px" class="my-1 btn btn-warning "href="../Routeurs/GestionClients.php?edit='.$row["id_client"].'" onclick="return confirm(\'Voulez-vous vraiment modifier ce transporteur ?\')">Modifier</a>
+                <a style="width:200px" class="my-1 btn btn-danger "href="../Routeurs/GestionClients.php?remove='.$row["id_client"].'" onclick="return confirm(\'Voulez-vous vraiment supprimer ce transporteur ?\')">Supprimer</a>
                 </td>
             </tr>';
             }
@@ -155,7 +155,7 @@ echo '
     </div>
 </div>
 <div class="row">
-    <div class="col my-auto">
+<div class="table-responsive">
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -177,8 +177,8 @@ echo '
                 <td>'.$row["adresse"].'</td>
                 <td>'.$row["email"].'</td>
                 <td>
-                <a  class="btn btn-warning "href="../Routeurs/GestionClients.php?edit='.$row["id_client"].'" onclick="return confirm(\'Voulez-vous vraiment modifier ce transporteur ?\')">Modifier</a>
-                <a  class="btn btn-danger "href="../Routeurs/GestionClients.php?remove='.$row["id_client"].'" onclick="return confirm(\'Voulez-vous vraiment supprimer ce transporteur ?\')">Supprimer</a>
+                <a  style="width:200px" class="my-1 btn btn-warning "href="../Routeurs/GestionClients.php?edit='.$row["id_client"].'" onclick="return confirm(\'Voulez-vous vraiment modifier ce transporteur ?\')">Modifier</a>
+                <a  style="width:200px" class="my-1 btn btn-danger "href="../Routeurs/GestionClients.php?remove='.$row["id_client"].'" onclick="return confirm(\'Voulez-vous vraiment supprimer ce transporteur ?\')">Supprimer</a>
                 </td>
             </tr>';
             }

@@ -18,7 +18,12 @@
   $controlleur_details_annonce = new ControllerDetailsAnnonce();
   $controlleur_details_annonce->afficher_header();
   $controlleur_details_annonce->afficher_menu();
-  $controlleur_details_annonce->afficher_annonce_by_id($_SESSION["id_annonce"]);
+  if(isset($_GET["detail"])){
+    $controlleur_details_annonce->afficher_annonce_by_id($_GET["detail"]);
+  }else{
+    $controlleur_details_annonce->afficher_annonce_by_id($_SESSION["id_annonce"]);
+  }
+  
   $controlleur_details_annonce->afficher_footer();
   ?>
 
