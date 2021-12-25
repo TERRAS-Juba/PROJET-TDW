@@ -42,7 +42,6 @@ public function get_list_transporteurs_non_certifies(){
 }
 public function get_demande_certification($id){
     $qtf="SELECT * FROM demandecertification  WHERE id_transporteur='".$id."'";
-    echo $qtf;
     $resultat=(($this->connexion)->connexion())->query($qtf);
     ($this->connexion)->deconnexion();
     return $resultat;

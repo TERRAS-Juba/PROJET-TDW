@@ -66,8 +66,8 @@ class ViewGestionTransporteurs
                 <td>' . $row["email"] . '</td>
                 <td>' . $row["certifie"] . '</td>
                 <td>
-                <a  class="btn btn-warning "href="../Routeurs/GestionTransporteurs.php?edit=' . $row["id_transporteur"] . '">Modifier</a>
-                <a  class="btn btn-danger "href="../Routeurs/GestionTransporteurs.php?remove=' . $row["id_transporteur"] . '">Supprimer</a>
+                <a  class="btn btn-warning "href="../Routeurs/GestionTransporteurs.php?edit=' . $row["id_transporteur"] . '"  onclick="return confirm(\'Voulez-vous vraiment modifier ce transporteur ?\')">Modifier</a>
+                <a  class="btn btn-danger "href="../Routeurs/GestionTransporteurs.php?remove=' . $row["id_transporteur"] . '" onclick="return confirm(\'Voulez-vous vraiment supprimer ce transporteur ?\')">Supprimer</a>
                 </td>
             </tr>';
         }
@@ -177,8 +177,8 @@ class ViewGestionTransporteurs
                 <td>' . $row["email"] . '</td>
                 <td>' . $row["certifie"] . '</td>
                 <td>
-                <a  class="btn btn-warning "href="../Routeurs/GestionTransporteurs.php?edit=' . $row["id_transporteur"] . '">Modifier</a>
-                <a  class="btn btn-danger "href="../Routeurs/GestionTransporteurs.php?remove=' . $row["id_transporteur"] . '">Supprimer</a>
+                <a  class="btn btn-warning "href="../Routeurs/GestionTransporteurs.php?edit=' . $row["id_transporteur"] . '" onclick="return confirm(\'Voulez-vous vraiment modifier ce transporteur ?\')">Modifier</a>
+                <a  class="btn btn-danger "href="../Routeurs/GestionTransporteurs.php?remove=' . $row["id_transporteur"] . '" onclick="return confirm(\'Voulez-vous vraiment supprimer ce transporteur ?\')">Supprimer</a>
                 </td>
             </tr>';
         }
@@ -260,8 +260,8 @@ class ViewGestionTransporteurs
                 <td>' . $row["email"] . '</td>
                 <td>' . $row["certifie"] . '</td>
                 <td>
-                <a  class="btn btn-success"href="../Routeurs/GestionTransporteurs.php?certifie=' . $row["id_transporteur"] . '">Certifier</a>
-                <a  class="btn btn-primary "href="../Routeurs/GestionTransporteurs.php?demande=' . $row["id_transporteur"] . '">Afficher demande</a>
+                <a  class="btn btn-success" href="../Routeurs/GestionTransporteurs.php?certifie=' . $row["id_transporteur"] . '" onclick="return confirm(\'Voulez-vous vraiment certifier ce transporteur ?\')">Certifier</a>
+                <a  class="btn btn-primary" href="../Routeurs/GestionTransporteurs.php?demande=' . $row["id_transporteur"] . '" onclick="return confirm(\'Voulez-vous vraiment afficher la demande de certification de ce transporteur ?\')">Afficher demande</a>
                 </td>
             </tr>';
         }

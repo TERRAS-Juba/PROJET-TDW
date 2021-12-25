@@ -66,8 +66,8 @@ echo '
                 <td>'.$row["adresse"].'</td>
                 <td>'.$row["email"].'</td>
                 <td>
-                <a  class="btn btn-warning "href="../Routeurs/GestionClients.php?edit='.$row["id_client"].'">Modifier</a>
-                <a  class="btn btn-danger "href="../Routeurs/GestionClients.php?remove='.$row["id_client"].'">Supprimer</a>
+                <a  class="btn btn-warning "href="../Routeurs/GestionClients.php?edit='.$row["id_client"].'" onclick="return confirm(\'Voulez-vous vraiment modifier ce transporteur ?\')">Modifier</a>
+                <a  class="btn btn-danger "href="../Routeurs/GestionClients.php?remove='.$row["id_client"].'" onclick="return confirm(\'Voulez-vous vraiment supprimer ce transporteur ?\')">Supprimer</a>
                 </td>
             </tr>';
             }
@@ -177,8 +177,8 @@ echo '
                 <td>'.$row["adresse"].'</td>
                 <td>'.$row["email"].'</td>
                 <td>
-                <a  class="btn btn-warning "href="../Routeurs/GestionClients.php?edit='.$row["id_client"].'">Modifier</a>
-                <a  class="btn btn-danger "href="../Routeurs/GestionClients.php?remove='.$row["id_client"].'">Supprimer</a>
+                <a  class="btn btn-warning "href="../Routeurs/GestionClients.php?edit='.$row["id_client"].'" onclick="return confirm(\'Voulez-vous vraiment modifier ce transporteur ?\')">Modifier</a>
+                <a  class="btn btn-danger "href="../Routeurs/GestionClients.php?remove='.$row["id_client"].'" onclick="return confirm(\'Voulez-vous vraiment supprimer ce transporteur ?\')">Supprimer</a>
                 </td>
             </tr>';
             }
