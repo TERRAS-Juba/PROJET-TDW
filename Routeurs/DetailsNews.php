@@ -14,11 +14,16 @@
 <body>
   <?php
   session_start();
-  require_once "../Controller/Controlleur_details_news.php";
+  require "../Controller/Controlleur_details_news.php";
   $controlleur_details_news = new ControllerDetailsNews();
   $controlleur_details_news->afficher_header();
   $controlleur_details_news->afficher_menu();
-  $controlleur_details_news->afficher_news_by_id($_SESSION["id_news"]);
+  if(isset($_GET["detail"])){
+    $controlleur_details_news->afficher_news_by_id($_GET["detail"]);
+  }else{
+    $controlleur_details_news->afficher_news_by_id($_SESSION["id_news"]);
+  }
+
   $controlleur_details_news->afficher_footer();
   ?>
 

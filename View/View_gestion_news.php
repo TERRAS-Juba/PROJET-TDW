@@ -1,5 +1,5 @@
 <?php
-class ViewGestionAnnonces
+class ViewGestionNews
 {
     public function get_contenu()
     {
@@ -10,26 +10,26 @@ class ViewGestionAnnonces
   </nav>
   <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
     <div class="offcanvas-header bg-dark">
-      <h3 class="offcanvas-title text-light" id="offcanvasScrollingLabel">Gestion des annonces</h3>
+      <h3 class="offcanvas-title text-light" id="offcanvasScrollingLabel">Gestion des news</h3>
       <button type="button" class="btn-close text-reset btn-light bg-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body  bg-dark">
     <div class="list-group-flush my-3">
-        <a href="../Routeurs/GestionAnnonces.php" class="list-group-item list-group-item-action text-dark bg-light ">
+        <a href="../Routeurs/GestionNews.php" class="list-group-item list-group-item-action text-dark bg-light ">
           <h5>Accueil</h5>
         </a>
       </div>
     </div>
   </div>';
     }
-    public function get_list_annonces()
+    public function get_list_news()
     {
-        $controller_annonces = new ControllerGestionAnnonces();
-        $resultat = $controller_annonces->get_list_annonces();
+        $controller_annonces = new ControllerGestionNews();
+        $resultat = $controller_annonces->get_list_news();
         echo '<div class="container">
 <div class="row">
     <div class="col my-auto text-center">
-        <h1>Gestion des annonces</h1>
+        <h1>Gestion des news</h1>
     </div>
 </div>
 <div class="row">
@@ -37,127 +37,79 @@ class ViewGestionAnnonces
         <table class="table table-striped table-hover border table-bordered">
             <thead>
                 <tr>
-                    <th>ID Annonce</th>
+                    <th>ID News</th>
                     <th>Titre</th>
-                    <th>Emplacement de départ</th>
-                    <th>Emplacement arrive</th>
-                    <th>Garantie</th>
-                    <th>Type de transport</th>
-                    <th>Action</th>
+                    <th>Date d\'ajout</th>
                 </tr>
             </thead>
             <tbody>';
         foreach ($resultat as $row) {
             echo '<tr>
-                <td scope="row">' . $row["id_annonce"] . '</td>
+                <td scope="row">' . $row["id_news"] . '</td>
                 <td>' . $row["titre"] . '</td>
-                <td>' . $row["emplacement_depart"] . '</td>
-                <td>' . $row["emplacement_arrive"] . '</td>
-                <td>' . $row["garantie"] . '</td>
-                <td>' . $row["type_transport"] . '</td>
+                <td>' . $row["date_ajout"] . '</td>
                 <td>
-                <a  style="width:200px" class="btn btn-success my-1 " href="../Routeurs/DetailsAnnonce.php?detail=' . $row["id_annonce"] . '"  onclick="return confirm(\'Voulez-vous vraiment afficher les details de cette annonce ?\')">Afficher details</a>
+                <a  style="width:200px" class="btn btn-success my-1 " href="../Routeurs/DetailsNews.php?detail=' . $row["id_news"] . '"  onclick="return confirm(\'Voulez-vous vraiment afficher les details de cette news ?\')">Afficher details</a>
                 <br>
-                <a  style="width:200px" class="btn btn-danger my-1" href="../Routeurs/GestionAnnonces.php?remove=' . $row["id_annonce"] . '" onclick="return confirm(\'Voulez-vous vraiment supprimer cette annonce ?\')">Supprimer</a>
+                <a  style="width:200px" class="btn btn-warning my-1" href="../Routeurs/GestionNews.php?modifier=' . $row["id_news"] . '" onclick="return confirm(\'Voulez-vous vraiment modifier cette news ?\')">Modifier</a>
                 <br>
-                <a data-bs-toggle="modal" data-bs-target="#'.$row["id_client"].'" style="width:200px" class="btn btn-info my-1" >Details client</a>
-                <br>
-                <a data-bs-toggle="modal" data-bs-target="#'.$row["id_transporteur"].'" style="width:200px" class="btn btn-secondary my-1">Details transporteur</a>
+                <a  style="width:200px" class="btn btn-danger my-1" href="../Routeurs/GestionNews.php?remove=' . $row["id_news"] . '" onclick="return confirm(\'Voulez-vous vraiment supprimer cette news ?\')">Supprimer</a>
                 <br>
             </tr>';
-            $clients=$controller_annonces->get_client_annonce($row["id_client"]);
-            $transporteurs=$controller_annonces->get_transporteur_annonce($row["id_transporteur"]);
-            foreach($clients as $client){
-                echo '
-<div class="modal" id="'.$row["id_client"].'">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">'.$client["id_client"].'</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <h4>Nom : '.$client["nom"].'</h4>
-        <h4>Prenom : '.$client["prenom"].'</h4>
-        <h4>Adresse : '.$client["adresse"].'</h4>
-        <h4>Email : '.$client["email"].'</h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-      </div>
-
-    </div>
-  </div>
-</div>';
             }
-foreach($transporteurs as $transporteur){
-    echo '
-<div class="modal" id="'.$row["id_transporteur"].'">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h4 class="modal-title">'.$transporteur["id_transporteur"].'</h4>
-<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-<div class="modal-body">
-<h4>Nom : '.$transporteur["nom"].'</h4>
-<h4>Prenom : '.$transporteur["prenom"].'</h4>
-<h4>Adresse : '.$transporteur["adresse"].'</h4>
-<h4>Email : '.$transporteur["email"].'</h4>
-<h4>Certifié : '.$transporteur["certifie"].'</h4>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-</div>
-</div>
-</div>
-</div>
-                ';
-            }
-        }
         echo '</tbody>
         </table>
     </div>
 </div>
-</div>
-<div class="container">
-<div class="row">
-    <div class="col my-auto text-center">
-        <h1>Filtrage de la recherche</h1>
-    </div>
-</div>
-<div class="container bg-secondary my-5">
-<div class="row">
-    <form action="../Routeurs/GestionAnnonces.php" method="post">
-    <div class="col-sm-6 my-2">
-            <label for="" class="my-2">
-                <h5 class="text-light">Filtrage des utilisateur</h5>
-            </label>
-            <select class="form-control" name="recherche" required>
-                <option value="statut">Statut</option>
-                <option value="id_annonce">ID Annonce</option>
-                <option value="id_client">ID Client</option>
-                <option value="id_transporteur">ID Transporteur</option>
-            </select>
-    </div>
-    <div class="col-sm-6 my-2">
-            <label for="" class="my-2">
-                <h5 class="text-light">Saisisez une valeur</h5>
-            </label>
-            <input type="text" class="form-control my-2" name="valeur" required placeholder="Saisisez une valeur">
-    </div>
-    <div class="col-sm-6 my-2">
-        <label for="" class="my-2">
-            <h5 class="text-light">Filtrer la recherche</h5>
-        </label>
-        <div class="form-group">
-            <button class="btn btn-primary" type="submit" name="btn-recherche">Filtrer la recherche</button>
-        </div>
-    </div>
-    </form>
-</div>
 </div>';
     }
+    public function modifier_news(){
+        echo '<div class="container my-4">
+         <div class="row">
+             <div class="col my-auto text-center">
+                 <h1>Modification d\'une news</h1>
+             </div>
+         </div>
+         <div class="row">
+             <div class="col-12 my-auto bg-secondary">
+                 <form action="../Routeurs/GestionNews.php" method="post">
+                     <label class="mt-2"><h5>Titre :</h5></label>
+                     <input class="form-control my-2" type="text" name="titre" required placeholder="Entrez le nouveau titre">
+                     <label class="mt-2"><h5>Description :</h5></label>
+                     <textarea class="form-control my-2" rows="5"  name="description"  required placeholder="Entrez la nouvelle description"></textarea>
+                     <label class="mt-2"><h5>Nouvelle image :</h5></label>
+                     <input class="form-control my-2" type="file" name="chemin" required placeholder="Entrez le nouveau chemin de l\'image">
+                     <button name="enregistrer" class="btn btn-warning my-4" type="submit">Enregistrer les modifications</button>
+                 </form>
+             </div>
+         </div>
+     </div>';
+     }
+     public function inserer_news(){
+        echo '<div class="container my-4">
+         <div class="row">
+             <div class="col my-auto text-center">
+                 <h1>Ajout d\'une news</h1>
+             </div>
+         </div>
+         <div class="row">
+             <div class="col-12 my-auto bg-secondary">
+                 <form action="../Routeurs/GestionNews.php" method="post">
+                     <label class="mt-2"><h5>Titre :</h5></label>
+                     <input class="form-control my-2" type="text" name="titre" required placeholder="Introduisez le titre">
+                     <label class="mt-2"><h5>Description :</h5></label>
+                     <textarea class="form-control my-2" rows="5"  name="description"  required placeholder="Introduisez la description"></textarea>
+                     <label class="mt-2"><h5>Image :</h5></label>
+                     <input class="form-control my-2" type="file" name="chemin" required placeholder="Introduisez le chemin de l\'image">
+                     <label class="mt-2"><h5>Date de publication :</h5></label>
+                     <input class="form-control my-2" type="date" name="date" required placeholder="Introduisez le chemin de l\'image">
+                     <button name="ajouter" class="btn btn-success my-4" type="submit">Ajouter la news</button>
+                 </form>
+             </div>
+         </div>
+     </div>';
+     }
+    /*
     public function get_list_annonces_by_critere($critere, $value)
     {
         $controller_annonces = new ControllerGestionAnnonces();
@@ -397,4 +349,5 @@ foreach($transporteurs as $transporteur){
 </div>
 </div>';
     }
-}
+}*/
+    }

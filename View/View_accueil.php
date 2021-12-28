@@ -167,7 +167,7 @@ class ViewAccueil
         $tab = [];
         $tab_images = [];
         foreach ($images as $image) {
-            $tab_images[$image["id_annonce"]] = $image["chemin"];
+            $tab_images[strval($image["id_annonce"])] = $image["chemin"];
         }
         foreach ($resultat as $row) {
             array_push($tab, $row);
@@ -189,7 +189,7 @@ class ViewAccueil
                 echo '<div class="col-sm-3 my-2">';
                 echo '<div class="card" id="' . $row["id_annonce"] . '">';
                 echo '<div class="card-header">' . $row["titre"] . '</div>';
-                echo '<img class="card-img-top img-fluid" style="height: 250px" src="' . $tab_images[$row["id_annonce"]] . '" alt="Card image cap">';
+                echo '<img class="card-img-top img-fluid" style="height: 250px" src="' . $tab_images[strval($row["id_annonce"])] . '" alt="Card image cap">';
                 echo '<div class="card-body">
                         <p class="card-text">' . substr($row["description"], 0, 40) . '</p>
                      </div>';
@@ -217,7 +217,7 @@ class ViewAccueil
                 echo '<div class="col-sm-3 my-2">';
                 echo '<div class="card" id="' . $row["id_annonce"] . '">';
                 echo '<div class="card-header">' . $row["titre"] . '</div>';
-                echo '<img class="card-img-top img-fluid" style="height: 250px" src="' . $tab_images[$row["id_annonce"]] . '" alt="Card image cap">';
+                echo '<img class="card-img-top img-fluid" style="height: 250px" src="' . $tab_images[strval($row["id_annonce"])] . '" alt="Card image cap">';
                 echo '<div class="card-body">
                         <p class="card-text">' . substr($row["description"], 0, 40) . '</p>
                      </div>';
