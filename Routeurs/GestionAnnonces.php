@@ -15,7 +15,6 @@
     <?php
     require "../Controller/Controller_gestion_annonces.php";
     require "../Controller/Controlleur_details_annonce.php";
-    session_start();
     $controller = new ControllerGestionAnnonces();
     $controller->afficher_contenu();
     if(isset($_GET["detail"])){

@@ -10,17 +10,33 @@ class ViewNews
                 <img src="../Assets/logo.png" alt="logo de l\'entreprise" class="float-start img-fluid">
             </div>
             <div class="col-md-3">
-            </div>
+            </div>';
+        if(isset($_SESSION["user_name"])){
+            echo '
             <div class="col-md-2">
-                <div class="d-grid">
-                    <a href="#" class="my-2 btn btn-outline-primary btn-block rounded-pill">S"enregistrer</a>
-                </div>
+            <div class="d-grid">
+                <a href="../Routeurs/MonProfil.php" class="my-2 btn btn-outline-primary btn-block rounded-pill">Mon profil</a>
             </div>
+        </div>
+        <div class="col-md-2">
+            <div class="d-grid">
+                <a href="../Deconnexion.php" class="my-2 btn btn-primary btn-block rounded-pill">Se deconnecter</a>
+            </div>
+        </div>';
+        }else{
+            echo '
             <div class="col-md-2">
-                <div class="d-grid">
-                    <a href="#" class="my-2 btn btn-primary btn-block rounded-pill">Connexion</a>
-                </div>
+            <div class="d-grid">
+                <a href="../Routeurs/InscriptionUtilisateur.php" class="my-2 btn btn-outline-primary btn-block rounded-pill">S"enregistrer</a>
             </div>
+        </div>
+        <div class="col-md-2">
+            <div class="d-grid">
+                <a href="../Routeurs/ConnexionUtilisateur.php"  class="my-2 btn btn-primary btn-block rounded-pill">Connexion</a>
+            </div>
+        </div>';
+        }
+        echo '
         </div>
     </div>';
     }
@@ -42,7 +58,7 @@ class ViewNews
                         <a class="nav-link" href="../Routeurs/News.php">News</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../Routeurs/Inscription.php">Inscription</a>
+                        <a class="nav-link" href="../Routeurs/InscriptionUtilisateur.php">Inscription</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/Statistiques.php">Statistiques</a>
@@ -74,7 +90,7 @@ class ViewNews
                 <a class="nav-link " href="../Routeurs/News.php"><p class="text-dark">News</p></a>
             </div>
             <div class="col-sm-2">
-                <a class="nav-link " href="../Routeurs/Inscription.php"><p class="text-dark">Inscription</p></a>
+                <a class="nav-link " href="../Routeurs/InscriptionUtilisateur.php"><p class="text-dark">Inscription</p></a>
             </div>
             <div class="col-sm-2">
             <a class="nav-link" href="../Routeurs/Statistiques.php"><p class="text-dark">Statistiques</p></a>

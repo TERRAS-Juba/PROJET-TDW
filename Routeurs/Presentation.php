@@ -13,6 +13,7 @@
 
 <body>
     <?php
+     session_start();
     require "../Controller/Controller_Presentation.php";
     $controlleur_presentation = new ControllerPresentation();
     $controlleur_presentation->afficher_header();

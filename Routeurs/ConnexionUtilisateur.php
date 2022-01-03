@@ -23,12 +23,13 @@
         $_SESSION["user_name"] = $_POST["user_name"];
         $_SESSION["user_password"] = $_POST["user_password"];
         $_SESSION["type_compte"] = $_POST["type_compte"];
+        $_SESSION["connection"] = "connecte";
         try {
             if($controller_connexion->connexion($_POST["user_name"],$_POST["user_password"],$_POST["type_compte"])==true){
                 if($_POST["type_compte"]=="client"){
-                    header("location:../Routeurs/AcceuilClient.php");
+                    header("location:../Routeurs/Accueil.php");
                 }else{
-                    header("location:../Routeurs/AcceuilTransporteur.php");
+                    header("location:../Routeurs/Accueil.php");
                 }
             }else{
                 echo "
