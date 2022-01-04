@@ -21,6 +21,8 @@
     $controller_connexion->afficher_inscription();
     if (isset($_POST["connexion"])) {
         $utilisateur = $controller_connexion->existe_utilisateur($_POST["user_name"], $_POST["type_compte"]);
+        $_SESSION["user_name"] = $_POST["user_name"];
+        $_SESSION["type_compte"] = $_POST["type_compte"];
         if ($utilisateur == true) {
             echo "
         <script>

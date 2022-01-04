@@ -14,12 +14,12 @@ class ViewPresentation{
             echo '
             <div class="col-md-2">
             <div class="d-grid">
-                <a href="../Routeurs/MonProfil.php" class="my-2 btn btn-outline-primary btn-block rounded-pill">Mon profil</a>
+                <a href="../Routeurs/MonProfil.php" class="my-2 btn btn-success btn-block rounded-pill">Mon profil</a>
             </div>
         </div>
         <div class="col-md-2">
             <div class="d-grid">
-                <a href="../Deconnexion.php" class="my-2 btn btn-primary btn-block rounded-pill">Se deconnecter</a>
+                <a href="../Deconnexion.php" class="my-2 btn btn-danger btn-block rounded-pill">Se deconnecter</a>
             </div>
         </div>';
         }else{
@@ -55,10 +55,14 @@ class ViewPresentation{
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/News.php">News</a>
-                    </li>
-                    <li class="nav-item">
+                    </li>';
+                    if(!isset($_SESSION["user_name"])){
+                        echo ' 
+                        <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/InscriptionUtilisateur.php">Inscription</a>
-                    </li>
+                        </li>';
+                    }
+                    echo '
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/Statistiques.php">Statistiques</a>
                     </li>

@@ -21,9 +21,7 @@
     $controller_connexion =new ControllerConnexionUtilisateur();
     if(isset($_POST["connexion"])){
         $_SESSION["user_name"] = $_POST["user_name"];
-        $_SESSION["user_password"] = $_POST["user_password"];
         $_SESSION["type_compte"] = $_POST["type_compte"];
-        $_SESSION["connection"] = "connecte";
         try {
             if($controller_connexion->connexion($_POST["user_name"],$_POST["user_password"],$_POST["type_compte"])==true){
                 if($_POST["type_compte"]=="client"){
@@ -58,7 +56,6 @@
     }
     $controller_connexion->afficher_connexion();
     ?>
-    <script src="../Scripts/InscriptionUtilisateur.js"></script>
 </body>
 
 </html>
