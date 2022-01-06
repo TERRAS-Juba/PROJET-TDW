@@ -66,5 +66,12 @@ class ModelGestionAnnonces
         ($this->connexion)->deconnexion();
         return $qtf;
     }
+    public function set_tarif($id_annonce,$tarif){
+        $qtf = (($this->connexion)->connexion())->prepare("UPDATE annonce set tarif=? WHERE id_annonce=?");
+        $qtf->bindParam(1, $id_annonce);
+        $qtf->bindParam(2, $tarif);
+        $qtf->execute();
+        ($this->connexion)->deconnexion();
+    }
 }
 ?>

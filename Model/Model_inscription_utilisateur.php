@@ -11,7 +11,7 @@ class ModelInscriptionUtilisateur
     }
     public function existe_utilisateur($user_name, $type)
     {
-        $this->connexion = new Connexion("base_projet", "127.0.0.1", "guest", "");
+        $this->connexion = new Connexion("base_projet", "127.0.0.1", "root", "");
         if ($type == "client") {
             $qtf =  (($this->connexion)->connexion())->prepare("Select * from client where id_client=?");
             $qtf->bindParam(1, $user_name);

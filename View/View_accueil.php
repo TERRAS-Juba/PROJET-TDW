@@ -11,7 +11,7 @@ class ViewAccueil
             </div>
             <div class="col-md-3">
             </div>';
-        if(isset($_SESSION["user_name"])){
+        if (isset($_SESSION["user_name"])) {
             echo '
             <div class="col-md-2">
             <div class="d-grid">
@@ -23,7 +23,7 @@ class ViewAccueil
                 <a href="../Deconnexion.php" class="my-2 btn btn-danger btn-block rounded-pill">Se deconnecter</a>
             </div>
         </div>';
-        }else{
+        } else {
             echo '
             <div class="col-md-2">
             <div class="d-grid">
@@ -88,13 +88,13 @@ class ViewAccueil
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/News.php">News</a>
                     </li>';
-                    if(!isset($_SESSION["user_name"])){
-                        echo ' 
+        if (!isset($_SESSION["user_name"])) {
+            echo ' 
                         <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/InscriptionUtilisateur.php">Inscription</a>
                         </li>';
-                    }
-                    echo '
+        }
+        echo '
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/Statistiques.php">Statistiques</a>
                     </li>
@@ -250,11 +250,6 @@ class ViewAccueil
             echo "</div>";
             echo '</div>';
         }
-        echo '<div class="row ">
-        <div class="col-12 text-center">
-        <a href="../Routeurs/Presentation.php" class="btn btn-primary rounded-pill text-center my-2 ">Comment sa marche ?</a>
-        </div>
-        </row>';
         $_GET["id_annonce"] = "";
     }
     public function get_annonces_by_emplacement($emplacement_depart, $emplcement_arrive)
@@ -295,13 +290,118 @@ class ViewAccueil
             }
         }
         echo "</div>";
-        echo '<div class="row ">
-        <div class="col-12 col-md-12 text-center">
-        <a href="../Routeurs/Accueil.php" class="btn btn-primary rounded-pill text-center">Retour a la page principale</a>
-        </div>
-        </row>';
         echo "</div>";
-
         echo '</div>';
+    }
+    public function comment_sa_mache()
+    {
+        echo '
+        <div class="container-fluid border bg-dark text-dark my-3">
+            <div class="row">
+            <div class="col-sm-6 ">
+                <img style="width:100%; height:100%;" src="../Assets/marche.jpg" class="float-start img-fluid">
+                </div>
+                <div class="col-sm-6 m-auto">
+                    <h1 class="text-center text-light">
+                        Comment sa marche ?
+                    </h1>
+                    <p class="text-center text-light ">Vous voulez vous renseigner sur le fonctionnement de notre site ?</p>
+                    <div class="d-flex justify-content-center text-light">
+                    <a href="../Routeurs/Presentation.php"  class="btn btn-primary rounded-pill  my-2 py-2"><h5>Comment sa marche ?</h5></a>
+                  </div>
+                    </div>
+            </div>
+        </div>';
+    }
+    public function ajouter_annonces()
+    {
+        $controller = new ControllerAccueil();
+        if (isset($_SESSION["user_name"])) {
+            echo '
+        <div class="container-fluid border bg-white text-dark my-3">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">
+                    Ajouter une annonce.
+                </h1>
+                <p class="text-center">Vous pouvez rajouter une annonce via le fomulaire ci-dessous.</p>
+            </div>
+        </div>';
+            echo '
+        <div class="container-fluid my-2 p-2">
+        <div class="row">
+            <div class="col-sm-10 m-auto">
+                <form class="border border-5 p-2" action="../Routeurs/Accueil.php" method="post">
+                    <label class="mt-2">
+                        <h4>Titre :</h4>
+                    </label>
+                    <input class="form-control my-2" type="text" name="titre" required placeholder="Entrez un titre"  value="' . (isset($_POST["titre"]) ? $_POST["titre"] : "") . '">
+                    <h4>Description :</h4>
+                    </label>
+                    <textarea class="form-control mt-2" type="text" name="description" required placeholder="Entrez une description" rows="5" value="' . (isset($_POST["description"]) ? $_POST["description"] : "") . '"></textarea>';
+            echo '<label class="mt-2">
+                     <h4>Point de depart :</h4>
+                </label>
+                <select class="mt-2 form-select" name="emplacement_depart">';
+            $resultat = $controller->get_wilaya();
+            foreach ($resultat as $row) {
+                echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
+            }
+            echo '</select>';
+            echo '<label class="mt-2">
+                <h4>Point d\'arrivée :</h4>
+              </label>
+             <select class="mt-2 form-select" name="emplacement_arrive">';
+            $resultat = $controller->get_wilaya();
+            foreach ($resultat as $row) {
+                echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
+            }
+            echo '</select>';
+            $resultat = $controller->get_type_transport();
+            echo '  <label class="mt-2">
+                     <h4>Type de transport :</h4>
+                </label>
+                <select class="mt-2 form-select" name="type_transport">';
+            foreach ($resultat as $row) {
+                echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
+            }
+            echo '</select>';
+            $resultat = $controller->get_moyen_transport();
+            echo '  <label class="mt-2">
+                     <h4>Moyen de transport :</h4>
+                </label>
+                <select class="mt-2 form-select" name="moyen_transport">';
+            foreach ($resultat as $row) {
+                echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
+            }
+            echo '</select>';
+            $resultat = $controller->get_fourchette_poid();
+            echo '  <label class="mt-2">
+                     <h4>Fourchette de poid :</h4>
+                </label>
+                <select class="mt-2 form-select" name="fourchette_poid">';
+            foreach ($resultat as $row) {
+                echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
+            }
+            echo '</select>';
+            $resultat = $controller->get_fourchette_volume();
+            echo '  <label class="mt-2">
+                     <h4>Fourchette de volume :</h4>
+                </label>
+                <select class="mt-2 form-select" name="fourchette_volume">';
+            foreach ($resultat as $row) {
+                echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
+            }
+            echo '</select>';
+            echo ' 
+        <div class="d-flex justify-content-center text-light">
+        <button style="width:50%" name="ajouter_annonce" class="rounded btn btn-lg btn-block btn-success my-5 pt-2" type="submit">Ajouter annonce</button>
+      </div>
+                   </form>
+                </div>
+            </div>
+        </div>
+        ';
+        }
     }
 }

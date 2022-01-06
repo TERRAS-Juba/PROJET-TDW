@@ -41,5 +41,62 @@ class ModelAccueil
         $prepare->execute();
         ($this->connexion)->deconnexion();
     }
+    public function get_type_transport(){
+        $conn = ($this->connexion)->connexion();
+        $qtf = $conn->prepare("SELECT * FROM type_transport");
+        $qtf->execute();
+        ($this->connexion)->deconnexion();
+        return $qtf;
+    }
+    public function get_moyen_transport(){
+        $conn = ($this->connexion)->connexion();
+        $qtf = $conn->prepare("SELECT * FROM moyen_transport");
+        $qtf->execute();
+        ($this->connexion)->deconnexion();
+        return $qtf;
+    }
+    public function get_fourchette_poid(){
+        $conn = ($this->connexion)->connexion();
+        $qtf = $conn->prepare("SELECT * FROM fourchette_poid");
+        $qtf->execute();
+        ($this->connexion)->deconnexion();
+        return $qtf;
+    }
+    public function get_fourchette_volume(){
+        $conn = ($this->connexion)->connexion();
+        $qtf = $conn->prepare("SELECT * FROM fourchette_volume");
+        $qtf->execute();
+        ($this->connexion)->deconnexion();
+        return $qtf;
+    }
+    public function get_wilaya(){
+        $conn = ($this->connexion)->connexion();
+        $qtf = $conn->prepare("SELECT * FROM wilaya");
+        $qtf->execute();
+        ($this->connexion)->deconnexion();
+        return $qtf;
+    } 
+     public function ajouter_annonce($titre,$description,$emplacement_depart,$emplacement_arrive,$type_transport,$moyen_transport,$fourchette_poid,$fourchette_volume,$id_client){
+        $conn = ($this->connexion)->connexion();
+        $qtf = $conn->prepare("INSERT INTO annonce(titre,description,emplacement_depart,emplacement_arrive,type_transport,moyen_transport,fourchette_poid,fourchette_volume,id_client,date_publication,nombre_vues,statut) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
+        $qtf->bindParam(1,$titre);
+        $qtf->bindParam(2,$description);
+        $qtf->bindParam(3,$emplacement_depart);
+        $qtf->bindParam(4,$emplacement_arrive);
+        $qtf->bindParam(5,$type_transport);
+        $qtf->bindParam(6,$moyen_transport);
+        $qtf->bindParam(7,$fourchette_poid);
+        $qtf->bindParam(8,$fourchette_volume);
+        $qtf->bindParam(9,$id_client);
+        $d=strtotime("now");
+        $nombre_vues=0;
+        $statut="en attente";
+        $date=date("Y-m-d h:i:sa", $d);
+        $qtf->bindParam(10,$date);
+        $qtf->bindParam(11,$nombre_vues);
+        $qtf->bindParam(12,$statut);
+        $qtf->execute();
+        ($this->connexion)->deconnexion();
+    }
 }
 ?>
