@@ -68,8 +68,8 @@ class ModelGestionAnnonces
     }
     public function set_tarif($id_annonce,$tarif){
         $qtf = (($this->connexion)->connexion())->prepare("UPDATE annonce set tarif=? WHERE id_annonce=?");
-        $qtf->bindParam(1, $id_annonce);
-        $qtf->bindParam(2, $tarif);
+        $qtf->bindParam(1, $tarif);
+        $qtf->bindParam(2, $id_annonce);
         $qtf->execute();
         ($this->connexion)->deconnexion();
     }

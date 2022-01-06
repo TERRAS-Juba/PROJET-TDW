@@ -17,12 +17,21 @@
     require "../Controller/Controlleur_details_annonce.php";
     $controller = new ControllerGestionAnnonces();
     $controller->afficher_contenu();
+   if(isset($_POST["enregistrer_tarif"])){
+   $controller->valider_annonce($_POST["id_annonce"]);
+   $controller->set_tarif($_POST["id_annonce"],$_POST["tarif"]);
+   echo '<div class="container">';
+   echo '<div class="success alert-success " style="height:50px">';
+   echo '<h5 class="text-danger text-center">Validation effectuée avec succéss<h5>';
+   echo '</div>';
+   echo '</div>';
+    }
     if(isset($_GET["detail"])){
         $controller_details=new ControllerDetailsAnnonce();
          $controller_details->afficher_annonce_by_id($_GET["detail"]);
        }
     if(isset($_GET["validation"])){
-        $controller->valider_annonce($_GET["validation"]);
+        $controller->afficher_set_tarif();
     }
     if (isset($_GET["remove"])) {
         $controller->supprimer_annonce($_GET["remove"]);

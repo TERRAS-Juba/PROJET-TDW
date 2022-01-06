@@ -60,5 +60,12 @@ public function get_transporteur_annonce($id){
    $resultat=$model->get_transporteur_annonce($id);
    return $resultat;
 }
+public function  set_tarif($id_annonce,$tarif){
+   $model=new ModelGestionAnnonces();
+   $model->set_tarif($id_annonce,$tarif);
+}
+public function afficher_set_tarif(){
+   ($this->view)->set_tarif();
+}
 }
 ?>

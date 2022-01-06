@@ -60,61 +60,8 @@ class ViewGestionAnnonces
                 <br>
                 <a  style="width:200px" class="btn btn-danger my-1" href="../Routeurs/GestionAnnonces.php?remove=' . $row["id_annonce"] . '" onclick="return confirm(\'Voulez-vous vraiment supprimer cette annonce ?\')">Supprimer</a>
                 <br>
-                <a data-bs-toggle="modal" data-bs-target="#'.$row["id_client"].'" style="width:200px" class="btn btn-info my-1" >Details client</a>
-                <br>
-                <a data-bs-toggle="modal" data-bs-target="#'.$row["id_transporteur"].'" style="width:200px" class="btn btn-secondary my-1">Details transporteur</a>
-                <br>
             </tr>';
-            $clients=$controller_annonces->get_client_annonce($row["id_client"]);
-            $transporteurs=$controller_annonces->get_transporteur_annonce($row["id_transporteur"]);
-            foreach($clients as $client){
-                echo '
-<div class="modal" id="'.$row["id_client"].'">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">'.$client["id_client"].'</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <h4>Nom : '.$client["nom"].'</h4>
-        <h4>Prenom : '.$client["prenom"].'</h4>
-        <h4>Adresse : '.$client["adresse"].'</h4>
-        <h4>Email : '.$client["email"].'</h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-      </div>
-
-    </div>
-  </div>
-</div>';
             }
-foreach($transporteurs as $transporteur){
-    echo '
-<div class="modal" id="'.$row["id_transporteur"].'">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h4 class="modal-title">'.$transporteur["id_transporteur"].'</h4>
-<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-<div class="modal-body">
-<h4>Nom : '.$transporteur["nom"].'</h4>
-<h4>Prenom : '.$transporteur["prenom"].'</h4>
-<h4>Adresse : '.$transporteur["adresse"].'</h4>
-<h4>Email : '.$transporteur["email"].'</h4>
-<h4>Certifié : '.$transporteur["certifie"].'</h4>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-</div>
-</div>
-</div>
-</div>
-                ';
-            }
-        }
         echo '</tbody>
         </table>
     </div>
@@ -197,60 +144,7 @@ foreach($transporteurs as $transporteur){
                         <br>
                         <a  style="width:200px" class="btn btn-danger my-1" href="../Routeurs/GestionAnnonces.php?remove=' . $row["id_annonce"] . '" onclick="return confirm(\'Voulez-vous vraiment supprimer cette annonce ?\')">Supprimer</a>
                         <br>
-                        <a data-bs-toggle="modal" data-bs-target="#'.$row["id_client"].'" style="width:200px" class="btn btn-info my-1" >Details client</a>
-                        <br>
-                        <a data-bs-toggle="modal" data-bs-target="#'.$row["id_transporteur"].'" style="width:200px" class="btn btn-secondary my-1">Details transporteur</a>
-                        <br>
                     </tr>';
-                    $clients=$controller_annonces->get_client_annonce($row["id_client"]);
-                    $transporteurs=$controller_annonces->get_transporteur_annonce($row["id_transporteur"]);
-                    foreach($clients as $client){
-                        echo '
-        <div class="modal" id="'.$row["id_client"].'">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title">'.$client["id_client"].'</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
-              <div class="modal-body">
-                <h4>Nom : '.$client["nom"].'</h4>
-                <h4>Prenom : '.$client["prenom"].'</h4>
-                <h4>Adresse : '.$client["adresse"].'</h4>
-                <h4>Email : '.$client["email"].'</h4>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-              </div>
-        
-            </div>
-          </div>
-        </div>';
-                    }
-        foreach($transporteurs as $transporteur){
-            echo '
-        <div class="modal" id="'.$row["id_transporteur"].'">
-        <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-        <h4 class="modal-title">'.$transporteur["id_transporteur"].'</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-        <h4>Nom : '.$transporteur["nom"].'</h4>
-        <h4>Prenom : '.$transporteur["prenom"].'</h4>
-        <h4>Adresse : '.$transporteur["adresse"].'</h4>
-        <h4>Email : '.$transporteur["email"].'</h4>
-        <h4>Certifié : '.$transporteur["certifie"].'</h4>
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-        </div>
-        </div>
-        </div>
-        </div>
-                        ';
-                    }
         }
         echo '</tbody>
                 </table>
@@ -334,62 +228,9 @@ foreach($transporteurs as $transporteur){
                 <br>
                 <a  style="width:200px" class="btn btn-danger my-1" href="../Routeurs/GestionAnnonces.php?remove=' . $row["id_annonce"] . '" onclick="return confirm(\'Voulez-vous vraiment supprimer cette annonce ?\')">Supprimer</a>
                 <br>
-                <a data-bs-toggle="modal" data-bs-target="#'.$row["id_client"].'" style="width:200px" class="btn btn-info my-1" >Details client</a>
-                <br>
-                <a data-bs-toggle="modal" data-bs-target="#'.$row["id_transporteur"].'" style="width:200px" class="btn btn-secondary my-1">Details transporteur</a>
-                <br>
                 <a  style="width:200px" class="btn btn-primary "href="../Routeurs/GestionAnnonces.php?validation=' . $row["id_annonce"] . '"  onclick="return confirm(\'Voulez-vous vraiment valider cette annonce ?\')">Valider</a>
                 </td>
             </tr>';
-            $clients=$controller_annonces->get_client_annonce($row["id_client"]);
-            $transporteurs=$controller_annonces->get_transporteur_annonce($row["id_transporteur"]);
-            foreach($clients as $client){
-                echo '
-<div class="modal" id="'.$row["id_client"].'">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">'.$client["id_client"].'</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <h4>Nom : '.$client["nom"].'</h4>
-        <h4>Prenom : '.$client["prenom"].'</h4>
-        <h4>Adresse : '.$client["adresse"].'</h4>
-        <h4>Email : '.$client["email"].'</h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-      </div>
-
-    </div>
-  </div>
-</div>';
-            }
-foreach($transporteurs as $transporteur){
-    echo '
-<div class="modal" id="'.$row["id_transporteur"].'">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h4 class="modal-title">'.$transporteur["id_transporteur"].'</h4>
-<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-<div class="modal-body">
-<h4>Nom : '.$transporteur["nom"].'</h4>
-<h4>Prenom : '.$transporteur["prenom"].'</h4>
-<h4>Adresse : '.$transporteur["adresse"].'</h4>
-<h4>Email : '.$transporteur["email"].'</h4>
-<h4>Certifié : '.$transporteur["certifie"].'</h4>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-</div>
-</div>
-</div>
-</div>
-                ';
-            }
         }
         echo '</tbody>
         </table>
@@ -397,4 +238,24 @@ foreach($transporteurs as $transporteur){
 </div>
 </div>';
     }
+    public function set_tarif(){
+        echo '<div class="container my-4">
+         <div class="row">
+             <div class="col my-auto text-center">
+                 <h1>Rajout du prix pour l\'annonce</h1>
+             </div>
+         </div>
+         <div class="row">
+             <div class="col-12 my-auto bg-secondary">
+                 <form action="../Routeurs/GestionAnnonces.php" method="post">
+                     <label class="mt-2"><h5>ID Annonce :</h5></label>
+                     <input class="form-control my-2" type="text" name="id_annonce" readonly value="'.$_GET["validation"].'">
+                     <label class="mt-2"><h5>Prix :</h5></label>
+                     <input class="form-control my-2" type="number" name="tarif" required placeholder="Entre un prix pour l\'annonce" min="0">
+                     <button name="enregistrer_tarif" class="btn btn-warning my-4" type="submit">Enregistrer les modifications</button>
+                 </form>
+             </div>
+         </div>
+     </div>';
+     }
 }

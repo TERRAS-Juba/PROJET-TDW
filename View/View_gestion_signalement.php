@@ -3,7 +3,7 @@ class ViewGestionSignalements
 {
     public function get_contenu()
     {
-        echo'<nav class="navbar navbar-dark bg-dark sticky-top my-2">
+        echo '<nav class="navbar navbar-dark bg-dark sticky-top my-2">
             <div class="container-fluid" id="navbar_admin">
                 <button class="btn btn-light text-dark" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
@@ -65,83 +65,30 @@ class ViewGestionSignalements
                 <a style="width:200px" class="btn btn-success my-1 " href="../Routeurs/DetailsAnnonce.php?detail=' . $row["id_annonce"] . '"  onclick="return confirm(\' Voulez-vous vraiment afficher les details de cette annonce
                     ?\')">Details annonce</a>
                 <br>
-                <a data-bs-toggle="modal" data-bs-target="#'.$row["id_client"].'" style="width:200px"
-                    class="btn btn-primary my-1"
-                    onclick="return confirm(\'Voulez-vous vraiment afficher les details du client ?\')">Details client</a>
-                <br>
-                <a data-bs-toggle="modal" data-bs-target="#'.$row["id_transporteur"].'" style="width:200px"
-                    class="btn btn-info my-1"
-                    onclick="return confirm(\'Voulez-vous vraiment afficher les details du transporteur ?\')">Details
-                    Transporteur</a>
-                <br>
-                <a data-bs-toggle="modal" data-bs-target="#s'.$row["id_signalement"].'" style="width:200px"
+                <a data-bs-toggle="modal" data-bs-target="#s' . $row["id_signalement"] . '" style="width:200px"
                     class="btn btn-secondary my-1"
                     onclick="return confirm(\'Voulez-vous vraiment afficher les details du signalement ?\')">Details
                     signalement</a>
                 <br>
         </tr>';
-        echo '<div class="modal" id="s'.$row["id_signalement"].'">
+            echo '<div class="modal" id="s' . $row["id_signalement"] . '">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">ID Signalement : '.$row["id_signalement"].'</h4>
+                        <h4 class="modal-title">ID Signalement : ' . $row["id_signalement"] . '</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <h4>Description : '.$row["description"].'</h4>
+                        <h4>Description : ' . $row["description"] . '</h4>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
                     </div>
                 </div>
             </div>
-        </div>';
-            $clients=$controller_signalements->get_client_signalement($row["id_client"]);
-            $transporteurs=$controller_signalements->get_transporteur_signalement($row["id_transporteur"]);
-            foreach($clients as $client){
-                echo '<div class="modal" id="'.$client["id_client"].'">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Nom d\'utilisateur :'.$client["id_client"].'</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <h4>Nom : '.$client["nom"].'</h4>
-                            <h4>Prenom : '.$client["prenom"].'</h4>
-                            <h4>Adresse : '.$client["adresse"].'</h4>
-                            <h4>Email : '.$client["email"].'</h4>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-                        </div>
-            
-                    </div>
-                </div>
-            </div>';
-            }
-        foreach($transporteurs as $transporteur){
-            echo '<div class="modal" id="'.$row["id_transporteur"].'">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Nom d\'utilisateur : '.$transporteur["id_transporteur"].'</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <h4>Nom : '.$transporteur["nom"].'</h4>
-                        <h4>Prenom : '.$transporteur["prenom"].'</h4>
-                        <h4>Adresse : '.$transporteur["adresse"].'</h4>
-                        <h4>Email : '.$transporteur["email"].'</h4>
-                        <h4>Certifié : '.$transporteur["certifie"].'</h4>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-                    </div>
-                </div>
+        </div>
             </div>
         </div>';
-            }
         }
     }
 }

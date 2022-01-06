@@ -15,12 +15,15 @@
 <body>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <?php
+    session_start();
     require_once "../Controller/Controller_connexion_administrateur.php";
     $controller_connexion = new ControllerConnexionAdministrateur();
     $controller_connexion->afficher_connexion_administrateur();
     if (isset($_POST["connexion"])) {
         try {
             $controller_connexion->connexion_administrateur($_POST["user_name"], $_POST["user_password"]);
+            $_SESSION["user_name"] = $_POST["user_name"];
+            $_SESSION["type_compte"] = "administrateur";
             header("location:../Routeurs/DashboardAdministrateur.php");
         } catch (PDOException $e) {
             echo "<script type='text/javascript'>

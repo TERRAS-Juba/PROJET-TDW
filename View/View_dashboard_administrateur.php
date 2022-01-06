@@ -23,6 +23,10 @@ public function get_contenu(){
         </div>
     </div>
 </div>
+    <<div class="d-flex justify-content-center text-light">
+    <a style="width: 20%;" href="../Deconnexion.php"  class="btn btn-primary rounded-pill  my-2 py-2"><h5>Deconnexion</h5></a>
+  </div>
+</div>
     ';
 }
 }

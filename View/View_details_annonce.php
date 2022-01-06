@@ -149,7 +149,7 @@ class ViewDetailsAnnonce
                                 <p class="card-text">' . $row["emplacement_depart"] . '</p>
                                 <h3>Point d\' arrivée :</h3>
                   <p class="card-text">' . $row["emplacement_arrive"] . '</p>';
-                  if($row["statut"]=="valide"){
+                  if(($row["statut"]=="valide" && isset($_SESSION["type_compte"]) && $row["id_client"]==$_SESSION["user_name"])||($_SESSION["type_compte"]=="administrateur")){
                     echo '  
                     <h3>Tarif :</h3>
                     <p class="card-text">' . $row["tarif"] . '</p>';
