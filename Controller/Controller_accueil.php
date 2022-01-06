@@ -61,11 +61,15 @@ class ControllerAccueil
       $resultat = $model->get_wilaya();
       return $resultat;
    }
-   public function ajouter_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_client)
+   public function ajouter_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_client,$id_annonce)
    {
       $model = new ModelAccueil();
-      $model->ajouter_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_client);
+      $model->ajouter_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_client,$id_annonce);
    }
+   public function ajouter_images_annonce($id_annonce,$id_image,$chemin){
+      $model = new ModelAccueil();
+      $model->ajouter_images_annonce($id_annonce,$id_image,$chemin);
+  }
    public function afficher_list_annonces()
    {
       ($this->view)->get_list_annonces();

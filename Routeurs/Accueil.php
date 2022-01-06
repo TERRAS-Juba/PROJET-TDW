@@ -17,8 +17,10 @@
     session_start();
     require_once "../Controller/Controller_accueil.php";
     $controlleur_accueil = new ControllerAccueil();
-    if(isset($_POST["ajouter_annonce"])){
-        $controlleur_accueil->ajouter_annonce($_POST["titre"],$_POST["description"],$_POST["emplacement_depart"],$_POST["emplacement_arrive"],$_POST["type_transport"],$_POST["moyen_transport"],$_POST["fourchette_poid"],$_POST["fourchette_volume"],$_SESSION["user_name"]);
+    if (isset($_POST["ajouter_annonce"])) {
+        $hach = crc32($_POST["description"]);
+        $controlleur_accueil->ajouter_annonce($_POST["titre"], $_POST["description"], $_POST["emplacement_depart"], $_POST["emplacement_arrive"], $_POST["type_transport"], $_POST["moyen_transport"], $_POST["fourchette_poid"], $_POST["fourchette_volume"], $_SESSION["user_name"], $hach);
+        $controlleur_accueil->ajouter_images_annonce($hach, crc32($_POST["titre"]), "../Assets/" . $_POST["image"]);
         echo "
             <script>
             Swal.fire({
@@ -44,7 +46,11 @@
         $controlleur_accueil->afficher_list_annonces();
     }
     $controlleur_accueil->afficher_comment_sa_marche();
-    $controlleur_accueil->afficher_ajouter_annonce();
+    if (isset($_SESSION["type_compte"])) {
+        if ($_SESSION["type_compte"] == "client") {
+            $controlleur_accueil->afficher_ajouter_annonce();
+        }
+    }
     $controlleur_accueil->afficher_footer();
     ?>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>

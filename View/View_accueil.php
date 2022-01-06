@@ -394,6 +394,10 @@ class ViewAccueil
             }
             echo '</select>';
             echo ' 
+            <label class="mt-2">
+            <h4>Image pour l\'annonce :</h4>
+            </label>
+        <input class="form-control my-2" type="file" name="image" required placeholder="Inserez une image"  value="' . (isset($_POST["image"]) ? $_POST["image"] : "") . '">
         <div class="d-flex justify-content-center text-light">
         <button style="width:50%" name="ajouter_annonce" class="rounded btn btn-lg btn-block btn-success my-5 pt-2" type="submit">Ajouter annonce</button>
       </div>

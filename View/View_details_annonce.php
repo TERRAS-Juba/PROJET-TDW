@@ -148,7 +148,13 @@ class ViewDetailsAnnonce
                                 <h3>Point de depart :</h3>
                                 <p class="card-text">' . $row["emplacement_depart"] . '</p>
                                 <h3>Point d\' arrivée :</h3>
-                  <p class="card-text">' . $row["emplacement_arrive"] . '</p>
+                  <p class="card-text">' . $row["emplacement_arrive"] . '</p>';
+                  if($row["statut"]=="valide"){
+                    echo '  
+                    <h3>Tarif :</h3>
+                    <p class="card-text">' . $row["tarif"] . '</p>';
+                  }
+                  echo'
                 </div>
                 </div>
               </div>

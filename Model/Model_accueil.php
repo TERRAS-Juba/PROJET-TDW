@@ -76,9 +76,9 @@ class ModelAccueil
         ($this->connexion)->deconnexion();
         return $qtf;
     } 
-     public function ajouter_annonce($titre,$description,$emplacement_depart,$emplacement_arrive,$type_transport,$moyen_transport,$fourchette_poid,$fourchette_volume,$id_client){
+     public function ajouter_annonce($titre,$description,$emplacement_depart,$emplacement_arrive,$type_transport,$moyen_transport,$fourchette_poid,$fourchette_volume,$id_client,$id_annonce){
         $conn = ($this->connexion)->connexion();
-        $qtf = $conn->prepare("INSERT INTO annonce(titre,description,emplacement_depart,emplacement_arrive,type_transport,moyen_transport,fourchette_poid,fourchette_volume,id_client,date_publication,nombre_vues,statut) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
+        $qtf = $conn->prepare("INSERT INTO annonce(titre,description,emplacement_depart,emplacement_arrive,type_transport,moyen_transport,fourchette_poid,fourchette_volume,id_client,date_publication,nombre_vues,statut,id_annonce) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
         $qtf->bindParam(1,$titre);
         $qtf->bindParam(2,$description);
         $qtf->bindParam(3,$emplacement_depart);
@@ -95,7 +95,20 @@ class ModelAccueil
         $qtf->bindParam(10,$date);
         $qtf->bindParam(11,$nombre_vues);
         $qtf->bindParam(12,$statut);
+        $qtf->bindParam(13,$id_annonce);
         $qtf->execute();
+        ($this->connexion)->deconnexion();
+    }
+    public function ajouter_images_annonce($id_annonce,$id_image,$chemin){
+        $conn = ($this->connexion)->connexion();
+        $qtf = $conn->prepare("INSERT INTO image(id_image,chemin) VALUES(?,?)");
+        $qtf->bindParam(1,$id_image);
+        $qtf->bindParam(2,$chemin);
+        $qtf->execute();
+        $requete=$conn->prepare("INSERT INTO annonce_image(id_annonce,id_image) VALUES(?,?)");
+        $requete->bindParam(1,$id_annonce);
+        $requete->bindParam(2,$id_image);
+        $requete->execute();
         ($this->connexion)->deconnexion();
     }
 }
