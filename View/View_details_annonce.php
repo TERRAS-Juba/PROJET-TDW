@@ -149,10 +149,20 @@ class ViewDetailsAnnonce
                                 <p class="card-text">' . $row["emplacement_depart"] . '</p>
                                 <h3>Point d\' arrivée :</h3>
                   <p class="card-text">' . $row["emplacement_arrive"] . '</p>';
-                  if(($row["statut"]=="valide" && isset($_SESSION["type_compte"]) && $row["id_client"]==$_SESSION["user_name"])||($_SESSION["type_compte"]=="administrateur")){
+                  if((($row["statut"]=="valide" ||$row["statut"]=="transaction"|| $row["statut"]=="confirme" ) && isset($_SESSION["type_compte"]) && $row["id_client"]==$_SESSION["user_name"])||($row["statut"]=="valide" && isset($_SESSION["type_compte"]) && $row["id_transporteur"]==$_SESSION["user_name"])||($_SESSION["type_compte"]=="administrateur")){
                     echo '  
                     <h3>Tarif :</h3>
                     <p class="card-text">' . $row["tarif"] . '</p>';
+                  }
+                  if($_SESSION["type_compte"]=="administrateur"){
+                    echo '  
+                    <h3>ID Client :</h3>
+                    <p class="card-text">' . $row["id_client"] . '</p>';
+                  }
+                  if($_SESSION["type_compte"]=="administrateur"){
+                    echo '  
+                    <h3>ID Transporteur :</h3>
+                    <p class="card-text">' . $row["id_client"] . '</p>';
                   }
                   echo'
                 </div>

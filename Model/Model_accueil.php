@@ -99,15 +99,19 @@ class ModelAccueil
         $qtf->execute();
         ($this->connexion)->deconnexion();
     }
-    public function ajouter_images_annonce($id_annonce,$id_image,$chemin){
+    public function ajouter_image($id_image,$chemin){
         $conn = ($this->connexion)->connexion();
         $qtf = $conn->prepare("INSERT INTO image(id_image,chemin) VALUES(?,?)");
         $qtf->bindParam(1,$id_image);
         $qtf->bindParam(2,$chemin);
         $qtf->execute();
-        $requete=$conn->prepare("INSERT INTO annonce_image(id_annonce,id_image) VALUES(?,?)");
-        $requete->bindParam(1,$id_annonce);
-        $requete->bindParam(2,$id_image);
+        ($this->connexion)->deconnexion();
+    }
+    public function ajouter_images_annonce($id_image,$id_annonce){
+        $conn = ($this->connexion)->connexion();
+        $requete=$conn->prepare("INSERT INTO annonce_image(id_image,id_annonce) VALUES(?,?)");
+        $requete->bindParam(1,$id_image);
+        $requete->bindParam(2,$id_annonce);
         $requete->execute();
         ($this->connexion)->deconnexion();
     }

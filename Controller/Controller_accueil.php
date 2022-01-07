@@ -66,9 +66,13 @@ class ControllerAccueil
       $model = new ModelAccueil();
       $model->ajouter_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_client,$id_annonce);
    }
-   public function ajouter_images_annonce($id_annonce,$id_image,$chemin){
+   public function ajouter_image($id_image,$chemin){
       $model = new ModelAccueil();
-      $model->ajouter_images_annonce($id_annonce,$id_image,$chemin);
+      $model->ajouter_image($id_image,$chemin);
+  }
+  public function ajouter_images_annonce($id_image,$id_annonce){
+   $model = new ModelAccueil();
+   $model->ajouter_images_annonce($id_image,$id_annonce);
   }
    public function afficher_list_annonces()
    {

@@ -345,7 +345,7 @@ class ViewAccueil
                 <select class="mt-2 form-select" name="emplacement_depart">';
             $resultat = $controller->get_wilaya();
             foreach ($resultat as $row) {
-                echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
+                echo '<option value="' . $row["num_wilaya"] . '">' . $row["libele"] . '</option>';
             }
             echo '</select>';
             echo '<label class="mt-2">
@@ -354,7 +354,7 @@ class ViewAccueil
              <select class="mt-2 form-select" name="emplacement_arrive">';
             $resultat = $controller->get_wilaya();
             foreach ($resultat as $row) {
-                echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
+                echo '<option value="' . $row["num_wilaya"] . '">' . $row["libele"] . '</option>';
             }
             echo '</select>';
             $resultat = $controller->get_type_transport();
