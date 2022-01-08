@@ -50,9 +50,17 @@ class ModelMonProfil
         ($this->connexion)->deconnexion();
         return $qtf;
     }
-    public function get_annonces_valides_transporteur()
+    public function get_annonces_transaction_transporteur()
     {
-        $qtf = (($this->connexion)->connexion())->prepare("SELECT * FROM annonce where id_trasnporteur=?");
+        $qtf = (($this->connexion)->connexion())->prepare("SELECT * FROM annonce where id_transporteur=? and statut='transaction'");
+        $qtf->bindParam(1, $_SESSION["user_name"]);
+        $qtf->execute();
+        ($this->connexion)->deconnexion();
+        return $qtf;
+    }
+    public function get_annonces_confirmes_transporteur()
+    {
+        $qtf = (($this->connexion)->connexion())->prepare("SELECT * FROM annonce where id_transporteur=? and statut='confirme'");
         $qtf->bindParam(1, $_SESSION["user_name"]);
         $qtf->execute();
         ($this->connexion)->deconnexion();
@@ -82,15 +90,17 @@ class ModelMonProfil
         ($this->connexion)->deconnexion();
         return $qtf;
     }
-    public function get_list_transporteurs(){
+    public function get_list_transporteurs()
+    {
         $qtf = (($this->connexion)->connexion())->prepare("SELECT * FROM transporteur");
         $qtf->execute();
         ($this->connexion)->deconnexion();
         return $qtf;
     }
-    public function recuperer_list_trajets_transporteur($id_transporteur){
+    public function recuperer_list_trajets_transporteur($id_transporteur)
+    {
         $qtf = (($this->connexion)->connexion())->prepare("SELECT * FROM transporteur_wilaya where id_transporteur=?");
-        $qtf->bindParam(1,$id_transporteur);
+        $qtf->bindParam(1, $id_transporteur);
         $qtf->execute();
         ($this->connexion)->deconnexion();
         return $qtf;
@@ -102,18 +112,36 @@ class ModelMonProfil
         ($this->connexion)->deconnexion();
         return $qtf;
     }
-    public function supprimer_annonce($id_annonce){
+    public function supprimer_annonce($id_annonce)
+    {
         $qtf = (($this->connexion)->connexion())->prepare("DELETE FROM annonce where id_annonce=?");
-        $qtf->bindParam(1,$id_annonce);
+        $qtf->bindParam(1, $id_annonce);
         $qtf->execute();
         ($this->connexion)->deconnexion();
         return $qtf;
     }
-    public function ajouter_transporteur_annonce($id_transporteur,$id_annonce){
+    public function ajouter_transporteur_annonce($id_transporteur, $id_annonce)
+    {
         $conn = ($this->connexion)->connexion();
-        $requete=$conn->prepare("UPDATE annonce set id_transporteur=?,statut='transaction' WHERE id_annonce=?");
-        $requete->bindParam(1,$id_transporteur);
-        $requete->bindParam(2,$id_annonce);
+        $requete = $conn->prepare("UPDATE annonce set id_transporteur=?,statut='transaction' WHERE id_annonce=?");
+        $requete->bindParam(1, $id_transporteur);
+        $requete->bindParam(2, $id_annonce);
+        $requete->execute();
+        ($this->connexion)->deconnexion();
+    }
+    public function decliner_annonce($id_annonce)
+    {
+        $conn = ($this->connexion)->connexion();
+        $requete = $conn->prepare("UPDATE annonce set id_transporteur='',statut='valide' WHERE id_annonce=?");
+        $requete->bindParam(1, $id_annonce);
+        $requete->execute();
+        ($this->connexion)->deconnexion();
+    }
+    public function accepter_annonce($id_annonce)
+    {
+        $conn = ($this->connexion)->connexion();
+        $requete = $conn->prepare("UPDATE annonce set statut='confirme' WHERE id_annonce=?");
+        $requete->bindParam(1, $id_annonce);
         $requete->execute();
         ($this->connexion)->deconnexion();
     }

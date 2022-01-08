@@ -14,7 +14,7 @@ public function get_contenu(){
     </div>
     <div class="offcanvas-body  bg-dark">
     <div class="list-group-flush my-3">
-        <a href="../Routeurs/GestionUtilisateurs.php" class="list-group-item list-group-item-action text-dark bg-light ">
+        <a href="../Routeurs/DashboardAdministrateur.php" class="list-group-item list-group-item-action text-dark bg-light ">
           <h5>Accueil</h5>
         </a>
       </div>

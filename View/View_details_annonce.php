@@ -11,7 +11,7 @@ class ViewDetailsAnnonce
             </div>
             <div class="col-md-3">
             </div>';
-        if(isset($_SESSION["user_name"])){
+        if (isset($_SESSION["user_name"])) {
             echo '
             <div class="col-md-2">
             <div class="d-grid">
@@ -23,7 +23,7 @@ class ViewDetailsAnnonce
                 <a href="../Deconnexion.php" class="my-2 btn btn-danger btn-block rounded-pill">Se deconnecter</a>
             </div>
         </div>';
-        }else{
+        } else {
             echo '
             <div class="col-md-2">
             <div class="d-grid">
@@ -57,13 +57,13 @@ class ViewDetailsAnnonce
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/News.php">News</a>
                     </li>';
-                    if(!isset($_SESSION["user_name"])){
-                        echo ' 
+        if (!isset($_SESSION["user_name"])) {
+            echo ' 
                         <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/InscriptionUtilisateur.php">Inscription</a>
                         </li>';
-                    }
-                    echo '
+        }
+        echo '
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/Statistiques.php">Statistiques</a>
                     </li>
@@ -119,20 +119,20 @@ class ViewDetailsAnnonce
     {
         $controller_details_annonce = new ControllerDetailsAnnonce();
         $resultat = $controller_details_annonce->get_annonce_by_id($id);
-        $images=$controller_details_annonce->get_image_annonce_by_id($id);
+        $images = $controller_details_annonce->get_image_annonce_by_id($id);
         foreach ($resultat as $row) {
             echo '<div class="Container">
             <div class="row" id="details_annonce">
               <div class="col">
                 <div class="card" id="' . $row["id_annonce"] . '">
                 <div class="card-header"><h2>' . $row["titre"] . '</h2></div>';
-                foreach($images as $image){
-                    if($image["id_annonce"]==$id){
-                        $chemin=$image["chemin"];
-                        echo '<img class="card-img-top img-fluid" src="'.$chemin.'" alt="Card image cap">';
-                    }
+            foreach ($images as $image) {
+                if ($image["id_annonce"] == $id) {
+                    $chemin = $image["chemin"];
+                    echo '<img class="card-img-top img-fluid" src="' . $chemin . '" alt="Card image cap">';
                 }
-                echo '<div class="card-body">
+            }
+            echo '<div class="card-body">
                                 <h3>Description :</h3>
                                 <p class="card-text">' . $row["description"] . '</p>
                                 <h3>Type de transport :</h3>
@@ -149,22 +149,24 @@ class ViewDetailsAnnonce
                                 <p class="card-text">' . $row["emplacement_depart"] . '</p>
                                 <h3>Point d\' arrivée :</h3>
                   <p class="card-text">' . $row["emplacement_arrive"] . '</p>';
-                  if((($row["statut"]=="valide" ||$row["statut"]=="transaction"|| $row["statut"]=="confirme" ) && isset($_SESSION["type_compte"]) && $row["id_client"]==$_SESSION["user_name"])||($row["statut"]=="valide" && isset($_SESSION["type_compte"]) && $row["id_transporteur"]==$_SESSION["user_name"])||($_SESSION["type_compte"]=="administrateur")){
+            if (isset($_SESSION["type_compte"]) && isset($_SESSION["user_name"])) {
+                if ((($row["statut"] == "valide" || $row["statut"] == "transaction" || $row["statut"] == "confirme") && isset($_SESSION["type_compte"]) && ($row["id_client"] == $_SESSION["user_name"] || $row["id_transporteur"] == $_SESSION["user_name"])) || ($_SESSION["type_compte"] == "administrateur")) {
                     echo '  
                     <h3>Tarif :</h3>
                     <p class="card-text">' . $row["tarif"] . '</p>';
-                  }
-                  if($_SESSION["type_compte"]=="administrateur"){
+                }
+                if ($_SESSION["type_compte"] == "administrateur") {
                     echo '  
                     <h3>ID Client :</h3>
                     <p class="card-text">' . $row["id_client"] . '</p>';
-                  }
-                  if($_SESSION["type_compte"]=="administrateur"){
+                }
+                if ($_SESSION["type_compte"] == "administrateur" && ($row["statut"]=="confirme"||$row["statut"]=="transaction" )) {
                     echo '  
                     <h3>ID Transporteur :</h3>
-                    <p class="card-text">' . $row["id_client"] . '</p>';
-                  }
-                  echo'
+                    <p class="card-text">' . $row["id_transporteur"] . '</p>';
+                }
+            }
+            echo '
                 </div>
                 </div>
               </div>

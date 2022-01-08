@@ -22,7 +22,7 @@
    $controller->set_tarif($_POST["id_annonce"],$_POST["tarif"]);
    echo '<div class="container">';
    echo '<div class="success alert-success " style="height:50px">';
-   echo '<h5 class="text-danger text-center">Validation effectuée avec succéss<h5>';
+   echo '<h5 class="text-success text-center">Validation effectuée avec succéss<h5>';
    echo '</div>';
    echo '</div>';
     }

@@ -17,6 +17,13 @@
     session_start();
     require_once "../Controller/Controller_mon_profil.php";
     $controlleur_profil=new ControllerMonProfil();
+    if(isset($_GET["annonce_decline"])){
+        echo $_GET["annonce_decline"];
+        $controlleur_profil->decliner_annonce($_GET["annonce_decline"]);
+    }
+    if(isset($_GET["annonce_accepte"])){
+        $controlleur_profil->accepter_annonce($_GET["annonce_accepte"]);
+    }
     if(isset($_POST["ajouter_transporteur"])){
         $controlleur_profil->ajouter_transporteur_annonce($_POST["id_transporteur"],$_POST["id_annonce"]);
         echo "

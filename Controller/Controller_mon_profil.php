@@ -18,10 +18,15 @@ class ControllerMonProfil
       $model = new ModelMonProfil();
       return $model->get_annonces_valides_client();
    }
-   public function get_annonces_valides_transporteur()
+   public function get_annonces_transaction_transporteur()
    {
       $model = new ModelMonProfil();
-      return $model->get_annonces_valides_transporteur();
+      return $model->get_annonces_transaction_transporteur();
+   }
+   public function get_annonces_confirmes_transporteur()
+   {
+      $model = new ModelMonProfil();
+      return $model->get_annonces_confirmes_transporteur();
    }
    public function get_annonces_en_attente_client()
    {
@@ -48,20 +53,31 @@ class ControllerMonProfil
       $model = new ModelMonProfil();
       return $model->supprimer_annonce($id_annonce);
    }
-   public function ajouter_transporteur_annonce($id_transporteur,$id_annonce){
+   public function ajouter_transporteur_annonce($id_transporteur, $id_annonce)
+   {
       $model = new ModelMonProfil();
-      return $model->ajouter_transporteur_annonce($id_transporteur,$id_annonce);
-  }
-  public function get_annonces_transaction_client()
-    {
+      return $model->ajouter_transporteur_annonce($id_transporteur, $id_annonce);
+   }
+   public function get_annonces_transaction_client()
+   {
       $model = new ModelMonProfil();
       return $model->get_annonces_transaction_client();
-    }
-    public function get_annonces_confirmes_client()
-    {
+   }
+   public function get_annonces_confirmes_client()
+   {
       $model = new ModelMonProfil();
       return $model->get_annonces_confirmes_client();
-    }
+   }
+   public function decliner_annonce($id_annonce)
+   {
+      $model = new ModelMonProfil();
+      return $model->decliner_annonce($id_annonce);
+   }
+   public function accepter_annonce($id_annonce)
+   {
+      $model = new ModelMonProfil();
+      return $model->accepter_annonce($id_annonce);
+   }
    public function afficher_annonces_utilisateur()
    {
       $this->view->get_annonces_utilisateur();
