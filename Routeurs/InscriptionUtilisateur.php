@@ -87,7 +87,7 @@
                                         })
                                         </script>
                                          ";
-                                            $controller_connexion->inscription_transporteur($_POST["user_name"], $_POST["user_password"], $_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["numero_telephone"], $_POST["adresse"], "0");
+                                            $controller_connexion->inscription_transporteur($_POST["user_name"], $_POST["user_password"], $_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["numero_telephone"], $_POST["adresse"], "en attente");
                                             $controller_connexion->add_trajets($_POST["user_name"], $_POST["wilaya"]);
                                             $controller_connexion->add_certification($_POST["user_name"], $_POST["telecharger"]);
                                         }
@@ -102,7 +102,7 @@
                                         })
                                         </script>
                                          ";
-                                        $controller_connexion->inscription_transporteur($_POST["user_name"], $_POST["user_password"], $_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["numero_telephone"], $_POST["adresse"], "0");
+                                        $controller_connexion->inscription_transporteur($_POST["user_name"], $_POST["user_password"], $_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["numero_telephone"], $_POST["adresse"], "en attente");
                                         $controller_connexion->add_trajets($_POST["user_name"], $_POST["wilaya"]);
                                     }
                                 }

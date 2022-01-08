@@ -66,8 +66,10 @@ class ViewGestionTransporteurs
                 <td>' . $row["email"] . '</td>
                 <td>' . $row["certifie"] . '</td>
                 <td>
-                <a  style="width:200px" class="my-1 btn btn-warning "href="../Routeurs/GestionTransporteurs.php?edit=' . $row["id_transporteur"] . '"  onclick="return confirm(\'Voulez-vous vraiment modifier ce transporteur ?\')">Modifier</a>
-                <a  style="width:200px" class="my-1 btn btn-danger "href="../Routeurs/GestionTransporteurs.php?remove=' . $row["id_transporteur"] . '" onclick="return confirm(\'Voulez-vous vraiment supprimer ce transporteur ?\')">Supprimer</a>
+                <a  style="width:200px" class="my-1 btn btn-warning" href="../Routeurs/GestionTransporteurs.php?edit=' . $row["id_transporteur"] . '"  onclick="return confirm(\'Voulez-vous vraiment modifier ce transporteur ?\')">Modifier</a>
+                <a  style="width:200px" class="my-1 btn btn-danger" href="../Routeurs/GestionTransporteurs.php?remove=' . $row["id_transporteur"] . '" onclick="return confirm(\'Voulez-vous vraiment supprimer ce transporteur ?\')">Supprimer</a>
+                <a style="width:200px" class="my-1 btn btn-success" href="../Routeurs/GestionTransporteurs.php?valider=' . $row["id_transporteur"] . '" onclick="return confirm(\'Voulez-vous vraiment valider ce transporteur ?\')">Valider</a>
+                <a style="width:200px" class="my-1 btn btn-danger" href="../Routeurs/GestionTransporteurs.php?refuser=' . $row["id_transporteur"] . '" onclick="return confirm(\'Voulez-vous vraiment refuser ce transporteur ?\')">Refuser</a>
                 </td>
             </tr>';
         }

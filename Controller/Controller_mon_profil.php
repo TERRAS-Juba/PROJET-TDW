@@ -78,6 +78,11 @@ class ControllerMonProfil
       $model = new ModelMonProfil();
       return $model->accepter_annonce($id_annonce);
    }
+   public function get_certification_transporteur()
+   {
+      $model = new ModelMonProfil();
+      return $model->get_certification_transporteur();
+   }
    public function afficher_annonces_utilisateur()
    {
       $this->view->get_annonces_utilisateur();

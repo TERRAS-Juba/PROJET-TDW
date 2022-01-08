@@ -463,6 +463,62 @@ class ViewMonProfil
             </div>
     </div>';
     }
+    public function get_certification_transporteur()
+    {
+        $controller_info = new ControllerMonProfil();
+        $certification = $controller_info->get_certification_transporteur();
+        echo ' 
+    <div class="container border border-5 my-5">
+            <div class="row">
+                <h1 class="text-center">
+                   Statut de ma demande de certification
+                </h1>
+            </div>
+                ';
+        foreach ($certification as $row) {
+            if ($row["certifie"] == "en attente") {
+                echo '
+                    <h3 class="text-center text-success">
+                    Votre demande est attente de verification par un administrateur.
+                    <h4>Statut de demande de certification: <h4 class="text-warning">'.$row["certifie"].'</h4></h4>
+                    </h3>';
+            }else if(($row["certifie"] == "en cours de traitement") ){
+                echo '
+                <div class="row p-3">
+                <h3 class="text-center text-success">
+                Votre demande a bien été recue par un administrateur.</h3>
+                <p>Veuillez vous presenter a notre siege social pour completer votre certification avec les documents suivants :</p>
+                <ul>
+                <li>02 photos.</li>
+                <li>02 Certificats de naissance.</li>
+                <li>01 photocopie de carte d\'identite.</li>
+                <li>01 photocopie de permis de conduite.</li>
+                </ul>
+                </row>
+                <h4>Statut de demande de certification: <h4 class="text-warning">'.$row["certifie"].'</h4></h4>';
+            }else if(($row["certifie"] == "valide") ){
+                echo '
+                <div class="row p-3">
+                <h3 class="text-center text-success">
+                Votre demande a été acceptée.</h3>
+                <h4 class="text-center">Vous etes a present un transporteur certifié par notre société.</h4>
+                </row>
+                <h4>Statut de demande de certification: <h4 class="text-success">'.$row["certifie"].'</h4></h4>';
+            }else{
+                echo '
+                <div class="row p-3">
+                <h3 class="text-center text-danger">
+                Votre demande a été refusée.</h3>
+                <h4 class="text-center">Votre demande n\'a pas pus etre satisfaite. Nous vous invitons a nous contacter via nos coordonnées presents dans la section contact pour comprendre les raisons de ce refus.</h4>
+                </row>
+                <h4>Statut de demande de certification: <h4 class="text-danger">'.$row["certifie"].'</h4></h4>';
+            }
+        }
+
+        echo '
+            </div>
+    </div>';
+    }
     public function get_annonces_utilisateur()
     {
         if ($_SESSION["type_compte"] == "client") {
@@ -471,6 +527,7 @@ class ViewMonProfil
             $this->get_annonces_transaction_client();
             $this->get_annonces_confirmes_client();
         } else {
+            $this->get_certification_transporteur();
             $this->get_annonces_transaction_transporteur();
             $this->get_annonces_confirmes_transporteur();
         }

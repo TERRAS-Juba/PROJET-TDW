@@ -114,6 +114,9 @@ class ModelMonProfil
     }
     public function supprimer_annonce($id_annonce)
     {
+        $qtf = (($this->connexion)->connexion())->prepare("INSERT INTO annoncearchivee (id_annonce,titre,description,emplacement_depart,emplacement_arrive,garantie,tarif,type_transport,fourchette_poid,fourchette_volume,moyen_transport,statut,date_publication,nombre_vues,id_transporteur,id_client) SELECT * FROM annonce WHERE id_annonce=?");
+        $qtf->bindParam(1, $id_annonce);
+        $qtf->execute();
         $qtf = (($this->connexion)->connexion())->prepare("DELETE FROM annonce where id_annonce=?");
         $qtf->bindParam(1, $id_annonce);
         $qtf->execute();
@@ -144,5 +147,14 @@ class ModelMonProfil
         $requete->bindParam(1, $id_annonce);
         $requete->execute();
         ($this->connexion)->deconnexion();
+    }
+    
+    public function get_certification_transporteur(){
+        $conn = ($this->connexion)->connexion();
+        $requete = $conn->prepare("SELECT * from transporteur WHERE id_transporteur=?");
+        $requete->bindParam(1,$_SESSION["user_name"]);
+        $requete->execute();
+        ($this->connexion)->deconnexion();
+        return $requete;
     }
 }

@@ -12,7 +12,7 @@ class ModelGestionTransporteurs
     }
     public function get_list_transporteurs()
     {
-        $qtf = (($this->connexion)->connexion())->prepare("SELECT  * FROM transporteur where certifie=1");
+        $qtf = (($this->connexion)->connexion())->prepare("SELECT  * FROM transporteur where certifie!='en attente'");
         $qtf->execute();
         ($this->connexion)->deconnexion();
         return $qtf;
@@ -45,7 +45,7 @@ class ModelGestionTransporteurs
     }
     public function get_list_transporteurs_non_certifies()
     {
-        $qtf = (($this->connexion)->connexion())->prepare("SELECT * FROM transporteur where certifie=0");
+        $qtf = (($this->connexion)->connexion())->prepare("SELECT * FROM transporteur where certifie='en attente'");
         $qtf->execute();
         ($this->connexion)->deconnexion();
         return $qtf;
@@ -60,7 +60,23 @@ class ModelGestionTransporteurs
     }
     public function certifier_transporteur($id)
     {
-        $qtf = (($this->connexion)->connexion())->prepare("UPDATE transporteur set certifie=1 WHERE id_transporteur=?");
+        $qtf = (($this->connexion)->connexion())->prepare("UPDATE transporteur set certifie='en cours de traitement' WHERE id_transporteur=?");
+        $qtf->bindParam(1, $id);
+        $qtf->execute();
+        ($this->connexion)->deconnexion();
+        return $qtf;
+    }
+    public function valider_transporteur($id)
+    {
+        $qtf = (($this->connexion)->connexion())->prepare("UPDATE transporteur set certifie='valide' WHERE id_transporteur=?");
+        $qtf->bindParam(1, $id);
+        $qtf->execute();
+        ($this->connexion)->deconnexion();
+        return $qtf;
+    }
+    public function refuser_transporteur($id)
+    {
+        $qtf = (($this->connexion)->connexion())->prepare("UPDATE transporteur set certifie='refusee' WHERE id_transporteur=?");
         $qtf->bindParam(1, $id);
         $qtf->execute();
         ($this->connexion)->deconnexion();

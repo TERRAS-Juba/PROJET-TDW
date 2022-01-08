@@ -22,6 +22,12 @@
     if(isset($_GET["certifie"])){
         $controller->certifier_transporteur($_GET["certifie"]);
     }
+    if(isset($_GET["valider"])){
+        $controller->valider_transporteur($_GET["valider"]);
+    }
+    if(isset($_GET["refuser"])){
+        $controller->refuser_transporteur($_GET["refuser"]);
+    }
     $controller->afficher_contenu();
     if (isset($_POST["enregistrer"])) {
         $controller->enregistrer_modifications_transporteur($_SESSION["edit"], $_POST["nom"], $_POST["prenom"], $_POST["mdp"], $_POST["email"], $_POST["adresse"]);

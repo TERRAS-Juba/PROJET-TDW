@@ -42,8 +42,17 @@ public function get_demande_certification($id){
 }
 public function certifier_transporteur($id){
    $model=new ModelGestionTransporteurs();
-   $resultat=$model->certifier_transporteur($id);
-   return $resultat;
+   $model->certifier_transporteur($id);
+}
+public function valider_transporteur($id)
+{
+   $model=new ModelGestionTransporteurs();
+   $model->valider_transporteur($id);
+}
+public function refuser_transporteur($id)
+{
+   $model=new ModelGestionTransporteurs();
+   $model->refuser_transporteur($id);
 }
 public function afficher_demande_certification($id){
    ($this->view)->get_demande_certification($id);
