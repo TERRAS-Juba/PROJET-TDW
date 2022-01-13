@@ -117,9 +117,12 @@ class ViewGestionTransporteurs
 </div>
 </div>';
     }
-    public function modifier_transporteur()
+    public function modifier_transporteur($id)
     {
-        echo '<div class="container my-4">
+        $controller = new ControllerGestionTransporteurs();
+        $transporteurs = $controller->get_transporteur($id);
+        foreach ($transporteurs as $transporteur) {
+            echo '<div class="container my-4">
     <div class="row">
         <div class="col my-auto text-center">
             <h1>Modification d\'un utilisateur</h1>
@@ -131,18 +134,19 @@ class ViewGestionTransporteurs
                 <label class="mt-2"><h5>Mot de passe :</h5></label>
                 <input class="form-control my-2" type="text" name="mdp" required placeholder="Entrez le nouveau mot de passe">
                 <label class="mt-2"><h5>Nom :</h5></label>
-                <input class="form-control my-2" type="text" name="nom" required placeholder="Entrez le nouveau nom">
+                <input class="form-control my-2" type="text" name="nom" required placeholder="Entrez le nouveau nom" value="'.$transporteur['nom'].'">
                 <label class="mt-2"><h5>Prénom :</h5></label>
-                <input class="form-control my-2" type="text" name="prenom" required placeholder="Entrez le nouveau prenom">
+                <input class="form-control my-2" type="text" name="prenom" required placeholder="Entrez le nouveau prenom" value="'.$transporteur['prenom'].'">
                 <label class="mt-2"><h5>Adresse :</h5></label>
-                <input class="form-control my-2" type="text" name="adresse" required placeholder="Entrez la nouvelle adresse">
+                <input class="form-control my-2" type="text" name="adresse" required placeholder="Entrez la nouvelle adresse" value="'.$transporteur['adresse'].'">
                 <label class="mt-2"><h5>email : </h5></label>
-                <input class="form-control my-2" type="text" name="email" required placeholder="Entrez la nouvelle adresse email">
+                <input class="form-control my-2" type="text" name="email" required placeholder="Entrez la nouvelle adresse email" value="'.$transporteur['email'].'">
                 <button name="enregistrer" class="btn btn-warning my-4" type="submit">Enregistrer les modifications</button>
             </form>
         </div>
     </div>
 </div>';
+        }
     }
     public function get_list_transporteurs_by_critere($critere, $value)
     {
@@ -279,7 +283,7 @@ class ViewGestionTransporteurs
         $resultat = $controller->get_demande_certification($id);
         foreach ($resultat as $row) {
             header('Content-type: application/pdf');
-            header('Content-Disposition: inline; filename="Demande de certification_'.$row["id_transporteur"].'"');
+            header('Content-Disposition: inline; filename="Demande de certification_' . $row["id_transporteur"] . '"');
             header('Content-Transfer-Encoding: binary');
             header('Accept-Ranges: bytes');
             @readfile($row["chemin"]);

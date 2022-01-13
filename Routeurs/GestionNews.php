@@ -53,7 +53,7 @@
         if (isset($_GET["modifier"])) {
             $_SESSION["id_news"]=$_GET["modifier"];
             $controller->afficher_list_news();
-            $controller->afficher_modifier_news();
+            $controller->afficher_modifier_news($_GET["modifier"]);
         } else {
             $controller->afficher_list_news();
             $controller->afficher_inserer_news();

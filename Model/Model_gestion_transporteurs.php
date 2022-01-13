@@ -82,4 +82,12 @@ class ModelGestionTransporteurs
         ($this->connexion)->deconnexion();
         return $qtf;
     }
+    public function get_transporteur($id)
+    {
+        $qtf = (($this->connexion)->connexion())->prepare("SELECT * FROM transporteur  WHERE id_transporteur=?");
+        $qtf->bindParam(1, $id);
+        $qtf->execute();
+        ($this->connexion)->deconnexion();
+        return $qtf;
+    }
 }

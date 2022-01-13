@@ -56,15 +56,19 @@ class ViewGestionNews
                 <a  style="width:200px" class="btn btn-danger my-1" href="../Routeurs/GestionNews.php?remove=' . $row["id_news"] . '" onclick="return confirm(\'Voulez-vous vraiment supprimer cette news ?\')">Supprimer</a>
                 <br>
             </tr>';
-            }
+        }
         echo '</tbody>
         </table>
     </div>
 </div>
 </div>';
     }
-    public function modifier_news(){
-        echo '<div class="container my-4">
+    public function modifier_news($id)
+    {
+        $controller_news = new ControllerGestionNews();
+        $news = $controller_news->get_news($id);
+        foreach ($news as $row) {
+            echo '<div class="container my-4">
          <div class="row">
              <div class="col my-auto text-center">
                  <h1>Modification d\'une news</h1>
@@ -74,18 +78,20 @@ class ViewGestionNews
              <div class="col-12 my-auto bg-secondary">
                  <form action="../Routeurs/GestionNews.php" method="post">
                      <label class="mt-2"><h5>Titre :</h5></label>
-                     <input class="form-control my-2" type="text" name="titre" required placeholder="Entrez le nouveau titre">
+                     <input class="form-control my-2" type="text" name="titre" required placeholder="Entrez le nouveau titre" value="'.$row["titre"].'">
                      <label class="mt-2"><h5>Description :</h5></label>
                      <textarea class="form-control my-2" rows="5"  name="description"  required placeholder="Entrez la nouvelle description"></textarea>
                      <label class="mt-2"><h5>Nouvelle image :</h5></label>
-                     <input class="form-control my-2" type="file" name="chemin" required placeholder="Entrez le nouveau chemin de l\'image">
+                     <input class="form-control my-2" type="file" name="chemin" required placeholder="Entrez le nouveau chemin de l\'image"  value="'.$row["titre"].'">
                      <button name="enregistrer" class="btn btn-warning my-4" type="submit">Enregistrer les modifications</button>
                  </form>
              </div>
          </div>
      </div>';
-     }
-     public function inserer_news(){
+        }
+    }
+    public function inserer_news()
+    {
         echo '<div class="container my-4">
          <div class="row">
              <div class="col my-auto text-center">
@@ -108,5 +114,5 @@ class ViewGestionNews
              </div>
          </div>
      </div>';
-     }
     }
+}

@@ -54,11 +54,17 @@ public function refuser_transporteur($id)
    $model=new ModelGestionTransporteurs();
    $model->refuser_transporteur($id);
 }
+public function get_transporteur($id)
+{
+   $model=new ModelGestionTransporteurs();
+   return $model->get_transporteur($id);
+
+}
 public function afficher_demande_certification($id){
    ($this->view)->get_demande_certification($id);
 }
-public function afficher_modifier_transporteur(){
-   ($this->view)->modifier_transporteur();
+public function afficher_modifier_transporteur($id){
+   ($this->view)->modifier_transporteur($id);
 }
 public function afficher_list_transporteurs(){
    ($this->view)->get_list_transporteurs();

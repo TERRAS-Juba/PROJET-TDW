@@ -44,5 +44,13 @@ class ModelGestionClients
         $qtf->execute();
         ($this->connexion)->deconnexion();
     }
+    public function get_client($id)
+    {
+        $qtf = (($this->connexion)->connexion())->prepare("SELECT * FROM client  WHERE id_client=?");
+        $qtf->bindParam(1, $id);
+        $qtf->execute();
+        ($this->connexion)->deconnexion();
+        return $qtf;
+    }
 }
 ?>

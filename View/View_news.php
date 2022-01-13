@@ -27,7 +27,7 @@ class ViewNews
             echo '
             <div class="col-md-2">
             <div class="d-grid">
-                <a href="../Routeurs/InscriptionUtilisateur.php" class="my-2 btn btn-outline-primary btn-block rounded-pill">S"enregistrer</a>
+                <a href="../Routeurs/InscriptionUtilisateur.php" class="my-2 btn btn-outline-primary btn-block rounded-pill">Inscription</a>
             </div>
         </div>
         <div class="col-md-2">
@@ -134,9 +134,9 @@ class ViewNews
         <div class="row">
             <div class="col">
                 <h1 class="text-center">
-                    Consultez les derniers annonces.
+                    Consultez les dernieres actualités.
                 </h1>
-                <p class="text-center">Vous pouvez consulter les derniers actualites en relation avec notre site web</p>
+                <p class="text-center">Vous pouvez consulter les dernieres actualites en relation avec notre site web</p>
             </div>
         </div>';
             echo '<div class="row">';

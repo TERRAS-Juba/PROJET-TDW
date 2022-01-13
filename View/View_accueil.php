@@ -27,7 +27,7 @@ class ViewAccueil
             echo '
             <div class="col-md-2">
             <div class="d-grid">
-                <a href="../Routeurs/InscriptionUtilisateur.php" class="my-2 btn btn-outline-primary btn-block rounded-pill">S"enregistrer</a>
+                <a href="../Routeurs/InscriptionUtilisateur.php" class="my-2 btn btn-outline-primary btn-block rounded-pill">Inscription</a>
             </div>
         </div>
         <div class="col-md-2">
@@ -49,13 +49,13 @@ class ViewAccueil
                 <div id="diaporama" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-bs-interval="3000">
-                            <a href="#"> <img src="../Assets/image1.jpg" class="d-block w-100 h-100 img-thumbnail"></a>
+                            <a target="_blank" href="https://www.vanvliet.com/vehicles/type/trucks?utm_source=google-ads&utm_campaign=Algeria+-+Eng+-+New&utm_agid=121190059564&utm_term=man%20truck&creative=507057294223&device=c&placement=&gclid=Cj0KCQiAuP-OBhDqARIsAD4XHpeQQmNMczbMV6Qw0qOVbLbGWLusIxCs1awJDg_6oLJyWzfDLz9iLgAaAlZUEALw_wcB"> <img src="../Assets/image1.jpg" class="d-block w-100 h-100 img-thumbnail"></a>
                         </div>
                         <div class="carousel-item" data-bs-interval="3000">
-                            <a href="#"> <img src="../Assets/image2.jpg" class="d-block w-100 h-100 img-thumbnail"></a>
+                            <a target="_blank" href="https://www.ouedkniss.com/automobiles"> <img src="../Assets/image2.jpg" class="d-block w-100 h-100 img-thumbnail"></a>
                         </div>
                         <div class="carousel-item" data-bs-interval="3000">
-                            <a href="#"><img src="../Assets/image3.jpg" class="d-block w-100 h-100 img-thumbnail"></a>
+                            <a target="_blank" href="http://webstar-auto.com/fr"><img src="../Assets/image3.jpg" class="d-block w-100 h-100 img-thumbnail"></a>
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#diaporama" data-bs-slide="prev">

@@ -76,9 +76,9 @@ class ModelAccueil
         ($this->connexion)->deconnexion();
         return $qtf;
     } 
-     public function ajouter_annonce($titre,$description,$emplacement_depart,$emplacement_arrive,$type_transport,$moyen_transport,$fourchette_poid,$fourchette_volume,$id_client,$id_annonce){
+     public function ajouter_annonce($titre,$description,$emplacement_depart,$emplacement_arrive,$type_transport,$moyen_transport,$fourchette_poid,$fourchette_volume,$id_client,$id_annonce,$garantie){
         $conn = ($this->connexion)->connexion();
-        $qtf = $conn->prepare("INSERT INTO annonce(titre,description,emplacement_depart,emplacement_arrive,type_transport,moyen_transport,fourchette_poid,fourchette_volume,id_client,date_publication,nombre_vues,statut,id_annonce) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $qtf = $conn->prepare("INSERT INTO annonce(titre,description,emplacement_depart,emplacement_arrive,type_transport,moyen_transport,fourchette_poid,fourchette_volume,id_client,date_publication,nombre_vues,statut,id_annonce,garantie) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         $qtf->bindParam(1,$titre);
         $qtf->bindParam(2,$description);
         $qtf->bindParam(3,$emplacement_depart);
@@ -96,6 +96,7 @@ class ModelAccueil
         $qtf->bindParam(11,$nombre_vues);
         $qtf->bindParam(12,$statut);
         $qtf->bindParam(13,$id_annonce);
+        $qtf->bindParam(14,$garantie);
         $qtf->execute();
         ($this->connexion)->deconnexion();
     }
@@ -114,6 +115,14 @@ class ModelAccueil
         $requete->bindParam(2,$id_annonce);
         $requete->execute();
         ($this->connexion)->deconnexion();
+    }
+    public function get_garantie($type_transport){
+        $conn = ($this->connexion)->connexion();
+        $requete=$conn->prepare("SELECT * from type_transport where libele=?");
+        $requete->bindParam(1,$type_transport);
+        $requete->execute();
+        ($this->connexion)->deconnexion();
+        return $requete;
     }
 }
 ?>

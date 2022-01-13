@@ -27,7 +27,7 @@ class ViewMonProfil
             echo '
             <div class="col-md-2">
             <div class="d-grid">
-                <a href="../Routeurs/InscriptionUtilisateur.php" class="my-2 btn btn-outline-primary btn-block rounded-pill">S"enregistrer</a>
+                <a href="../Routeurs/InscriptionUtilisateur.php" class="my-2 btn btn-outline-primary btn-block rounded-pill">Inscription</a>
             </div>
         </div>
         <div class="col-md-2">
@@ -206,7 +206,6 @@ class ViewMonProfil
                 echo '<h5>Statut : ' . $row['statut'] . '</h5>';
                 echo "<a href='../Routeurs/Accueil.php?id_annonce=" . $row["id_annonce"] . "'>Lire la suite ...</a>";
                 echo '<br>';
-                echo '<a class="my-2 btn btn-danger" href="../Routeurs/MonProfil.php?id_annonce=' . $row["id_annonce"] . '"  onclick=" return confirm(\'Voulez-vous vraiment supprimer cette annonce ?\')">Supprimer l\'annonce</a>';
                 $transporteurs = $controller_info->get_list_transporteurs();
                 echo '
                 <form class="border border-5 p-2 my-2" action="../Routeurs/MonProfil.php" method="post">
@@ -278,7 +277,8 @@ class ViewMonProfil
                 echo '<h5>Statut : ' . $row['statut'] . '</h5>';
                 echo "<a href='../Routeurs/Accueil.php?id_annonce=" . $row["id_annonce"] . "'>Lire la suite ...</a>";
                 echo '<br>';
-                echo '<a class="my-2 btn btn-danger" href="../Routeurs/MonProfil.php?id_annonce=' . $row["id_annonce"] . '"  onclick=" return confirm(\'Voulez-vous vraiment supprimer cette annonce ?\')">Supprimer l\'annonce</a>';
+                echo '<a class="my-2 btn btn-danger m-2" href="../Routeurs/MonProfil.php?id_annonce=' . $row["id_annonce"] . '"  onclick=" return confirm(\'Voulez-vous vraiment supprimer cette annonce ?\')">Supprimer l\'annonce</a>';
+                echo '<a class="my-2 btn btn-warning" href="../Routeurs/MonProfil.php?modifier_annonce=' . $row["id_annonce"] . '"  onclick=" return confirm(\'Voulez-vous vraiment modifier cette annonce ?\')">Modifier l\'annonce</a>';
                 echo  '</div>';
                 echo '</div>';
                 echo '</div>';
@@ -323,7 +323,6 @@ class ViewMonProfil
                 echo '<h5>ID Transporteur choisis : ' . $row['id_transporteur'] . '</h5>';
                 echo "<a href='../Routeurs/Accueil.php?id_annonce=" . $row["id_annonce"] . "'>Lire la suite ...</a>";
                 echo '<br>';
-                echo '<a class="my-2 btn btn-danger" href="../Routeurs/MonProfil.php?id_annonce=' . $row["id_annonce"] . '"  onclick=" return confirm(\'Voulez-vous vraiment supprimer cette annonce ?\')">Supprimer l\'annonce</a>';
                 echo  '</div>';
                 echo '</div>';
                 echo '</div>';
@@ -480,9 +479,15 @@ class ViewMonProfil
                 echo '
                     <h3 class="text-center text-success">
                     Votre demande est attente de verification par un administrateur.
-                    <h4>Statut de demande de certification: <h4 class="text-warning">'.$row["certifie"].'</h4></h4>
+                    <h4>Statut de demande de certification: <h4 class="text-warning">' . $row["certifie"] . '</h4></h4>
                     </h3>';
-            }else if(($row["certifie"] == "en cours de traitement") ){
+            } else if (($row["certifie"] == "en cours de traitement")) {
+                echo '
+                <h3 class="text-center text-success">
+                Votre demande est a été bien recue et en est en cours de traitement.
+                <h4>Statut de demande de certification: <h4 class="text-warning">' . $row["certifie"] . '</h4></h4>
+                </h3>';
+            } else if (($row["certifie"] == "valide")) {
                 echo '
                 <div class="row p-3">
                 <h3 class="text-center text-success">
@@ -495,23 +500,23 @@ class ViewMonProfil
                 <li>01 photocopie de permis de conduite.</li>
                 </ul>
                 </row>
-                <h4>Statut de demande de certification: <h4 class="text-warning">'.$row["certifie"].'</h4></h4>';
-            }else if(($row["certifie"] == "valide") ){
+                <h4>Statut de demande de certification: <h4 class="text-warning">' . $row["certifie"] . '</h4></h4>';
+            } else if (($row["certifie"] == "certfiee")) {
                 echo '
                 <div class="row p-3">
                 <h3 class="text-center text-success">
                 Votre demande a été acceptée.</h3>
                 <h4 class="text-center">Vous etes a present un transporteur certifié par notre société.</h4>
                 </row>
-                <h4>Statut de demande de certification: <h4 class="text-success">'.$row["certifie"].'</h4></h4>';
-            }else{
+                <h4>Statut de demande de certification: <h4 class="text-success">' . $row["certifie"] . '</h4></h4>';
+            } else {
                 echo '
                 <div class="row p-3">
                 <h3 class="text-center text-danger">
                 Votre demande a été refusée.</h3>
                 <h4 class="text-center">Votre demande n\'a pas pus etre satisfaite. Nous vous invitons a nous contacter via nos coordonnées presents dans la section contact pour comprendre les raisons de ce refus.</h4>
                 </row>
-                <h4>Statut de demande de certification: <h4 class="text-danger">'.$row["certifie"].'</h4></h4>';
+                <h4>Statut de demande de certification: <h4 class="text-danger">' . $row["certifie"] . '</h4></h4>';
             }
         }
 

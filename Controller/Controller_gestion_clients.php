@@ -29,10 +29,15 @@ public function get_list_clients_by_critere($critere,$value){
    $model=new ModelGestionClients();
    $resultat=$model->get_list_clients_by_critere($critere,$value);
    return $resultat;
-   
 }
-public function afficher_modifier_client(){
-   ($this->view)->modifier_client();
+public function get_client($id)
+    {
+      $model=new ModelGestionClients();
+      $resultat=$model->get_client($id);
+      return $resultat;
+    }
+public function afficher_modifier_client($id){
+   ($this->view)->modifier_client($id);
 }
 public function afficher_list_clients(){
    ($this->view)->get_list_clients();

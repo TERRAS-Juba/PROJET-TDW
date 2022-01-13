@@ -16,6 +16,12 @@ public function get_list_news(){
    $resultat=$model->get_list_news();
    return $resultat;
 }
+public function get_news($id){
+   $model=new ModelGestionNews();
+   $resultat=$model->get_news($id);
+   return $resultat;
+}
+   
 public function afficher_list_news(){
    ($this->view)->get_list_news();
 }
@@ -26,8 +32,8 @@ public function supprimer_news($id){
    $model=new ModelGestionNews();
    $model->supprimer_news($id);
 }
-public function afficher_modifier_news(){
-   ($this->view)->modifier_news();
+public function afficher_modifier_news($id){
+   ($this->view)->modifier_news($id);
 }
 public function inserer_news($id_news,$titre,$description,$date){
    $model=new ModelGestionNews();

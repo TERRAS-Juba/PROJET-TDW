@@ -26,7 +26,7 @@ class ViewPresentation{
             echo '
             <div class="col-md-2">
             <div class="d-grid">
-                <a href="../Routeurs/InscriptionUtilisateur.php" class="my-2 btn btn-outline-primary btn-block rounded-pill">S"enregistrer</a>
+                <a href="../Routeurs/InscriptionUtilisateur.php" class="my-2 btn btn-outline-primary btn-block rounded-pill">Inscription</a>
             </div>
         </div>
         <div class="col-md-2">

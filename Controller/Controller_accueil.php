@@ -61,10 +61,10 @@ class ControllerAccueil
       $resultat = $model->get_wilaya();
       return $resultat;
    }
-   public function ajouter_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_client,$id_annonce)
+   public function ajouter_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_client,$id_annonce,$garantie)
    {
       $model = new ModelAccueil();
-      $model->ajouter_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_client,$id_annonce);
+      $model->ajouter_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_client,$id_annonce,$garantie);
    }
    public function ajouter_image($id_image,$chemin){
       $model = new ModelAccueil();
@@ -74,6 +74,14 @@ class ControllerAccueil
    $model = new ModelAccueil();
    $model->ajouter_images_annonce($id_image,$id_annonce);
   }
+  public function get_garantie($type_transport){
+   $model = new ModelAccueil();
+   $garantie=$model->get_garantie($type_transport);
+   foreach($garantie as $row){
+      return $row["garantie"];
+   }
+   
+}
    public function afficher_list_annonces()
    {
       ($this->view)->get_list_annonces();

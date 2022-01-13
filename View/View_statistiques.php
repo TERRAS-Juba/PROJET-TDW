@@ -26,7 +26,7 @@ class ViewStatistiques{
             echo '
             <div class="col-md-2">
             <div class="d-grid">
-                <a href="../Routeurs/InscriptionUtilisateur.php" class="my-2 btn btn-outline-primary btn-block rounded-pill">S"enregistrer</a>
+                <a href="../Routeurs/InscriptionUtilisateur.php" class="my-2 btn btn-outline-primary btn-block rounded-pill">Inscription</a>
             </div>
         </div>
         <div class="col-md-2">
@@ -150,27 +150,27 @@ public function get_contenu(){
             <div class="col-sm-4 text-center my-auto">
                 <img src="../Assets/client.png" class="img-fluid rounded-circle my-auto" style="height: 300px;">
                 <h1>Nombre de clients</h1>
-                <p>Plus de '.$nombre_clients.' clients inscrits sur notre site.</p>
+                <p>'.$nombre_clients.' clients inscrits sur notre site.</p>
             </div>
             <div class="col-sm-4 text-center my-auto">
                 <img src="../Assets/driver.png" class="img-fluid rounded-circle my-auto" style="height: 300px;">
                 <h1>Nombre de transporteurs</h1>
-                <p>Plus de '.$nombre_transporteurs.' transporteurs inscrits sur notre site.</p>
+                <p>'.$nombre_transporteurs.' transporteurs inscrits sur notre site.</p>
             </div>
             <div class="col-sm-4 text-center my-auto">
                 <img src="../Assets/certificate.png" class="img-fluid rounded-circle my-auto" style="height: 300px;">
                 <h1>Nombre de transporteurs certfiés</h1>
-                <p>Plus de '.$nombre_transporteurs_certifies.' transporteurs certfiés par notre site.</p>
+                <p>'.$nombre_transporteurs_certifies.' transporteurs certfiés par notre site.</p>
             </div>
             <div class="col-sm-6 text-center my-auto">
                 <img src="../Assets/annoncement.png" class="img-fluid rounded-circle my-auto" style="height: 300px;">
                 <h1>Nombre d\'annonces</h1>
-                <p>Plus de '.$nombre_annonces.' annonces publiées sur notre site.</p>
+                <p>'.$nombre_annonces.' annonces publiées sur notre site.</p>
             </div>
             <div class="col-sm-6 text-center my-auto">
                 <img src="../Assets/news.png" class="img-fluid rounded-circle my-auto" style="height: 300px;">
                 <h1>Nombre de news</h1>
-                <p>Restez d\'actualités avec plus de '.$nombre_news.' news.</p>
+                <p>Restez d\'actualités avec'.$nombre_news.' news.</p>
             </div>
         </div>
     </div>
