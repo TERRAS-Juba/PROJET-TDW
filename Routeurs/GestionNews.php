@@ -19,20 +19,21 @@
     $controller = new ControllerGestionNews();
     $controller->afficher_contenu();
     if(isset($_POST["ajouter"])){
-        $controller->inserer_news(crc32 ($_POST["titre"]),$_POST["titre"],$_POST["description"],$_POST["date"]);
-        $controller->enregistrer_images_news(crc32 ($_POST["titre"]),crc32 ($_POST["chemin"]),"../News/".$_POST["chemin"]);
+        $news=uniqid($_POST["titre"],FALSE);
+        $image=uniqid($_POST["chemin"],FALSE);
+        $controller->inserer_news($news,$_POST["titre"],$_POST["description"],$_POST["date"]);
+        $controller->enregistrer_images_news($news,$image,"../News/".$_POST["chemin"]);
         echo '<div class="container">';
         echo '<div class="success alert-success " style="height:50px">';
         echo '<h5 class="text-succes text-center">Insertion effectuée avec succéss<h5>';
         echo '</div>';
         echo '</div>';
-        $controller->afficher_list_news();
-        $controller->afficher_inserer_news();
 
     }
     if(isset($_POST["enregistrer"])){
+        $image=uniqid($_POST["chemin"],FALSE);
         $controller->enregistrer_modifcations_news( $_SESSION["id_news"],$_POST["titre"],$_POST["description"]);
-        $controller->enregistrer_images_news($_SESSION["id_news"],crc32 ($_POST["chemin"]),"../News/".$_POST["chemin"]);
+        $controller->enregistrer_images_news($_SESSION["id_news"],$image,"../News/".$_POST["chemin"]);
         echo '<div class="container">';
         echo '<div class="success alert-success " style="height:50px">';
         echo '<h5 class="text-succes text-center">Modification effectuée avec succéss<h5>';
@@ -47,17 +48,12 @@
         echo '<h5 class="text-danger text-center">Suppression effectuée avec succéss<h5>';
         echo '</div>';
         echo '</div>';
-        $controller->afficher_list_news();
-        $controller->afficher_inserer_news();
-    } else {
-        if (isset($_GET["modifier"])) {
-            $_SESSION["id_news"]=$_GET["modifier"];
-            $controller->afficher_list_news();
-            $controller->afficher_modifier_news($_GET["modifier"]);
-        } else {
-            $controller->afficher_list_news();
-            $controller->afficher_inserer_news();
-        }
+    } 
+    $controller->afficher_list_news();
+    $controller->afficher_inserer_news();
+    if (isset($_GET["modifier"])) {
+        $_SESSION["id_news"]=$_GET["modifier"];
+        $controller->afficher_modifier_news($_GET["modifier"]);
     }
     ?>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
