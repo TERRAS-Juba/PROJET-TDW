@@ -5,13 +5,13 @@ class ModelInscriptionUtilisateur
     private $connexion;
     function __construct()
     {
+        $this->connexion = new Connexion("TDW", "127.0.0.1", "root", "");
     }
     function __destruct()
     {
     }
     public function existe_utilisateur($user_name, $type)
     {
-        $this->connexion = new Connexion("base_projet", "127.0.0.1", "root", "");
         if ($type == "client") {
             $qtf =  (($this->connexion)->connexion())->prepare("Select * from client where id_client=?");
             $qtf->bindParam(1, $user_name);
@@ -36,14 +36,12 @@ class ModelInscriptionUtilisateur
     }
     public function get_wilayas()
     {
-        $this->connexion = new Connexion("base_projet", "127.0.0.1", "root", "");
         $qtf =  (($this->connexion)->connexion())->prepare("Select * from wilaya");
         $qtf->execute();
         return $qtf;
     }
     public function inscription_client($user_name, $user_password, $nom, $prenom, $email, $numero_telephone, $adresse)
     {
-        $this->connexion = new Connexion("base_projet", "127.0.0.1", "root", "");
         $qtf = (($this->connexion)->connexion())->prepare("INSERT INTO client(id_client,nom,prenom,mot_de_passe,email,adresse,numero_telephone) VALUES (?,?,?,?,?,?,?)");
         $qtf->bindParam(1, $user_name);
         $qtf->bindParam(2, $nom);
@@ -56,7 +54,6 @@ class ModelInscriptionUtilisateur
     }
     public function inscription_transporteur($user_name, $user_password, $nom, $prenom, $email, $numero_telephone, $adresse, $certifie)
     {
-        $this->connexion = new Connexion("base_projet", "127.0.0.1", "root", "");
         $qtf = (($this->connexion)->connexion())->prepare("INSERT INTO transporteur(id_transporteur,nom,prenom,mot_de_passe,email,adresse,numero_telephone,certifie) VALUES (?,?,?,?,?,?,?,?)");
         $qtf->bindParam(1, $user_name);
         $qtf->bindParam(2, $nom);
@@ -70,7 +67,6 @@ class ModelInscriptionUtilisateur
     }
     public function add_trajets($id_transporteur, $trajets)
     {
-        $this->connexion = new Connexion("base_projet", "127.0.0.1", "root", "");
         foreach ($trajets as $trajet) {
             $qtf = (($this->connexion)->connexion())->prepare("INSERT INTO transporteur_wilaya(id_transporteur,num_wilaya) values(?,?)");
             $qtf->bindParam(1, $id_transporteur);
@@ -83,7 +79,6 @@ class ModelInscriptionUtilisateur
     {
         $str='../Certifications/'.$chemin;
         $statut='en attente';
-        $this->connexion = new Connexion("base_projet", "127.0.0.1", "root", "");
         $qtf = (($this->connexion)->connexion())->prepare("INSERT INTO demandecertification(id_transporteur,statut,chemin) values(?,?,?)");
         $qtf->bindParam(1, $id_transporteur);
         $qtf->bindParam(2, $statut);

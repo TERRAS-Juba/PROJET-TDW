@@ -5,7 +5,7 @@ class ModelGestionNews
     private $connexion;
     function __construct()
     {
-        $this->connexion = new Connexion("base_projet", "127.0.0.1", "admin", "admin");
+        $this->connexion = new Connexion("TDW", "127.0.0.1", "admin", "admin");
     }
     function __destruct()
     {

@@ -5,7 +5,7 @@ class ModelMonProfil
     private $connexion;
     function __construct()
     {
-        $this->connexion = new Connexion("base_projet", "127.0.0.1", "root", "");
+        $this->connexion = new Connexion("TDW", "127.0.0.1", "root", "");
     }
     function __destruct()
     {
