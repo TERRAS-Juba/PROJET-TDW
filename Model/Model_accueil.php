@@ -28,7 +28,7 @@ class ModelAccueil
     }
     public function get_images_annonces()
     {
-        $qtf = (($this->connexion)->connexion())->prepare("select * from annonce_image  inner join image on image.id_image= annonce_image.id_image");
+        $qtf = (($this->connexion)->connexion())->prepare("select * from annonce_image inner join image on image.id_image= annonce_image.id_image");
         $qtf->execute();
         ($this->connexion)->deconnexion();
         return $qtf;

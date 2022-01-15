@@ -342,6 +342,12 @@ class ViewMonProfil
         foreach ($images as $image) {
             $tab_images[strval($image["id_annonce"])] = $image["chemin"];
         }
+        $certifications=$controller_info->get_certification_transporteur();
+        global $certifie;
+        $certifie=0;
+        foreach($certifications as $row){
+            $certifie=$row["certifie"];
+        }
         echo ' 
     <div class="container border border-5 my-5">
             <div class="row">
@@ -365,7 +371,7 @@ class ViewMonProfil
                 echo '<h5>ID Client  : ' . $row['id_client'] . '</h5>';
                 echo "<a href='../Routeurs/Accueil.php?id_annonce=" . $row["id_annonce"] . "'>Lire la suite ...</a>";
                 echo '<br>';
-                echo '<a class="m-2 btn btn-success" href="../Routeurs/MonProfil.php?annonce_accepte=' . $row["id_annonce"] . '"  onclick=" return confirm(\'Voulez-vous vraiment accepter cette annonce ?\')">Accepter l\'offre</a>';
+                echo '<a class="m-2 btn btn-success" href="../Routeurs/MonProfil.php?annonce_accepte=' . $row["id_annonce"] . '&garantie='.$row["garantie"].'&certifie='.$certifie.'"  onclick=" return confirm(\'Voulez-vous vraiment accepter cette annonce ?\')">Accepter l\'offre</a>';
                 echo '<a class="m-2 btn btn-danger"  href="../Routeurs/MonProfil.php?annonce_decline=' . $row["id_annonce"] . '" onclick=" return confirm(\'Voulez-vous vraiment decliner cette annonce ?\')">Decliner l\'offre</a>';
                 echo  '</div>';
                 echo '</div>';
@@ -409,6 +415,7 @@ class ViewMonProfil
                 echo '<h5>ID Client  : ' . $row['id_client'] . '</h5>';
                 echo "<a href='../Routeurs/Accueil.php?id_annonce=" . $row["id_annonce"] . "'>Lire la suite ...</a>";
                 echo '<br>';
+                echo "<a class='btn btn-danger my-2'  style='width:50%;' href='../Routeurs/MonProfil.php?id_annonce_signalement=" . $row["id_annonce"] . "&id_client_signalement=" . $row["id_client"] . "&id_transporteur_signalement=" . $row["id_transporteur"] . "'>Signaler</a>";
                 echo  '</div>';
                 echo '</div>';
                 echo '</div>';
@@ -452,6 +459,7 @@ class ViewMonProfil
                 echo '<h5>ID Transporteur choisis : ' . $row['id_transporteur'] . '</h5>';
                 echo "<a href='../Routeurs/Accueil.php?id_annonce=" . $row["id_annonce"] . "'>Lire la suite ...</a>";
                 echo '<br>';
+                echo "<a class='btn btn-danger my-2'  style='width:50%;' href='../Routeurs/MonProfil.php?id_annonce_signalement=" . $row["id_annonce"] . "&id_client_signalement=" . $row["id_client"] . "&id_transporteur_signalement=" . $row["id_transporteur"] . "'>Signaler</a>";
                 echo  '</div>';
                 echo '</div>';
                 echo '</div>';
@@ -523,6 +531,32 @@ class ViewMonProfil
         echo '
             </div>
     </div>';
+    }
+    public function effectuer_signalement($id_annonce,$id_client,$id_transporteur){
+echo '
+<div class="container">
+<div class="row">
+        <div class="col-12 my-auto bg-secondary">
+        <div class="col-12 my-auto bg-secondary">
+           <h1 class="text-center my-2 text-light">Effectuer signalement</h1>
+        </div>
+            <form action="../Routeurs/MonProfil.php" method="post">
+            <label class="mt-2"><h5>ID Annonce :</h5></label>
+                <input class="form-control my-2" type="text" name="id_annonce" readonly value="'.$id_annonce.'" >
+                <label class="mt-2"><h5>ID Client :</h5></label>
+                <input class="form-control my-2" type="text" name="id_client" readonly value="'.$id_client.'" >
+                <label class="mt-2"><h5>ID Transporteur :</h5></label>
+                <input class="form-control my-2" type="text" name="id_transporteur" readonly value="'.$id_transporteur.'" >
+                <label class="mt-2"><h5>Titre :</h5></label>
+                <input class="form-control my-2" type="text" name="titre" placeholder="Entrez un titre" required >
+                <label class="mt-2"><h5>Description :</h5></label>
+                <input class="form-control my-2" type="text" name="description" placeholder="Entrez ue description" required >
+                <button name="effectuer_signalement"class="my-2 btn btn-danger my-4" type="submit">Effectuer signalement</button>
+            </form>
+        </div>
+    </div>
+    </div>
+';
     }
     public function get_annonces_utilisateur()
     {

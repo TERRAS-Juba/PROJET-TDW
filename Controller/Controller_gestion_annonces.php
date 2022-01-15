@@ -16,13 +16,25 @@ public function get_list_annonces(){
    $resultat=$model->get_list_annonces();
    return $resultat;
 }
+public function get_list_annonces_archivees(){
+   $model=new ModelGestionAnnonces();
+   $resultat=$model->get_list_annonces_archivees();
+   return $resultat;
+}
 public function afficher_list_annonces(){
-    ($this->view)->get_list_annonces();
+   ($this->view)->get_list_annonces();
+}
+public function afficher_list_annonces_archivees(){
+    ($this->view)->get_list_annonces_archivees();
  }
 
 public function supprimer_annonce($id){
     $model=new ModelGestionAnnonces();
-   $model->supprimer_annonce($id);
+    $model->supprimer_annonce($id);
+}
+public function supprimer_annonce_archivee($id){
+   $model=new ModelGestionAnnonces();
+  $model->supprimer_annonce_archivee($id);
 }
 
 public function get_list_annonces_by_critere($critere,$value){

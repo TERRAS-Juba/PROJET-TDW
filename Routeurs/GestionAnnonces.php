@@ -42,13 +42,28 @@
         echo '</div>';
         $controller->afficher_list_annonces();
         $controller->afficher_list_annonces_en_attente();
-    } else {
+        $controller->afficher_list_annonces_archivees();
+    }
+    else if(isset($_GET["remove_annonce_archivee"]) ){
+        $controller->supprimer_annonce_archivee($_GET["remove_annonce_archivee"]);
+        echo '<div class="container">';
+        echo '<div class="danger alert-danger " style="height:50px">';
+        echo '<h5 class="text-danger text-center">Suppression définitive effectuée avec succéss<h5>';
+        echo '</div>';
+        echo '</div>';
+        $controller->afficher_list_annonces();
+        $controller->afficher_list_annonces_en_attente();
+        $controller->afficher_list_annonces_archivees();
+    }
+    else {
         if (isset($_POST["btn-recherche"])) {
             $controller->afficher_list_annonces_by_critere($_POST["recherche"], $_POST["valeur"]);
             $controller->afficher_list_annonces_en_attente();
+            $controller->afficher_list_annonces_archivees();
         } else {
             $controller->afficher_list_annonces();
             $controller->afficher_list_annonces_en_attente();
+            $controller->afficher_list_annonces_archivees();
         }
     }
     ?>

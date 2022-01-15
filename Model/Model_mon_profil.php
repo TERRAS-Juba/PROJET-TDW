@@ -157,4 +157,16 @@ class ModelMonProfil
         ($this->connexion)->deconnexion();
         return $requete;
     }
+    public function ajouter_signalement($id_annonce,$id_client,$id_transporteur,$titre,$description,$emetteur){
+        $conn = ($this->connexion)->connexion();
+        $requete = $conn->prepare("INSERT INTO signalement(id_annonce,id_client,id_transporteur,titre,description,emetteur) VALUES (?,?,?,?,?,?)");
+        $requete->bindParam(1,$id_annonce);
+        $requete->bindParam(2,$id_client);
+        $requete->bindParam(3,$id_transporteur);
+        $requete->bindParam(4,$titre);
+        $requete->bindParam(5,$description);
+        $requete->bindParam(6,$emetteur);
+        $requete->execute();
+        ($this->connexion)->deconnexion();
+    }
 }

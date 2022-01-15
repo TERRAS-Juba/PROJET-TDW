@@ -79,6 +79,7 @@ class ViewGestionSignalements
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
+                        <h4>Titre: ' . $row["titre"] . '</h4>
                         <h4>Description : ' . $row["description"] . '</h4>
                     </div>
                     <div class="modal-footer">

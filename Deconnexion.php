@@ -9,5 +9,4 @@ session_start();
    }else{
       header("location:./Routeurs/ConnexionUtilisateur.php");
    }
-
 ?>

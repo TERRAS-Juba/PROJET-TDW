@@ -83,6 +83,10 @@ class ControllerMonProfil
       $model = new ModelMonProfil();
       return $model->get_certification_transporteur();
    }
+   public function ajouter_signalement($id_annonce,$id_client,$id_transporteur,$titre,$description,$emetteur){
+      $model = new ModelMonProfil();
+      $model->ajouter_signalement($id_annonce,$id_client,$id_transporteur,$titre,$description,$emetteur);
+  }
    public function afficher_annonces_utilisateur()
    {
       $this->view->get_annonces_utilisateur();
@@ -98,6 +102,10 @@ class ControllerMonProfil
    public function afficher_menu()
    {
       ($this->view)->get_menu();
+   }
+   public function afficher_effectuer_signalement($id_annonce,$id_client,$id_transporteur)
+   {
+      ($this->view)->effectuer_signalement($id_annonce,$id_client,$id_transporteur);
    }
    public function afficher_footer()
    {

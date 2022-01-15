@@ -18,6 +18,14 @@ class ModelGestionAnnonces
         ($this->connexion)->deconnexion();
         return $qtf;
     }
+    public function get_list_annonces_archivees()
+    {
+        $qtf = (($this->connexion)->connexion())->prepare("SELECT  * FROM annoncearchivee");
+        $qtf->bindParam(1, $id);
+        $qtf->execute();
+        ($this->connexion)->deconnexion();
+        return $qtf;
+    }
     public function get_list_annonces_by_critere($critere, $value)
     {
         $qtf = "SELECT  * FROM annonce where " . "$critere=" . "'$value'";
@@ -32,6 +40,13 @@ class ModelGestionAnnonces
         $qtf->execute();
         ($this->connexion)->deconnexion();
         $qtf = (($this->connexion)->connexion())->prepare("DELETE FROM annonce  WHERE id_annonce=?");
+        $qtf->bindParam(1, $id);
+        $qtf->execute();
+        ($this->connexion)->deconnexion();
+    }
+    public function supprimer_annonce_archivee($id)
+    {
+        $qtf = (($this->connexion)->connexion())->prepare("DELETE FROM annoncearchivee  WHERE id_annonce=?");
         $qtf->bindParam(1, $id);
         $qtf->execute();
         ($this->connexion)->deconnexion();
