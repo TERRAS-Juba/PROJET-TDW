@@ -4,84 +4,75 @@ require_once "../Model/Model_accueil.php";
 class ControllerAccueil
 {
    private $view;
+   private $model;
    public function __construct()
    {
       $this->view = new ViewAccueil();
+      $this->model = new ModelAccueil();
    }
    public function get_list_annonces()
    {
-      $model = new ModelAccueil();
-      $resultat = $model->get_list_annonces();
+      $resultat = $this->model->get_list_annonces();
       return $resultat;
    }
    public function get_annonces_by_emplacement($emplacement_depart, $emplcement_arrive)
    {
-      $model = new ModelAccueil();
-      $resultat = $model->get_annonces_by_emplacement($emplacement_depart, $emplcement_arrive);
+      $resultat = $this->model->get_annonces_by_emplacement($emplacement_depart, $emplcement_arrive);
       return $resultat;
    }
    public  function  get_images_annonces()
    {
-      $model = new ModelAccueil();
-      $resultat = $model->get_images_annonces();
+      $resultat = $this->model->get_images_annonces();
       return $resultat;
    }
    public function set_nb_vues($id)
    {
-      $model = new ModelAccueil();
-      $model->set_nb_vues($id);
+      $this->model->set_nb_vues($id);
    }
    public function get_type_transport()
    {
-      $model = new ModelAccueil();
-      $resultat = $model->get_type_transport();
+      $resultat = $this->model->get_type_transport();
       return $resultat;
    }
    public function get_moyen_transport()
    {
-      $model = new ModelAccueil();
-      $resultat = $model->get_moyen_transport();
+      $resultat = $this->model->get_moyen_transport();
       return $resultat;
    }
    public function get_fourchette_poid()
    {
-      $model = new ModelAccueil();
-      $resultat = $model->get_fourchette_poid();
+      $resultat = $this->model->get_fourchette_poid();
       return $resultat;
    }
    public function get_fourchette_volume()
    {
-      $model = new ModelAccueil();
-      $resultat = $model->get_fourchette_volume();
+      $resultat = $this->model->get_fourchette_volume();
       return $resultat;
    }
    public function get_wilaya()
    {
-      $model = new ModelAccueil();
-      $resultat = $model->get_wilaya();
+      $resultat = $this->model->get_wilaya();
       return $resultat;
    }
-   public function ajouter_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_client,$id_annonce,$garantie)
+   public function ajouter_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_client, $id_annonce, $garantie)
    {
-      $model = new ModelAccueil();
-      $model->ajouter_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_client,$id_annonce,$garantie);
+      $this->model->ajouter_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_client, $id_annonce, $garantie);
    }
-   public function ajouter_image($id_image,$chemin){
-      $model = new ModelAccueil();
-      $model->ajouter_image($id_image,$chemin);
-  }
-  public function ajouter_images_annonce($id_image,$id_annonce){
-   $model = new ModelAccueil();
-   $model->ajouter_images_annonce($id_image,$id_annonce);
-  }
-  public function get_garantie($type_transport){
-   $model = new ModelAccueil();
-   $garantie=$model->get_garantie($type_transport);
-   foreach($garantie as $row){
-      return $row["garantie"];
+   public function ajouter_image($id_image, $chemin)
+   {
+      $this->model->ajouter_image($id_image, $chemin);
    }
-   
-}
+   public function ajouter_images_annonce($id_image, $id_annonce)
+   {
+      $this->model->ajouter_images_annonce($id_image, $id_annonce);
+   }
+   public function get_garantie($type_transport)
+   {
+      $garantie = $this->model->get_garantie($type_transport);
+      foreach ($garantie as $row) {
+         return $row["garantie"];
+      }
+   }
    public function afficher_list_annonces()
    {
       ($this->view)->get_list_annonces();

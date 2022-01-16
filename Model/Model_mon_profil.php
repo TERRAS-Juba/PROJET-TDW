@@ -169,4 +169,12 @@ class ModelMonProfil
         $requete->execute();
         ($this->connexion)->deconnexion();
     }
+    public function noter_transporteur($id_transporteur,$note){
+        $conn = ($this->connexion)->connexion();
+        $requete = $conn->prepare("UPDATE transporteur SET note=(note+?)/2 where  id_transporteur=?");
+        $requete->bindParam(1,$note);
+        $requete->bindParam(2,$id_transporteur);
+        $requete->execute();
+        ($this->connexion)->deconnexion();
+    }
 }

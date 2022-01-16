@@ -87,6 +87,13 @@ class ControllerMonProfil
       $model = new ModelMonProfil();
       $model->ajouter_signalement($id_annonce,$id_client,$id_transporteur,$titre,$description,$emetteur);
   }
+  public function noter_transporteur($id_transporteur,$note){
+   $model = new ModelMonProfil();
+   $model->noter_transporteur($id_transporteur,$note);
+}
+public function afficher_noter_transporteur($id_transporteur){
+   $this->view->noter_transporteur($id_transporteur);
+}
    public function afficher_annonces_utilisateur()
    {
       $this->view->get_annonces_utilisateur();

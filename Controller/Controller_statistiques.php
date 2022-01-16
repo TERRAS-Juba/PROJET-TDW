@@ -4,41 +4,34 @@ require "../Model/Model_statistiques.php";
 class ControllerStatistiques
 {
     private $view;
+    private $model;
     public function __construct()
     {
         $this->view = new ViewStatistiques();
+        $this->model = new ModelStatistiques();
     }
     function __destruct()
     {
     }
     public function get_nombre_annonces()
     {
-        $model = new ModelStatistiques();
-        $resultat = $model->get_nombre_annonces();
-        return $resultat;
+        return $this->model->get_nombre_annonces();
     }
     public function get_nombre_clients()
     {
-        $model = new ModelStatistiques();
-        $resultat = $model->get_nombre_clients();
-        return $resultat;
+        return $this->model->get_nombre_clients();
     }
     public function get_nombre_transporteurs()
     {
-        $model = new ModelStatistiques();
-        $resultat = $model->get_nombre_transporteurs();
-        return $resultat;
+        return $this->model->get_nombre_transporteurs();
     }
     public function get_nombre_transporteurs_certifies()
     {
-        $model = new ModelStatistiques();
-        $resultat = $model->get_nombre_transporteurs_certifies();
-        return $resultat;
+        return $this->model->get_nombre_transporteurs_certifies();
     }
-    public function get_nombre_news(){
-        $model = new ModelStatistiques();
-        $resultat = $model->get_nombre_news();
-        return $resultat;
+    public function get_nombre_news()
+    {
+        return $this->model->get_nombre_news();
     }
     public function afficher_header()
     {

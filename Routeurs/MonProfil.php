@@ -34,7 +34,7 @@
              ";
 
         }else{
-             //$controlleur_profil->accepter_annonce($_GET["annonce_accepte"]);
+             $controlleur_profil->accepter_annonce($_GET["annonce_accepte"]);
         }
        
     }
@@ -78,6 +78,21 @@
             icon: 'success',
             title: 'Signalement effectué avec succés.',
             text: 'Votre signalement a bien été recu et sera traité dans les plus brefs delais.'
+        })
+        </script>
+         ";
+    }
+    if(isset($_GET["id_transporteur_note"])){
+        $controlleur_profil->afficher_noter_transporteur($_GET["id_transporteur_note"]);
+    }
+    if(isset($_POST["noter_transporteur"])){
+        $controlleur_profil->noter_transporteur($_POST["id_transporteur"],$_POST["note"]);
+        echo "
+        <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Note attribuée avec succés.',
+            text: 'Votre notre a bien été attribuée au client. Nous vous remercions pour votre collaboration a rendre notre site plus meilleur.'
         })
         </script>
          ";

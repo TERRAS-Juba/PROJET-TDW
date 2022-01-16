@@ -168,6 +168,9 @@ class ViewMonProfil
                         <br>
                         <input class="my-2" style="width:50%" type="text" value="' . $row["certifie"] . '" readonly>';
             }
+            echo ' 
+            <br>
+            <a class="my-2 btn btn-warning" style="width:35%" href="../Routeurs/MonProfil.php?modifier_profil='.$_SESSION["user_name"].'">Modifier mon profil</a>';
         }
         echo '
                 </div>
@@ -460,6 +463,8 @@ class ViewMonProfil
                 echo "<a href='../Routeurs/Accueil.php?id_annonce=" . $row["id_annonce"] . "'>Lire la suite ...</a>";
                 echo '<br>';
                 echo "<a class='btn btn-danger my-2'  style='width:50%;' href='../Routeurs/MonProfil.php?id_annonce_signalement=" . $row["id_annonce"] . "&id_client_signalement=" . $row["id_client"] . "&id_transporteur_signalement=" . $row["id_transporteur"] . "'>Signaler</a>";
+                echo '<br>';
+                echo "<a class='btn btn-warning my-2'  style='width:50%;' href='../Routeurs/MonProfil.php?id_annonce_note=" . $row["id_annonce"] . "&id_client_note=" . $row["id_client"] . "&id_transporteur_note=" . $row["id_transporteur"] . "'>Noter Transporteur</a>";
                 echo  '</div>';
                 echo '</div>';
                 echo '</div>';
@@ -558,6 +563,26 @@ echo '
     </div>
 ';
     }
+    public function noter_transporteur($id_transporteur){
+        echo '
+        <div class="container">
+        <div class="row">
+                <div class="col-12 my-auto bg-secondary">
+                <div class="col-12 my-auto bg-secondary">
+                   <h1 class="text-center my-2 text-light">Noter un transporteur</h1>
+                </div>
+                    <form action="../Routeurs/MonProfil.php" method="post">
+                        <label class="mt-2"><h5>ID Transporteur :</h5></label>
+                        <input class="form-control my-2" type="text" name="id_transporteur" readonly value="'.$id_transporteur.'" >
+                        <label class="mt-2"><h5>Note 0 et 100 :</h5></label>
+                        <input class="form-control my-2" type="number" name="note" min="0" max="100">
+                        <button name="noter_transporteur" class="my-2 btn btn-success my-4" type="submit">Attribuer une note</button>
+                    </form>
+                </div>
+            </div>
+            </div>
+        ';
+            }
     public function get_annonces_utilisateur()
     {
         if ($_SESSION["type_compte"] == "client") {
