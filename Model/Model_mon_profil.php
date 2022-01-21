@@ -177,4 +177,30 @@ class ModelMonProfil
         $requete->execute();
         ($this->connexion)->deconnexion();
     }
+    public function modifier_client($id_client,$nom,$prenom,$email,$adresse,$numero_telephone,$mot_de_passe){
+        $conn = ($this->connexion)->connexion();
+        $requete = $conn->prepare("UPDATE client set nom=?,prenom=?,email=?,adresse=?,numero_telephone=?,mot_de_passe=? where id_client=?");
+        $requete->bindParam(1,$nom);
+        $requete->bindParam(2,$prenom);
+        $requete->bindParam(3,$email);
+        $requete->bindParam(4,$adresse);
+        $requete->bindParam(5,$numero_telephone);
+        $requete->bindParam(6,$mot_de_passe);
+        $requete->bindParam(7,$id_client);
+        $requete->execute();
+        ($this->connexion)->deconnexion();
+    }
+    public function modifier_transporteur($id_transporteur,$nom,$prenom,$email,$adresse,$numero_telephone,$mot_de_passe){
+        $conn = ($this->connexion)->connexion();
+        $requete = $conn->prepare("UPDATE transporteur set nom=?,prenom=?,email=?,adresse=?,numero_telephone=?,mot_de_passe=? where id_transporteur=?");
+        $requete->bindParam(1,$nom);
+        $requete->bindParam(2,$prenom);
+        $requete->bindParam(3,$email);
+        $requete->bindParam(4,$adresse);
+        $requete->bindParam(5,$numero_telephone);
+        $requete->bindParam(6,$mot_de_passe);
+        $requete->bindParam(7,$id_transporteur);
+        $requete->execute();
+        ($this->connexion)->deconnexion();
+    }
 }

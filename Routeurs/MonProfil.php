@@ -66,6 +66,16 @@
     $controlleur_profil->afficher_header();
     $controlleur_profil->afficher_menu();
     $controlleur_profil->afficher_infos_utilisateur();
+    if(isset($_GET["modifier_profil"])){
+        $controlleur_profil->afficher_modifier_profil();
+    }
+    if(isset($_POST["modifier_profil"])){
+        if($_SESSION["type_compte"]==="client"){
+            $controlleur_profil->modifier_client($_SESSION["user_name"],$_POST["nom"],$_POST["prenom"],$_POST["email"],$_POST["adresse"],$_POST["numero_telephone"],$_POST["mot_de_passe"]);
+        }else{
+            $controlleur_profil->modifier_transporteur($_SESSION["user_name"],$_POST["nom"],$_POST["prenom"],$_POST["email"],$_POST["adresse"],$_POST["numero_telephone"],$_POST["mot_de_passe"]);
+        }
+    }
     $controlleur_profil->afficher_annonces_utilisateur();
     if(isset($_GET["id_annonce_signalement"])){
         $controlleur_profil->afficher_effectuer_signalement($_GET["id_annonce_signalement"],$_GET["id_client_signalement"],$_GET["id_transporteur_signalement"]);

@@ -124,5 +124,11 @@ class ModelAccueil
         ($this->connexion)->deconnexion();
         return $requete;
     }
+    public function get_list_images_diaporama(){
+        $conn = ($this->connexion)->connexion();
+        $requete=$conn->prepare("SELECT * from diaporama");
+        ($this->connexion)->deconnexion();
+        return $requete;
+    }
 }
 ?>

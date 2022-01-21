@@ -12,7 +12,7 @@ class ModelGestionTransporteurs
     }
     public function get_list_transporteurs()
     {
-        $qtf = (($this->connexion)->connexion())->prepare("SELECT  * FROM transporteur where certifie!='en attente'");
+        $qtf = (($this->connexion)->connexion())->prepare("SELECT  * FROM transporteur");
         $qtf->execute();
         ($this->connexion)->deconnexion();
         return $qtf;

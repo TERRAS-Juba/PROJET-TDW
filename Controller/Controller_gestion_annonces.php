@@ -8,7 +8,7 @@ class ControllerGestionAnnonces
    public function __construct()
    {
       $this->view = new ViewGestionAnnonces();
-      $this->model = new ControllerGestionAnnonces();
+      $this->model = new ModelGestionAnnonces();
    }
    function __destruct()
    {

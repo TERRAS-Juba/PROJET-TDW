@@ -42,11 +42,14 @@ class ViewAccueil
     }
     public function get_diaporama()
     {
+        $controller_diaporama=new ControllerAccueil();
+        $images=$controller_diaporama->get_list_images_diaporama();
         echo '
         <div class="container" id="diapo">
         <div class="row">
             <div class="col">
-                <div id="diaporama" class="carousel slide" data-bs-ride="carousel">
+                <div id="diaporama" class="carousel slide" data-bs-ride="carousel">';
+                echo '
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-bs-interval="3000">
                             <a target="_blank" href="https://www.vanvliet.com/vehicles/type/trucks?utm_source=google-ads&utm_campaign=Algeria+-+Eng+-+New&utm_agid=121190059564&utm_term=man%20truck&creative=507057294223&device=c&placement=&gclid=Cj0KCQiAuP-OBhDqARIsAD4XHpeQQmNMczbMV6Qw0qOVbLbGWLusIxCs1awJDg_6oLJyWzfDLz9iLgAaAlZUEALw_wcB"> <img src="../Assets/image1.jpg" class="d-block w-100 h-100 img-thumbnail"></a>
@@ -408,4 +411,5 @@ class ViewAccueil
         ';
         }
     }
+    
 }

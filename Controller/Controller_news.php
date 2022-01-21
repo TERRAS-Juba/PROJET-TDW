@@ -16,7 +16,7 @@ class ControllerNews
    }
    public  function  get_images_news()
    {
-      $this->model->get_images_news();
+      return $this->model->get_images_news();
    }
    public function set_nb_vues($id)
    {

@@ -54,6 +54,10 @@ class ControllerAccueil
       $resultat = $this->model->get_wilaya();
       return $resultat;
    }
+   public function get_list_images_diaporama(){
+      return $this->model->get_list_images_diaporama();
+   }
+
    public function ajouter_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_client, $id_annonce, $garantie)
    {
       $this->model->ajouter_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_client, $id_annonce, $garantie);

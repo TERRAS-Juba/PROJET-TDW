@@ -170,7 +170,7 @@ class ViewMonProfil
             }
             echo ' 
             <br>
-            <a class="my-2 btn btn-warning" style="width:35%" href="../Routeurs/MonProfil.php?modifier_profil='.$_SESSION["user_name"].'">Modifier mon profil</a>';
+            <a class="my-2 btn btn-warning" style="width:35%" href="../Routeurs/MonProfil.php?modifier_profil=' . $_SESSION["user_name"] . '">Modifier mon profil</a>';
         }
         echo '
                 </div>
@@ -345,11 +345,11 @@ class ViewMonProfil
         foreach ($images as $image) {
             $tab_images[strval($image["id_annonce"])] = $image["chemin"];
         }
-        $certifications=$controller_info->get_certification_transporteur();
+        $certifications = $controller_info->get_certification_transporteur();
         global $certifie;
-        $certifie=0;
-        foreach($certifications as $row){
-            $certifie=$row["certifie"];
+        $certifie = 0;
+        foreach ($certifications as $row) {
+            $certifie = $row["certifie"];
         }
         echo ' 
     <div class="container border border-5 my-5">
@@ -374,7 +374,7 @@ class ViewMonProfil
                 echo '<h5>ID Client  : ' . $row['id_client'] . '</h5>';
                 echo "<a href='../Routeurs/Accueil.php?id_annonce=" . $row["id_annonce"] . "'>Lire la suite ...</a>";
                 echo '<br>';
-                echo '<a class="m-2 btn btn-success" href="../Routeurs/MonProfil.php?annonce_accepte=' . $row["id_annonce"] . '&garantie='.$row["garantie"].'&certifie='.$certifie.'"  onclick=" return confirm(\'Voulez-vous vraiment accepter cette annonce ?\')">Accepter l\'offre</a>';
+                echo '<a class="m-2 btn btn-success" href="../Routeurs/MonProfil.php?annonce_accepte=' . $row["id_annonce"] . '&garantie=' . $row["garantie"] . '&certifie=' . $certifie . '"  onclick=" return confirm(\'Voulez-vous vraiment accepter cette annonce ?\')">Accepter l\'offre</a>';
                 echo '<a class="m-2 btn btn-danger"  href="../Routeurs/MonProfil.php?annonce_decline=' . $row["id_annonce"] . '" onclick=" return confirm(\'Voulez-vous vraiment decliner cette annonce ?\')">Decliner l\'offre</a>';
                 echo  '</div>';
                 echo '</div>';
@@ -537,8 +537,9 @@ class ViewMonProfil
             </div>
     </div>';
     }
-    public function effectuer_signalement($id_annonce,$id_client,$id_transporteur){
-echo '
+    public function effectuer_signalement($id_annonce, $id_client, $id_transporteur)
+    {
+        echo '
 <div class="container">
 <div class="row">
         <div class="col-12 my-auto bg-secondary">
@@ -547,11 +548,11 @@ echo '
         </div>
             <form action="../Routeurs/MonProfil.php" method="post">
             <label class="mt-2"><h5>ID Annonce :</h5></label>
-                <input class="form-control my-2" type="text" name="id_annonce" readonly value="'.$id_annonce.'" >
+                <input class="form-control my-2" type="text" name="id_annonce" readonly value="' . $id_annonce . '" >
                 <label class="mt-2"><h5>ID Client :</h5></label>
-                <input class="form-control my-2" type="text" name="id_client" readonly value="'.$id_client.'" >
+                <input class="form-control my-2" type="text" name="id_client" readonly value="' . $id_client . '" >
                 <label class="mt-2"><h5>ID Transporteur :</h5></label>
-                <input class="form-control my-2" type="text" name="id_transporteur" readonly value="'.$id_transporteur.'" >
+                <input class="form-control my-2" type="text" name="id_transporteur" readonly value="' . $id_transporteur . '" >
                 <label class="mt-2"><h5>Titre :</h5></label>
                 <input class="form-control my-2" type="text" name="titre" placeholder="Entrez un titre" required >
                 <label class="mt-2"><h5>Description :</h5></label>
@@ -563,7 +564,8 @@ echo '
     </div>
 ';
     }
-    public function noter_transporteur($id_transporteur){
+    public function noter_transporteur($id_transporteur)
+    {
         echo '
         <div class="container">
         <div class="row">
@@ -573,7 +575,7 @@ echo '
                 </div>
                     <form action="../Routeurs/MonProfil.php" method="post">
                         <label class="mt-2"><h5>ID Transporteur :</h5></label>
-                        <input class="form-control my-2" type="text" name="id_transporteur" readonly value="'.$id_transporteur.'" >
+                        <input class="form-control my-2" type="text" name="id_transporteur" readonly value="' . $id_transporteur . '" >
                         <label class="mt-2"><h5>Note 0 et 100 :</h5></label>
                         <input class="form-control my-2" type="number" name="note" min="0" max="100">
                         <button name="noter_transporteur" class="my-2 btn btn-success my-4" type="submit">Attribuer une note</button>
@@ -582,7 +584,59 @@ echo '
             </div>
             </div>
         ';
+    }
+    public function modifier_profil()
+    {
+        $controller_profil = new ControllerMonProfil();
+        $infos = $controller_profil->get_infos_utilisateur();
+        foreach ($infos as $info) {
+            if (isset($_SESSION["user_name"])) {
+                echo '
+        <div class="container-fluid border bg-white text-dark my-3">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">
+                    Modifier mon profil
+                </h1>
+            </div>
+        </div>
+        <div class="container-fluid my-2 p-2">
+        <div class="row">
+            <div class="col-sm-10 m-auto">
+                <form class="border border-5 p-2" action="../Routeurs/MonProfil.php" method="post">
+                    <label class="mt-2">
+                        <h4>Nom :</h4>
+                    </label>
+                    <input class="form-control my-2" type="text" name="nom" required placeholder="Entrez un nouveau nom" value="'.$info["nom"].'">
+                    <label class="mt-2">
+                        <h4>Prenom :</h4>
+                    </label>
+                    <input class="form-control my-2" type="text" name="prenom" required placeholder="Entrez un nouveau prenom" value="'.$info["prenom"].'">
+                    <label>
+                    <h4>Email :</h4>
+                    </label>
+                    <input class="form-control mt-2" type="email" name="email" required placeholder="Entrez une nouvelle adresse email" value="'.$info["email"].'">
+                    <label>
+                    <h4>Adresse :</h4>
+                    </label>
+                    <input class="form-control mt-2" type="text" name="adresse" required placeholder="Entrez une nouvelle adresse " value="'.$info["adresse"].'"> 
+                    <label>
+                    <h4>Numero de telephone :</h4>
+                    </label>
+                    <input class="form-control mt-2" type="tel" name="numero_telephone" required pattern="[0-9]{10}" name="numero_telephone" required placeholder="Entrez un nouveau numero de telephone" value="'.$info["numero_telephone"].'"> 
+                    <label>
+                    <h4>Mot de passe :</h4>
+                    </label>
+                    <input class="form-control mt-2" type="password" name="mot_de_passe" required placeholder="Entrez un nouveau mot de passe"> 
+                    <button style="width:50%" name="modifier_profil" class="rounded btn btn-lg btn-block btn-success my-5 pt-2" type="submit">Modifier profil</button>
+                   </form>
+                </div>
+            </div>
+        </div>
+        ';
             }
+        }
+    }
     public function get_annonces_utilisateur()
     {
         if ($_SESSION["type_compte"] == "client") {
