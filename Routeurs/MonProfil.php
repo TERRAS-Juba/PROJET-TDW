@@ -65,6 +65,21 @@
     }
     $controlleur_profil->afficher_header();
     $controlleur_profil->afficher_menu();
+    if(isset($_GET["modifier_annonce"])){
+        $controlleur_profil->afficher_modifier_annonce($_GET["modifier_annonce"]);
+    }
+    if(isset($_POST["modifier_annonce"])){
+        $controlleur_profil->modifier_annonce($_POST["titre"],$_POST["description"],$_POST["emplacement_depart"],$_POST["emplacement_arrive"],$_POST["type_transport"],$_POST["moyen_transport"],$_POST["fourchette_poid"],$_POST["fourchette_volume"],$_POST["id_annonce"]);
+        echo "
+        <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Changements effectués avec succés.',
+            text: 'Vos changements ont été enregistrés.',
+        })
+        </script>
+         ";
+    }
     $controlleur_profil->afficher_infos_utilisateur();
     if(isset($_GET["modifier_profil"])){
         $controlleur_profil->afficher_modifier_profil();
@@ -72,8 +87,26 @@
     if(isset($_POST["modifier_profil"])){
         if($_SESSION["type_compte"]==="client"){
             $controlleur_profil->modifier_client($_SESSION["user_name"],$_POST["nom"],$_POST["prenom"],$_POST["email"],$_POST["adresse"],$_POST["numero_telephone"],$_POST["mot_de_passe"]);
+            echo "
+            <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Changements effectués avec succés.',
+                text: 'Vos changements ont été enregistrés.',
+            })
+            </script>
+             ";
         }else{
             $controlleur_profil->modifier_transporteur($_SESSION["user_name"],$_POST["nom"],$_POST["prenom"],$_POST["email"],$_POST["adresse"],$_POST["numero_telephone"],$_POST["mot_de_passe"]);
+            echo "
+            <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Changements effectués avec succés.',
+                text: 'Vos changements ont été enregistrés.',
+            })
+            </script>
+             ";
         }
     }
     $controlleur_profil->afficher_annonces_utilisateur();

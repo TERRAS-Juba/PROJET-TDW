@@ -637,6 +637,102 @@ class ViewMonProfil
             }
         }
     }
+    public function modifier_annonce($id_annonce)
+    {
+        require_once "../Controller/Controller_accueil.php";
+        $controller=new ControllerMonProfil();
+        $controller_accueil = new ControllerAccueil();
+        $infos=$controller->get_annonce($id_annonce);
+        foreach($infos as $info){
+        if (isset($_SESSION["user_name"])) {
+            echo '
+        <div class="container-fluid border bg-white text-dark my-3">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">
+                    Modifier une annonce.
+                </h1>
+            </div>
+        </div>';
+            echo '
+        <div class="container-fluid my-2 p-2">
+        <div class="row">
+            <div class="col-sm-10 m-auto">
+                <form class="border border-5 p-2" action="../Routeurs/MonProfil.php" method="post">
+                <input class="form-control my-2 invisible" type="text" name="id_annonce"  value="' .$info["id_annonce"]. '">
+                    <label class="mt-2">
+                        <h4>Titre :</h4>
+                    </label>
+                    <input class="form-control my-2" type="text" name="titre" required placeholder="Entrez un titre"  value="' .$info["titre"]. '">
+                    <h4>Description :</h4>
+                    </label>
+                    <textarea class="form-control mt-2" type="text" name="description" required placeholder="Entrez une description" rows="5" value="' .$info["description"]. '"></textarea>';
+            echo '<label class="mt-2">
+                     <h4>Point de depart :</h4>
+                </label>
+                <select class="mt-2 form-select" name="emplacement_depart">';
+            $resultat = $controller_accueil->get_wilaya();
+            foreach ($resultat as $row) {
+                echo '<option value="' . $row["num_wilaya"] . '">' . $row["libele"] . '</option>';
+            }
+            echo '</select>';
+            echo '<label class="mt-2">
+                <h4>Point d\'arrivée :</h4>
+              </label>
+             <select class="mt-2 form-select" name="emplacement_arrive">';
+            $resultat = $controller_accueil->get_wilaya();
+            foreach ($resultat as $row) {
+                echo '<option value="' . $row["num_wilaya"] . '">' . $row["libele"] . '</option>';
+            }
+            echo '</select>';
+            $resultat = $controller_accueil->get_type_transport();
+            echo '  <label class="mt-2">
+                     <h4>Type de transport :</h4>
+                </label>
+                <select class="mt-2 form-select" name="type_transport">';
+            foreach ($resultat as $row) {
+                echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
+            }
+            echo '</select>';
+            $resultat = $controller_accueil->get_moyen_transport();
+            echo '  <label class="mt-2">
+                     <h4>Moyen de transport :</h4>
+                </label>
+                <select class="mt-2 form-select" name="moyen_transport">';
+            foreach ($resultat as $row) {
+                echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
+            }
+            echo '</select>';
+            $resultat = $controller_accueil->get_fourchette_poid();
+            echo '  <label class="mt-2">
+                     <h4>Fourchette de poid :</h4>
+                </label>
+                <select class="mt-2 form-select" name="fourchette_poid">';
+            foreach ($resultat as $row) {
+                echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
+            }
+            echo '</select>';
+            $resultat = $controller_accueil->get_fourchette_volume();
+            echo '  <label class="mt-2">
+                     <h4>Fourchette de volume :</h4>
+                </label>
+                <select class="mt-2 form-select" name="fourchette_volume">';
+            foreach ($resultat as $row) {
+                echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
+            }
+            echo '</select>';
+            echo ' 
+        <div class="d-flex justify-content-center text-light">
+        <button style="width:50%" name="modifier_annonce" class="rounded btn btn-lg btn-block btn-success my-5 pt-2" type="submit">Modifier annonce</button>
+      </div>
+                   </form>
+                </div>
+            </div>
+        </div>
+        ';
+        }
+    }
+}
     public function get_annonces_utilisateur()
     {
         if ($_SESSION["type_compte"] == "client") {

@@ -203,4 +203,28 @@ class ModelMonProfil
         $requete->execute();
         ($this->connexion)->deconnexion();
     }
+    public function get_annonce($id_annonce)
+    {
+        $conn = ($this->connexion)->connexion();
+        $requete = $conn->prepare("SELECT * from annonce WHERE id_annonce=?");
+        $requete->bindParam(1, $id_annonce);
+        $requete->execute();
+        ($this->connexion)->deconnexion();
+        return $requete;
+    }
+    public function modifier_annonce($titre,$description,$emplacement_depart,$emplacement_arrive,$type_transport,$moyen_transport,$fourchette_poid,$fourchette_volume,$id_annonce){
+        $conn = ($this->connexion)->connexion();
+        $qtf = $conn->prepare("UPDATE annonce set titre=?,description=?,emplacement_depart=?,emplacement_arrive=?,type_transport=?,moyen_transport=?,fourchette_poid=?,fourchette_volume=? where id_annonce=?");
+        $qtf->bindParam(1,$titre);
+        $qtf->bindParam(2,$description);
+        $qtf->bindParam(3,$emplacement_depart);
+        $qtf->bindParam(4,$emplacement_arrive);
+        $qtf->bindParam(5,$type_transport);
+        $qtf->bindParam(6,$moyen_transport);
+        $qtf->bindParam(7,$fourchette_poid);
+        $qtf->bindParam(8,$fourchette_volume);
+        $qtf->bindParam(9,$id_annonce);
+        $qtf->execute();
+        ($this->connexion)->deconnexion();
+    }
 }
