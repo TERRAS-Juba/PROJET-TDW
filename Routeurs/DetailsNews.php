@@ -14,7 +14,7 @@
 <body>
   <?php
   session_start();
-  require "../Controller/Controlleur_details_news.php";
+  require_once  "../Controller/Controlleur_details_news.php";
   $controlleur_details_news = new ControllerDetailsNews();
   $controlleur_details_news->afficher_header();
   $controlleur_details_news->afficher_menu();

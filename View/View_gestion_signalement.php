@@ -32,7 +32,7 @@ class ViewGestionSignalements
     {
         $controller_signalements = new ControllerGestionSignalements();
         $resultat = $controller_signalements->get_list_signalements();
-        echo '<div class="container">
+        echo '<div class="container my-5 border border-2">
         <div class="row">
             <div class="col my-auto text-center">
                 <h1>Gestion des signalements</h1>
@@ -40,7 +40,7 @@ class ViewGestionSignalements
         </div>
         <div class="row">
             <div class="table-responsive">
-                <table class="table table-striped table-hover border table-bordered">
+                <table id="signalements" class="table table-striped table-hover border table-bordered">
                     <thead>
                         <tr>
                             <th>ID Signalements</th>

@@ -1,6 +1,6 @@
 <?php
-require "../View/View_gestion_contenu.php";
-require "../Model/Model_gestion_contenu.php";
+require_once  "../View/View_gestion_contenu.php";
+require_once  "../Model/Model_gestion_contenu.php";
 class ControllerGestionContenu
 {
     private $view;

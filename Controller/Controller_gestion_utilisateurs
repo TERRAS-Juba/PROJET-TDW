@@ -1,5 +1,5 @@
 <?php
-require "../View/View_GestionsUtilisateurs.php";
+require_once  "../View/View_GestionsUtilisateurs.php";
 class ControllerGestionUtilisateurs{
     private $view;
     private $model;

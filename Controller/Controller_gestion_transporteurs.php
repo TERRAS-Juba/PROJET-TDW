@@ -1,6 +1,6 @@
 <?php
-require "../View/View_gestion_transporteurs.php";
-require "../Model/Model_gestion_transporteurs.php";
+require_once  "../View/View_gestion_transporteurs.php";
+require_once  "../Model/Model_gestion_transporteurs.php";
 class ControllerGestionTransporteurs
 {
    private $view;
@@ -64,10 +64,6 @@ class ControllerGestionTransporteurs
    public function afficher_list_transporteurs()
    {
       ($this->view)->get_list_transporteurs();
-   }
-   public function afficher_list_transporteurs_by_critere($critere, $value)
-   {
-      ($this->view)->get_list_transporteurs_by_critere($critere, $value);
    }
    public function afficher_contenu()
    {

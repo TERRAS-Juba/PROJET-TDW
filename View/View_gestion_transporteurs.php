@@ -36,7 +36,7 @@ class ViewGestionTransporteurs
     {
         $controller_clients = new ControllerGestionTransporteurs();
         $resultat = $controller_clients->get_list_transporteurs();
-        echo '<div class="container">
+        echo '<div class="container my-5 border border-2">
 <div class="row">
     <div class="col my-auto text-center">
         <h1>Gestion des Transporteurs</h1>
@@ -44,7 +44,7 @@ class ViewGestionTransporteurs
 </div>
 <div class="row">
 <div class="table-responsive">
-        <table class="table table-striped table-hover border">
+        <table id="transporteurs" class="table table-striped table-hover border border-2 table-bordered">
             <thead>
                 <tr>
                     <th>ID Client</th>
@@ -77,44 +77,6 @@ class ViewGestionTransporteurs
         </table>
     </div>
 </div>
-</div>
-<div class="container">
-<div class="row">
-    <div class="col my-auto text-center">
-        <h1>Filtrage de la recherche</h1>
-    </div>
-</div>
-<div class="container bg-secondary my-5">
-<div class="row">
-    <form action="../Routeurs/GestionTransporteurs.php" method="post">
-    <div class="col-sm-6 my-2">
-            <label for="" class="my-2">
-                <h5 class="text-light">Filtrage des utilisateur</h5>
-            </label>
-            <select class="form-control" name="recherche" required>
-                <option value="nom">nom</option>
-                <option value="id_transporteur">ID Transporteur</option>
-                <option value="prenom">prenom</option>
-                <option value="email">email</option>
-                <option value="adresse">adresse</option>
-            </select>
-    </div>
-    <div class="col-sm-6 my-2">
-            <label for="" class="my-2">
-                <h5 class="text-light">Saisisez une valeur</h5>
-            </label>
-            <input type="text" class="form-control my-2" name="valeur" required placeholder="Saisisez une valeur">
-    </div>
-    <div class="col-sm-6 my-2">
-        <label for="" class="my-2">
-            <h5 class="text-light">Filtrer la recherche</h5>
-        </label>
-        <div class="form-group">
-            <button class="btn btn-primary" type="submit" name="btn-recherche">Filtrer la recherche</button>
-        </div>
-    </div>
-    </form>
-</div>
 </div>';
     }
     public function modifier_transporteur($id)
@@ -122,7 +84,7 @@ class ViewGestionTransporteurs
         $controller = new ControllerGestionTransporteurs();
         $transporteurs = $controller->get_transporteur($id);
         foreach ($transporteurs as $transporteur) {
-            echo '<div class="container my-4">
+            echo '<div class="container my-5 border border-2">
     <div class="row">
         <div class="col my-auto text-center">
             <h1>Modification d\'un utilisateur</h1>
@@ -134,13 +96,13 @@ class ViewGestionTransporteurs
                 <label class="mt-2"><h5>Mot de passe :</h5></label>
                 <input class="form-control my-2" type="text" name="mdp" required placeholder="Entrez le nouveau mot de passe">
                 <label class="mt-2"><h5>Nom :</h5></label>
-                <input class="form-control my-2" type="text" name="nom" required placeholder="Entrez le nouveau nom" value="'.$transporteur['nom'].'">
+                <input class="form-control my-2" type="text" name="nom" required placeholder="Entrez le nouveau nom" value="' . $transporteur['nom'] . '">
                 <label class="mt-2"><h5>Prénom :</h5></label>
-                <input class="form-control my-2" type="text" name="prenom" required placeholder="Entrez le nouveau prenom" value="'.$transporteur['prenom'].'">
+                <input class="form-control my-2" type="text" name="prenom" required placeholder="Entrez le nouveau prenom" value="' . $transporteur['prenom'] . '">
                 <label class="mt-2"><h5>Adresse :</h5></label>
-                <input class="form-control my-2" type="text" name="adresse" required placeholder="Entrez la nouvelle adresse" value="'.$transporteur['adresse'].'">
+                <input class="form-control my-2" type="text" name="adresse" required placeholder="Entrez la nouvelle adresse" value="' . $transporteur['adresse'] . '">
                 <label class="mt-2"><h5>email : </h5></label>
-                <input class="form-control my-2" type="text" name="email" required placeholder="Entrez la nouvelle adresse email" value="'.$transporteur['email'].'">
+                <input class="form-control my-2" type="text" name="email" required placeholder="Entrez la nouvelle adresse email" value="' . $transporteur['email'] . '">
                 <button name="enregistrer" class="btn btn-warning my-4" type="submit">Enregistrer les modifications</button>
             </form>
         </div>
@@ -148,95 +110,12 @@ class ViewGestionTransporteurs
 </div>';
         }
     }
-    public function get_list_transporteurs_by_critere($critere, $value)
-    {
-        $controller_clients = new ControllerGestionTransporteurs();
-        $resultat = $controller_clients->get_list_transporteurs_by_critere($critere, $value);
-
-        echo '<div class="container">
-<div class="row">
-    <div class="col my-auto text-center">
-        <h1>Gestion des transporteurs</h1>
-    </div>
-</div>
-<div class="row">
-<div class="table-responsive">
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>ID Client</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Adresse</th>
-                    <th>Email</th>
-                    <th>Certifié</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>';
-        foreach ($resultat as $row) {
-            echo '<tr>
-                <td scope="row">' . $row["id_transporteur"] . '</td>
-                <td>' . $row["nom"] . '</td>
-                <td>' . $row["prenom"] . '</td>
-                <td>' . $row["adresse"] . '</td>
-                <td>' . $row["email"] . '</td>
-                <td>' . $row["certifie"] . '</td>
-                <td>
-                <a style="width:200px" class="my-1 btn btn-warning "href="../Routeurs/GestionTransporteurs.php?edit=' . $row["id_transporteur"] . '" onclick="return confirm(\'Voulez-vous vraiment modifier ce transporteur ?\')">Modifier</a>
-                <a style="width:200px" class="my-1 btn btn-danger "href="../Routeurs/GestionTransporteurs.php?remove=' . $row["id_transporteur"] . '" onclick="return confirm(\'Voulez-vous vraiment supprimer ce transporteur ?\')">Supprimer</a>
-                </td>
-            </tr>';
-        }
-        echo '</tbody>
-        </table>
-    </div>
-</div>
-<div class="container">
-<div class="row">
-    <div class="col my-auto text-center">
-        <h1>Filtrage de la recherche</h1>
-    </div>
-</div>
-  <div class="container bg-secondary my-5">
-        <div class="row">
-            <form action="../Routeurs/GestionTransporteurs.php" method="post">
-            <div class="col-sm-6 my-2">
-                    <label for="" class="my-2">
-                        <h5 class="text-light">Filtrage des utilisateur</h5>
-                    </label>
-                    <select class="form-control" name="recherche" required>
-                        <option value="nom">nom</option>
-                        <option value="id_transporter">ID Transporteur</option>
-                        <option value="prenom">prenom</option>
-                        <option value="email">email</option>
-                        <option value="adresse">adresse</option>
-                    </select>
-            </div>
-            <div class="col-sm-6 my-2">
-                    <label for="" class="my-2">
-                        <h5 class="text-light">Saisisez une valeur</h5>
-                    </label>
-                    <input type="text" class="form-control my-2" name="valeur" required placeholder="Saisisez une valeur">
-            </div>
-            <div class="col-sm-6 my-2">
-                <label for="" class="my-2">
-                    <h5 class="text-light">Filtrer la recherche</h5>
-                </label>
-                <div class="form-group">
-                    <button class="btn btn-primary" type="submit" name="btn-recherche">Filtrer la recherche</button>
-                </div>
-            </div>
-            </form>
-        </div>
-    </div>';
-    }
     public function get_list_transporteurs_non_certifies()
     {
         $controller_clients = new ControllerGestionTransporteurs();
         $resultat = $controller_clients->get_list_transporteurs_non_certifies();
         echo '
-<div class="container">
+<div class="container my-5 border border-2">
 <div class="row">
     <div class="col my-auto text-center">
         <h1>Gestion des Transporteurs non certifiés</h1>
@@ -244,7 +123,7 @@ class ViewGestionTransporteurs
 </div>
 <div class="row">
 <div class="table-responsive">
-        <table class="table table-striped table-hover border">
+        <table id="demandes_certifications" class="table table-striped table-hove  border border-2 table-bordered">
             <thead>
                 <tr>
                     <th>ID Client</th>

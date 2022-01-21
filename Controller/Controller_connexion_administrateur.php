@@ -1,6 +1,6 @@
 <?php
-require "../View/View_connexion_administrateur.php";
-require "../Model/Model_connexion_administrateur.php";
+require_once  "../View/View_connexion_administrateur.php";
+require_once  "../Model/Model_connexion_administrateur.php";
 class ControllerConnexionAdministrateur
 {
     private $view;

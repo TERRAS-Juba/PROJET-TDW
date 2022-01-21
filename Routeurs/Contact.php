@@ -14,7 +14,7 @@
 <body>
     <?php
      session_start();
-    require "../Controller/Controller_contact.php";
+     require_once  "../Controller/Controller_contact.php";
     $controlleur_presentation = new ControllerContact();
     $controlleur_presentation->afficher_header();
     $controlleur_presentation->afficher_menu();

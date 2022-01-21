@@ -1,6 +1,6 @@
 <?php
-require "../View/View_gestion_signalement.php";
-require "../Model/Model_gestion_signalements.php";
+require_once  "../View/View_gestion_signalement.php";
+require_once  "../Model/Model_gestion_signalements.php";
 class ControllerGestionSignalements
 {
    private $view;

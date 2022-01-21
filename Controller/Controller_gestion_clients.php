@@ -1,6 +1,6 @@
 <?php
-require "../View/View_gestion_clients.php";
-require "../Model/Model_gestion_clients.php";
+require_once  "../View/View_gestion_clients.php";
+require_once  "../Model/Model_gestion_clients.php";
 class ControllerGestionClients
 {
    private $view;
@@ -25,10 +25,6 @@ class ControllerGestionClients
    {
       $this->model->enregistrer_modifcations_client($id, $nom, $prenom, $mdp, $email, $adresse);
    }
-   public function get_list_clients_by_critere($critere, $value)
-   {
-      return  $this->model->get_list_clients_by_critere($critere, $value);
-   }
    public function get_client($id)
    {
       return $this->model->get_client($id);
@@ -40,10 +36,6 @@ class ControllerGestionClients
    public function afficher_list_clients()
    {
       ($this->view)->get_list_clients();
-   }
-   public function afficher_list_clients_by_critere($critere, $value)
-   {
-      ($this->view)->get_list_clients_by_critere($critere, $value);
    }
    public function afficher_contenu()
    {

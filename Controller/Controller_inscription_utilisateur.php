@@ -1,6 +1,6 @@
 <?php
-require "../View/View_inscription_utilisateur.php";
-require "../Model/Model_inscription_utilisateur.php";
+require_once "../View/View_inscription_utilisateur.php";
+require_once  "../Model/Model_inscription_utilisateur.php";
 class ControllerInscriptionUtilisateur
 {
     private $view;

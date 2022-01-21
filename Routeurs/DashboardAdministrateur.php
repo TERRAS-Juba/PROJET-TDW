@@ -13,7 +13,7 @@
 
 <body>
     <?php
-    require "../Controller/Controller_dashboard_administrateur.php";
+    require_once  "../Controller/Controller_dashboard_administrateur.php";
     $controller_administrateur=new ControllerDashboardAdministrateur();
     $controller_administrateur->afficher_contenu();
     ?>

@@ -1,6 +1,6 @@
 <?php
-require "../View/View_statistiques.php";
-require "../Model/Model_statistiques.php";
+require_once  "../View/View_statistiques.php";
+require_once  "../Model/Model_statistiques.php";
 class ControllerStatistiques
 {
     private $view;

@@ -1,6 +1,6 @@
 <?php
-require "../View/View_gestion_annonces.php";
-require "../Model/Model_gestion_annonces.php";
+require_once "../View/View_gestion_annonces.php";
+require_once  "../Model/Model_gestion_annonces.php";
 class ControllerGestionAnnonces
 {
    private $view;
@@ -45,11 +45,6 @@ class ControllerGestionAnnonces
    {
       return $this->model->get_list_annonces_by_critere($critere, $value);
    }
-   public function afficher_list_annonces_by_critere($critere, $value)
-   {
-      ($this->view)->get_list_annonces_by_critere($critere, $value);
-   }
-
    public function get_list_annonces_en_attente()
    {
       return $this->model->get_list_annonces_en_attente();

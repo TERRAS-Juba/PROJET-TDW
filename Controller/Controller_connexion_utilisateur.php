@@ -1,6 +1,6 @@
 <?php
-require "../View/View_connexion_utilisateur.php";
-require "../Model/Model_connexion_utilisateur.php";
+require_once  "../View/View_connexion_utilisateur.php";
+require_once "../Model/Model_connexion_utilisateur.php";
 class ControllerConnexionUtilisateur
 {
     private $view;

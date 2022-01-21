@@ -26,7 +26,7 @@ class ViewGestionContenu
     {
         $controller_contenu = new ControllerGestionContenu();
         $resultat = $controller_contenu->get_list_type_transport();
-        echo '<div class="container border border-2 my-2">
+        echo '<div class="container my-5 border border-2">
 <div class="row">
     <div class="col my-auto text-center">
         <h1>Gestion des types de transport</h1>
@@ -34,7 +34,7 @@ class ViewGestionContenu
 </div>
 <div class="row">
     <div class="table-responsive">
-        <table class="table table-striped table-hover border table-bordered">
+        <table id="types_transports" class="table table-striped table-hover border table-bordered">
             <thead>
                 <tr>
                     <th>ID type transport</th>
@@ -75,7 +75,7 @@ class ViewGestionContenu
     {
         $controller_contenu = new ControllerGestionContenu();
         $resultat = $controller_contenu->get_list_moyen_transport();
-        echo '<div class="container border border-2 my-2">
+        echo '<div class="container my-5 border border-2">
 <div class="row">
     <div class="col my-auto text-center">
         <h1>Gestion des moyens de transport</h1>
@@ -83,7 +83,7 @@ class ViewGestionContenu
 </div>
 <div class="row">
     <div class="table-responsive">
-        <table class="table table-striped table-hover border table-bordered">
+        <table id="moyens_transports" class="table table-striped table-hover border table-bordered">
             <thead>
                 <tr>
                     <th>ID moyen transport</th>
@@ -121,9 +121,9 @@ class ViewGestionContenu
     {
         $controller_contenu = new ControllerGestionContenu();
         $resultat = $controller_contenu->get_list_fourchette_poid();
-        echo '<div class="container border border-2 my-2">
+        echo '<div class="container border my-5 border border-2">
 <div class="row">
-    <div class="col my-auto text-center">
+    <div id="fourchettes_poid" class="col my-auto text-center">
         <h1>Gestion des fourchette de poid</h1>
     </div>
 </div>
@@ -167,14 +167,14 @@ class ViewGestionContenu
     {
         $controller_contenu = new ControllerGestionContenu();
         $resultat = $controller_contenu->get_list_fourchette_volume();
-        echo '<div class="container border border-2 my-2">
+        echo '<div class="container my-5 border border-2">
 <div class="row">
     <div class="col my-auto text-center">
         <h1>Gestion des fourchette de volume</h1>
     </div>
 </div>
 <div class="row">
-    <div class="table-responsive">
+    <div id="fourchettes_volume" class="table-responsive">
         <table class="table table-striped table-hover border table-bordered">
             <thead>
                 <tr>

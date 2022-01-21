@@ -26,7 +26,7 @@ class ViewGestionAnnonces
     {
         $controller_annonces = new ControllerGestionAnnonces();
         $resultat = $controller_annonces->get_list_annonces();
-        echo '<div class="container">
+        echo '<div class="container my-5 border border-2">
 <div class="row">
     <div class="col my-auto text-center">
         <h1>Gestion des annonces</h1>
@@ -34,7 +34,7 @@ class ViewGestionAnnonces
 </div>
 <div class="row">
     <div class="table-responsive">
-        <table class="table table-striped table-hover border table-bordered">
+        <table id="annonces" class="table table-striped table-hover border table-bordered">
             <thead>
                 <tr>
                     <th>ID Annonce</th>
@@ -66,135 +66,13 @@ class ViewGestionAnnonces
         </table>
     </div>
 </div>
-</div>
-<div class="container">
-<div class="row">
-    <div class="col my-auto text-center">
-        <h1>Filtrage de la recherche</h1>
-    </div>
-</div>
-<div class="container bg-secondary my-5">
-<div class="row">
-    <form action="../Routeurs/GestionAnnonces.php" method="post">
-    <div class="col-sm-6 my-2">
-            <label for="" class="my-2">
-                <h5 class="text-light">Filtrage des utilisateur</h5>
-            </label>
-            <select class="form-control" name="recherche" required>
-                <option value="statut">Statut</option>
-                <option value="id_annonce">ID Annonce</option>
-                <option value="id_client">ID Client</option>
-                <option value="id_transporteur">ID Transporteur</option>
-            </select>
-    </div>
-    <div class="col-sm-6 my-2">
-            <label for="" class="my-2">
-                <h5 class="text-light">Saisisez une valeur</h5>
-            </label>
-            <input type="text" class="form-control my-2" name="valeur" required placeholder="Saisisez une valeur">
-    </div>
-    <div class="col-sm-6 my-2">
-        <label for="" class="my-2">
-            <h5 class="text-light">Filtrer la recherche</h5>
-        </label>
-        <div class="form-group">
-            <button class="btn btn-primary" type="submit" name="btn-recherche">Filtrer la recherche</button>
-        </div>
-    </div>
-    </form>
-</div>
 </div>';
     }
-    public function get_list_annonces_by_critere($critere, $value)
-    {
-        $controller_annonces = new ControllerGestionAnnonces();
-        $resultat = $controller_annonces->get_list_annonces_by_critere($critere, $value);
-
-        echo '<div class="container">
-        <div class="row">
-            <div class="col my-auto text-center">
-                <h1>Gestion des annonces</h1>
-            </div>
-        </div>
-        <div class="row">
-        <div class="table-responsive">
-                <table class="table table-striped table-hover border">
-                    <thead>
-                        <tr>
-                            <th>ID Annonce</th>
-                            <th>Titre</th>
-                            <th>Emplacement de départ</th>
-                            <th>Emplacement arrive</th>
-                            <th>Garantie</th>
-                            <th>Type de transport</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>';
-        foreach ($resultat as $row) {
-            echo '<tr>
-                        <td scope="row">' . $row["id_annonce"] . '</td>
-                        <td>' . $row["titre"] . '</td>
-                        <td>' . $row["emplacement_depart"] . '</td>
-                        <td>' . $row["emplacement_arrive"] . '</td>
-                        <td>' . $row["garantie"] . '</td>
-                        <td>' . $row["type_transport"] . '</td>
-                        <td>
-                        <a  style="width:200px" class="btn btn-success my-1 " href="../Routeurs/DetailsAnnonce.php?detail=' . $row["id_annonce"] . '"  onclick="return confirm(\'Voulez-vous vraiment afficher les details de cette annonce ?\')">Afficher details</a>
-                        <br>
-                        <a  style="width:200px" class="btn btn-danger my-1" href="../Routeurs/GestionAnnonces.php?remove=' . $row["id_annonce"] . '" onclick="return confirm(\'Voulez-vous vraiment supprimer cette annonce ?\')">Supprimer</a>
-                        <br>
-                    </tr>';
-        }
-        echo '</tbody>
-                </table>
-            </div>
-        </div>
-        </div>
-        <div class="container">
-        <div class="row">
-            <div class="col my-auto text-center">
-                <h1>Filtrage de la recherche</h1>
-            </div>
-        </div>
-        <div class="container bg-secondary my-5">
-        <div class="row">
-            <form action="../Routeurs/GestionAnnonces.php" method="post">
-            <div class="col-sm-6 my-2">
-                    <label for="" class="my-2">
-                        <h5 class="text-light">Filtrage des utilisateur</h5>
-                    </label>
-                    <select class="form-control" name="recherche" required>
-                        <option value="statut">Statut</option>
-                        <option value="id_annonce">ID Annonce</option>
-                        <option value="id_client">ID Client</option>
-                        <option value="id_transporteur">ID Transporteur</option>
-                    </select>
-            </div>
-            <div class="col-sm-6 my-2">
-                    <label for="" class="my-2">
-                        <h5 class="text-light">Saisisez une valeur</h5>
-                    </label>
-                    <input type="text" class="form-control my-2" name="valeur" required placeholder="Saisisez une valeur">
-            </div>
-            <div class="col-sm-6 my-2">
-                <label for="" class="my-2">
-                    <h5 class="text-light">Filtrer la recherche</h5>
-                </label>
-                <div class="form-group">
-                    <button class="btn btn-primary" type="submit" name="btn-recherche">Filtrer la recherche</button>
-                </div>
-            </div>
-            </form>
-        </div>
-        </div>';
-    }
-
     public function get_list_annonces_en_attente()
     {
         $controller_annonces = new ControllerGestionAnnonces();
         $resultat = $controller_annonces->get_list_annonces_en_attente();
-        echo '<div class="container">
+        echo '<div class="container my-5 border border-2">
 <div class="row">
     <div class="col my-auto text-center">
         <h1>Gestion des annonces non validées</h1>
@@ -202,7 +80,7 @@ class ViewGestionAnnonces
 </div>
 <div class="row">
 <div class="table-responsive">
-        <table class="table table-striped table-hover border">
+        <table id="annonces_en_attente" class="table table-striped table-hover border table-bordered">
             <thead>
                 <tr>
                     <th>ID Annonce</th>
@@ -262,7 +140,7 @@ class ViewGestionAnnonces
      {
          $controller_annonces = new ControllerGestionAnnonces();
          $resultat = $controller_annonces->get_list_annonces_archivees();
-         echo '<div class="container">
+         echo '<div class="container my-5 border border-2">
  <div class="row">
      <div class="col my-auto text-center">
          <h1>Gestion des annonces archivées</h1>
@@ -270,7 +148,7 @@ class ViewGestionAnnonces
  </div>
  <div class="row">
      <div class="table-responsive">
-         <table class="table table-striped table-hover border table-bordered">
+     <table id="annonces_archives" class="table table-striped table-hover border table-bordered">
              <thead>
                  <tr>
                      <th>ID Annonce</th>

@@ -1,6 +1,6 @@
 <?php
-require "../View/View_gestion_news.php";
-require "../Model/Model_gestion_news.php";
+require_once  "../View/View_gestion_news.php";
+require_once "../Model/Model_gestion_news.php";
 class ControllerGestionNews
 {
    private $view;

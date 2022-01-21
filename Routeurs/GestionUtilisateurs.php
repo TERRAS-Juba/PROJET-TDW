@@ -13,7 +13,7 @@
 
 <body>
   <?php
-  require "../Controller/Controller_gestion_utilisateurs";
+  require_once  "../Controller/Controller_gestion_utilisateurs";
   $controller_gestion=new ControllerGestionUtilisateurs();
   $controller_gestion->afficher_contenu();
   ?>

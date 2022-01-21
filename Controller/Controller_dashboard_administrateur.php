@@ -1,5 +1,5 @@
 <?php
-require "../View/View_dashboard_administrateur.php";
+require_once "../View/View_dashboard_administrateur.php";
 class ControllerDashboardAdministrateur
 {
    private $view;

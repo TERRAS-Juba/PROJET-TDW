@@ -1,5 +1,5 @@
 <?php
-require "../Connexion.php";
+require_once "../Connexion.php";
 class ModelGestionTransporteurs
 {
     private $connexion;

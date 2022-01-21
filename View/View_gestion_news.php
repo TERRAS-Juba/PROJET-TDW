@@ -26,7 +26,7 @@ class ViewGestionNews
     {
         $controller_annonces = new ControllerGestionNews();
         $resultat = $controller_annonces->get_list_news();
-        echo '<div class="container">
+        echo '<div class="container my-5 border border-2">
 <div class="row">
     <div class="col my-auto text-center">
         <h1>Gestion des news</h1>
@@ -34,7 +34,7 @@ class ViewGestionNews
 </div>
 <div class="row">
     <div class="table-responsive">
-        <table class="table table-striped table-hover border table-bordered">
+    <table id="news_site" class="table table-striped table-hover border table-bordered">
             <thead>
                 <tr>
                     <th>ID News</th>

@@ -1,5 +1,5 @@
 <?php
-require "../Connexion.php";
+require_once  "../Connexion.php";
 class ModelGestionClients
 {
     private $connexion;
@@ -16,13 +16,6 @@ class ModelGestionClients
         $qtf->execute();
         ($this->connexion)->deconnexion();
         return $qtf;
-    }
-    public function get_list_clients_by_critere($critere, $value)
-    {
-        $qtf = "SELECT  * FROM client where " . "$critere=" . "'$value'";
-        $resultat = (($this->connexion)->connexion())->query($qtf);
-        ($this->connexion)->deconnexion();
-        return $resultat;
     }
     public function enregistrer_modifcations_client($id, $nom, $prenom, $mdp, $email, $adresse)
     {

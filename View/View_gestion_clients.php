@@ -37,7 +37,7 @@ public function get_list_clients(){
     $resultat=$controller_clients->get_list_clients();
     
 echo '
-<div class="container">
+<div class="container my-5 border border-2">
 <div class="row">
     <div class="col my-auto text-center">
         <h1>Gestion des clients</h1>
@@ -45,7 +45,7 @@ echo '
 </div>
 <div class="row">
 <div class="table-responsive">
-        <table class="table table-striped table-hover">
+        <table id="clients" class="table table-striped table-hover border border-2 table-bordered">
             <thead>
                 <tr>
                     <th>ID Client</th>
@@ -56,7 +56,7 @@ echo '
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>';
+            <tbody id="tab_clients">';
             foreach($resultat as $row){
                 echo '    
                 <tr>
@@ -75,44 +75,6 @@ echo '
             </tbody>
         </table>
     </div>
-</div>
-</div>
-<div class="container">
-<div class="row">
-    <div class="col my-auto text-center">
-        <h1>Filtrage de la rcherche</h1>
-    </div>
-</div>
-<div class="container bg-secondary my-5">
-<div class="row">
-    <form action="../Routeurs/GestionClients.php" method="post">
-    <div class="col-sm-6 my-2">
-            <label for="" class="my-2">
-                <h5 class="text-light">Filtrage des utilisateur</h5>
-            </label>
-            <select class="form-control" name="recherche" required>
-                <option value="nom">nom</option>
-                <option value="id_client">ID Client</option>
-                <option value="prenom">prenom</option>
-                <option value="email">email</option>
-                <option value="adresse">adresse</option>
-            </select>
-    </div>
-    <div class="col-sm-6 my-2">
-            <label for="" class="my-2">
-                <h5 class="text-light">Saisisez une valeur</h5>
-            </label>
-            <input type="text" class="form-control my-2" name="valeur" required placeholder="Saisisez une valeur">
-    </div>
-    <div class="col-sm-6 my-2">
-        <label for="" class="my-2">
-            <h5 class="text-light">Filtrer la recherche</h5>
-        </label>
-        <div class="form-group">
-            <button class="btn btn-primary" type="submit" name="btn-recherche">Filtrer la recherche</button>
-        </div>
-    </div>
-    </form>
 </div>
 </div>
 ';
@@ -146,90 +108,6 @@ public function modifier_client($id){
     </div>
 </div>';
 }
-}
-public function get_list_clients_by_critere($critere,$value){
-    $controller_clients=new ControllerGestionClients();
-    $resultat=$controller_clients->get_list_clients_by_critere($critere,$value);
-    
-echo '
-<div class="container">
-<div class="row">
-    <div class="col my-auto text-center">
-        <h1>Gestion des clients</h1>
-    </div>
-</div>
-<div class="row">
-<div class="table-responsive">
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>ID Client</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Adresse</th>
-                    <th>Email</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>';
-            foreach($resultat as $row){
-                echo '    
-                <tr>
-                <td scope="row">'.$row["id_client"].'</td>
-                <td>'.$row["nom"].'</td>
-                <td>'.$row["prenom"].'</td>
-                <td>'.$row["adresse"].'</td>
-                <td>'.$row["email"].'</td>
-                <td>
-                <a  style="width:200px" class="my-1 btn btn-warning "href="../Routeurs/GestionClients.php?edit='.$row["id_client"].'" onclick="return confirm(\'Voulez-vous vraiment modifier ce transporteur ?\')">Modifier</a>
-                <a  style="width:200px" class="my-1 btn btn-danger "href="../Routeurs/GestionClients.php?remove='.$row["id_client"].'" onclick="return confirm(\'Voulez-vous vraiment supprimer ce transporteur ?\')">Supprimer</a>
-                </td>
-            </tr>';
-            }
-                echo '
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="container">
-<div class="row">
-    <div class="col my-auto text-center">
-        <h1>Filtrage de la recherche</h1>
-    </div>
-</div>
-  <div class="container bg-secondary my-5">
-        <div class="row">
-            <form action="../Routeurs/GestionClients.php" method="post">
-            <div class="col-sm-6 my-2">
-                    <label for="" class="my-2">
-                        <h5 class="text-light">Filtrage des utilisateur</h5>
-                    </label>
-                    <select class="form-control" name="recherche" required>
-                        <option value="nom">nom</option>
-                        <option value="id_client">ID Client</option>
-                        <option value="prenom">prenom</option>
-                        <option value="email">email</option>
-                        <option value="adresse">adresse</option>
-                    </select>
-            </div>
-            <div class="col-sm-6 my-2">
-                    <label for="" class="my-2">
-                        <h5 class="text-light">Saisisez une valeur</h5>
-                    </label>
-                    <input type="text" class="form-control my-2" name="valeur" required placeholder="Saisisez une valeur">
-            </div>
-            <div class="col-sm-6 my-2">
-                <label for="" class="my-2">
-                    <h5 class="text-light">Filtrer la recherche</h5>
-                </label>
-                <div class="form-group">
-                    <button class="btn btn-primary" type="submit" name="btn-recherche">Filtrer la recherche</button>
-                </div>
-            </div>
-            </form>
-        </div>
-    </div>
-';
 }
 }
 ?>
