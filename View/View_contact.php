@@ -115,6 +115,8 @@ class ViewContact{
         ';
 }
 public function get_contenu(){
+    $controller_contact=new ControllerContact();
+    $infos=$controller_contact->get_contact();
     echo '
     <div class="container-fluid my-5">
         <div class="row">
@@ -133,19 +135,15 @@ public function get_contenu(){
                             <th>Contact</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody>';
+                    foreach($infos as $info){
+                        echo'
                         <tr>
-                            <td scope="row">Adresse mail</td>
-                            <td><a href="mailto:adminnexus@gmail.com">adminnexus@gmail.com</a></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">Service client</td>
-                            <td>020904129</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">Notre siege social</td>
-                            <td>30 Rue des freres Kadri, Hydra, Alger.</td>
-                        </tr>
+                            <td scope="row">'.$info["contact"].'</td>
+                            <td>'.$info["valeur"].'</td>
+                        </tr>';
+                    }
+                    echo '
                     </tbody>
                 </table>
             </div>

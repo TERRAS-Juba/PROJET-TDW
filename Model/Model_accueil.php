@@ -127,6 +127,7 @@ class ModelAccueil
     public function get_list_images_diaporama(){
         $conn = ($this->connexion)->connexion();
         $requete=$conn->prepare("SELECT * from diaporama");
+        $requete->execute();
         ($this->connexion)->deconnexion();
         return $requete;
     }

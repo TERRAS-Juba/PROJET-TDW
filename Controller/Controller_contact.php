@@ -1,5 +1,6 @@
 <?php
-require "../View/View_contact.php";
+require_once "../View/View_contact.php";
+require_once "../Model/Model_contact.php";
 class ControllerContact
 {
    private $view;
@@ -7,9 +8,14 @@ class ControllerContact
    public function __construct()
    {
       $this->view = new ViewContact();
+      $this->model=new ModelContact();
    }
    function __destruct()
    {
+   }
+   public function get_contact()
+   {
+     return $this->model->get_contact();
    }
    public function afficher_header()
    {

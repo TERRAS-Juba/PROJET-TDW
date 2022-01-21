@@ -115,11 +115,14 @@ class ViewPresentation{
         ';
 }
 public function get_contenu(){
+    $controller_presentation=new ControllerPresentation();
+    $presentation=$controller_presentation->get_presentation();
+    foreach($presentation as $row){
     echo '
     <div class="container-fluid">
         <div class="row bg-dark">
             <div class="col-sm-6">
-                <img src="../Assets/image5.jpg" class="img-fluid">
+                <img src="'.$row["image"].'" class="img-fluid">
             </div>
             <div class="col-sm-6 text-center my-auto text-light">
                 <h1>Presentation de Nexus Express</h1>
@@ -140,12 +143,13 @@ public function get_contenu(){
         <div class="row" >
             <div class="col-10 m-auto style=\'height:100px\'">
                 <div class="ratio ratio-16x9">
-                    <iframe src="../Assets/video.mp4" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item" src="'.$row["video"].'" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
     </div>
     ';
+}
 }
 }
 ?>

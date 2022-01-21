@@ -42,24 +42,30 @@ class ViewAccueil
     }
     public function get_diaporama()
     {
-        $controller_diaporama=new ControllerAccueil();
-        $images=$controller_diaporama->get_list_images_diaporama();
+        $cpt = 0;
+        $controller_diaporama = new ControllerAccueil();
+        $images = $controller_diaporama->get_list_images_diaporama();
         echo '
         <div class="container" id="diapo">
         <div class="row">
             <div class="col">
-                <div id="diaporama" class="carousel slide" data-bs-ride="carousel">';
+                <div id="diaporama" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">';
+        foreach ($images as $image) {
+            if ($cpt == 0) {
                 echo '
-                    <div class="carousel-inner">
                         <div class="carousel-item active" data-bs-interval="3000">
-                            <a target="_blank" href="https://www.vanvliet.com/vehicles/type/trucks?utm_source=google-ads&utm_campaign=Algeria+-+Eng+-+New&utm_agid=121190059564&utm_term=man%20truck&creative=507057294223&device=c&placement=&gclid=Cj0KCQiAuP-OBhDqARIsAD4XHpeQQmNMczbMV6Qw0qOVbLbGWLusIxCs1awJDg_6oLJyWzfDLz9iLgAaAlZUEALw_wcB"> <img src="../Assets/image1.jpg" class="d-block w-100 h-100 img-thumbnail"></a>
-                        </div>
+                            <a target="_blank" href="' . $image["lien"] . '" ><img src="' . $image["chemin"] . '" class="d-block w-100 h-100 img-thumbnail"></a>
+                        </div>';
+                        $cpt=$cpt+1;
+            } else {
+                echo '
                         <div class="carousel-item" data-bs-interval="3000">
-                            <a target="_blank" href="https://www.ouedkniss.com/automobiles"> <img src="../Assets/image2.jpg" class="d-block w-100 h-100 img-thumbnail"></a>
-                        </div>
-                        <div class="carousel-item" data-bs-interval="3000">
-                            <a target="_blank" href="http://webstar-auto.com/fr"><img src="../Assets/image3.jpg" class="d-block w-100 h-100 img-thumbnail"></a>
-                        </div>
+                            <a target="_blank" href="' . $image["lien"] . '" ><img src="' . $image["chemin"] . '" class="d-block w-100 h-100 img-thumbnail"></a>
+                        </div>';
+            }
+        }
+        echo '
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#diaporama" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -411,5 +417,4 @@ class ViewAccueil
         ';
         }
     }
-    
 }
