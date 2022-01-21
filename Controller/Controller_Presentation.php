@@ -9,15 +9,15 @@ class ControllerPresentation
    public function __construct()
    {
       $this->view = new ViewPresentation();
-      $this->model=new ModelPresentation();
+      $this->model = new ModelPresentation();
    }
    function __destruct()
    {
    }
    public function get_presentation()
-    {
-         return $this->model->get_presentation();
-    }
+   {
+      return $this->model->get_presentation();
+   }
    public function afficher_header()
    {
       ($this->view)->get_header();

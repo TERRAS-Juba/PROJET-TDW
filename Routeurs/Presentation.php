@@ -13,8 +13,8 @@
 
 <body>
     <?php
-     session_start();
-     require_once  "../Controller/Controller_Presentation.php";
+    session_start();
+    require_once  "../Controller/Controller_Presentation.php";
     $controlleur_presentation = new ControllerPresentation();
     $controlleur_presentation->afficher_header();
     $controlleur_presentation->afficher_menu();

@@ -9,9 +9,9 @@ class ModelConnexionUtilisateur
     function __destruct()
     {
     }
-    public function connexion($user_name, $user_password,$type)
+    public function connexion($user_name, $user_password, $type)
     {
-        $this->connexion = new Connexion("TDW", "127.0.0.1", "root","");
+        $this->connexion = new Connexion("TDW", "127.0.0.1", "root", "");
         if ($type == "client") {
             $qtf =  (($this->connexion)->connexion())->prepare("Select * from client where id_client=?");
             $qtf->bindParam(1, $user_name);

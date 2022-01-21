@@ -10,6 +10,9 @@ class ControllerAccueil
       $this->view = new ViewAccueil();
       $this->model = new ModelAccueil();
    }
+   public function __destruct()
+   {
+   }
    public function get_list_annonces()
    {
       $resultat = $this->model->get_list_annonces();
@@ -54,7 +57,8 @@ class ControllerAccueil
       $resultat = $this->model->get_wilaya();
       return $resultat;
    }
-   public function get_list_images_diaporama(){
+   public function get_list_images_diaporama()
+   {
       return $this->model->get_list_images_diaporama();
    }
 

@@ -20,35 +20,35 @@
     session_start();
     $controller = new ControllerGestionContenu();
     $controller->afficher_contenu();
-    if(isset($_GET["modifier_type"])){
+    if (isset($_GET["modifier_type"])) {
         $controller->afficher_modifier_type_transport($_GET["modifier_type"]);
     }
-    if(isset($_GET["modifier_moyen"])){
+    if (isset($_GET["modifier_moyen"])) {
         $controller->afficher_modifier_moyen_transport($_GET["modifier_moyen"]);
     }
-    if(isset($_GET["modifier_fourchette_poid"])){
+    if (isset($_GET["modifier_fourchette_poid"])) {
         $controller->afficher_modifier_fourchette_poid($_GET["modifier_fourchette_poid"]);
     }
-    if(isset($_GET["modifier_fourchette_volume"])){
+    if (isset($_GET["modifier_fourchette_volume"])) {
         $controller->afficher_modifier_fourchette_volume($_GET["modifier_fourchette_volume"]);
     }
-    if(isset($_POST["enregistrer_type_transport"])){
-        $controller->modifier_type_transport($_POST["id_type"],$_POST["libele"],$_POST["garantie"]);
+    if (isset($_POST["enregistrer_type_transport"])) {
+        $controller->modifier_type_transport($_POST["id_type"], $_POST["libele"], $_POST["garantie"]);
         echo '<div class="container">';
         echo '<div class="success alert-success " style="height:50px">';
         echo '<h5 class="text-success text-center">Modification effectuée avec succéss<h5>';
         echo '</div>';
         echo '</div>';
     }
-    if(isset($_POST["ajouter_type_transport"])){
-        $controller->ajouter_type_transport($_POST["libele"],$_POST["garantie"]);
+    if (isset($_POST["ajouter_type_transport"])) {
+        $controller->ajouter_type_transport($_POST["libele"], $_POST["garantie"]);
         echo '<div class="container">';
         echo '<div class="success alert-success " style="height:50px">';
         echo '<h5 class="text-success text-center">Ajout effectué avec succéss<h5>';
         echo '</div>';
         echo '</div>';
     }
-    if(isset($_GET["remove_type"])){
+    if (isset($_GET["remove_type"])) {
         $controller->supprimer_type_transport($_GET["remove_type"]);
         echo '<div class="container">';
         echo '<div class="danger alert-danger " style="height:50px">';
@@ -56,15 +56,15 @@
         echo '</div>';
         echo '</div>';
     }
-    if(isset($_POST["enregistrer_moyen_transport"])){
-        $controller->modifier_moyen_transport($_POST["id_moyen"],$_POST["libele"]);
+    if (isset($_POST["enregistrer_moyen_transport"])) {
+        $controller->modifier_moyen_transport($_POST["id_moyen"], $_POST["libele"]);
         echo '<div class="container">';
         echo '<div class="success alert-success " style="height:50px">';
         echo '<h5 class="text-success text-center">Modification effectuée avec succéss<h5>';
         echo '</div>';
         echo '</div>';
     }
-    if(isset($_POST["ajouter_moyen_transport"])){
+    if (isset($_POST["ajouter_moyen_transport"])) {
         $controller->ajouter_moyen_transport($_POST["libele"]);
         echo '<div class="container">';
         echo '<div class="success alert-success " style="height:50px">';
@@ -72,7 +72,7 @@
         echo '</div>';
         echo '</div>';
     }
-    if(isset($_GET["remove_moyen"])){
+    if (isset($_GET["remove_moyen"])) {
         $controller->supprimer_moyen_transport($_GET["remove_moyen"]);
         echo '<div class="container">';
         echo '<div class="danger alert-danger " style="height:50px">';
@@ -80,15 +80,15 @@
         echo '</div>';
         echo '</div>';
     }
-    if(isset($_POST["enregistrer_fourchette_poid"])){
-        $controller->modifier_fourchette_poid($_POST["id_fourchette"],$_POST["libele"]);
+    if (isset($_POST["enregistrer_fourchette_poid"])) {
+        $controller->modifier_fourchette_poid($_POST["id_fourchette"], $_POST["libele"]);
         echo '<div class="container">';
         echo '<div class="success alert-success " style="height:50px">';
         echo '<h5 class="text-success text-center">Modification effectuée avec succéss<h5>';
         echo '</div>';
         echo '</div>';
     }
-    if(isset($_POST["ajouter_fourchette_poid"])){
+    if (isset($_POST["ajouter_fourchette_poid"])) {
         $controller->ajouter_fourchette_poid($_POST["libele"]);
         echo '<div class="container">';
         echo '<div class="success alert-success " style="height:50px">';
@@ -96,7 +96,7 @@
         echo '</div>';
         echo '</div>';
     }
-    if(isset($_GET["remove_fourchette_poid"])){
+    if (isset($_GET["remove_fourchette_poid"])) {
         $controller->supprimer_fourchette_poid($_GET["remove_fourchette_poid"]);
         echo '<div class="container">';
         echo '<div class="danger alert-danger " style="height:50px">';
@@ -104,15 +104,15 @@
         echo '</div>';
         echo '</div>';
     }
-    if(isset($_POST["enregistrer_fourchette_volume"])){
-        $controller->modifier_fourchette_volume($_POST["id_fourchette"],$_POST["libele"]);
+    if (isset($_POST["enregistrer_fourchette_volume"])) {
+        $controller->modifier_fourchette_volume($_POST["id_fourchette"], $_POST["libele"]);
         echo '<div class="container">';
         echo '<div class="success alert-success " style="height:50px">';
         echo '<h5 class="text-success text-center">Modification effectuée avec succéss<h5>';
         echo '</div>';
         echo '</div>';
     }
-    if(isset($_POST["ajouter_fourchette_volume"])){
+    if (isset($_POST["ajouter_fourchette_volume"])) {
         $controller->ajouter_fourchette_volume($_POST["libele"]);
         echo '<div class="container">';
         echo '<div class="success alert-success " style="height:50px">';
@@ -120,7 +120,7 @@
         echo '</div>';
         echo '</div>';
     }
-    if(isset($_GET["remove_fourchette_volume"])){
+    if (isset($_GET["remove_fourchette_volume"])) {
         $controller->supprimer_fourchette_volume($_GET["remove_fourchette_volume"]);
         echo '<div class="container">';
         echo '<div class="danger alert-danger " style="height:50px">';
@@ -133,7 +133,7 @@
     $controller->afficher_list_fourchette_poid();
     $controller->afficher_list_fourchette_volume();
     ?>
-   <script src="../Scripts/Filtrage.js"></script>
+    <script src="../Scripts/Filtrage.js"></script>
 </body>
 
 </html>

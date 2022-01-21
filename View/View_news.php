@@ -11,7 +11,7 @@ class ViewNews
             </div>
             <div class="col-md-3">
             </div>';
-        if(isset($_SESSION["user_name"])){
+        if (isset($_SESSION["user_name"])) {
             echo '
             <div class="col-md-2">
             <div class="d-grid">
@@ -23,7 +23,7 @@ class ViewNews
                 <a href="../Deconnexion.php" class="my-2 btn btn-danger btn-block rounded-pill">Se deconnecter</a>
             </div>
         </div>';
-        }else{
+        } else {
             echo '
             <div class="col-md-2">
             <div class="d-grid">
@@ -57,13 +57,13 @@ class ViewNews
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/News.php">News</a>
                     </li>';
-                    if(!isset($_SESSION["user_name"])){
-                        echo ' 
+        if (!isset($_SESSION["user_name"])) {
+            echo ' 
                         <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/InscriptionUtilisateur.php">Inscription</a>
                         </li>';
-                    }
-                    echo '
+        }
+        echo '
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/Statistiques.php">Statistiques</a>
                     </li>
@@ -129,7 +129,7 @@ class ViewNews
         foreach ($resultat as $row) {
             array_push($tab, $row);
         }
-            echo '
+        echo '
         <div class="container-fluid border bg-white text-dark my-3" id="catalogue_annonces">
         <div class="row">
             <div class="col">
@@ -139,23 +139,24 @@ class ViewNews
                 <p class="text-center">Vous pouvez consulter les dernieres actualites en relation avec notre site web</p>
             </div>
         </div>';
-            echo '<div class="row">';
-            foreach ($tab as $row) {
-                echo '<div class="col-sm-6 my-2">';
-                echo '<div class="card" id="' . $row["id_news"] . '">';
-                echo '<div class="card-header"><h2>' . $row["titre"] . '</h2></div>';
-                echo '<img class="card-img-top img-fluid" style="height:350px" src="' . $tab_images[$row["id_news"]] . '">';
-                echo '<div class="card-body">
+        echo '<div class="row">';
+        foreach ($tab as $row) {
+            echo '<div class="col-sm-6 my-2">';
+            echo '<div class="card" id="' . $row["id_news"] . '">';
+            echo '<div class="card-header"><h2>' . $row["titre"] . '</h2></div>';
+            echo '<img class="card-img-top img-fluid" style="height:350px" src="' . $tab_images[$row["id_news"]] . '">';
+            echo '<div class="card-body">
                         <p class="card-text">' . substr($row["description"], 0, 40) . '</p>
                      </div>';
-                echo '<div class="card-footer">';
-                echo "<a href='../Routeurs/News.php?id_news=" . $row["id_news"] . "'>Lire la suite ...</a>";
-                echo '</div>';
-                echo '</div>';
-                echo "</div>";
-            }
-            echo "</div>";
+            echo '<div class="card-footer">';
+            echo "<a href='../Routeurs/News.php?id_news=" . $row["id_news"] . "'>Lire la suite ...</a>";
             echo '</div>';
+            echo '</div>';
+            echo "</div>";
+        }
+        echo "</div>";
+        echo '</div>';
         $_GET["id_annonce"] = "";
+        $controller->__destruct();
     }
 }

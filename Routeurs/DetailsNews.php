@@ -18,9 +18,9 @@
   $controlleur_details_news = new ControllerDetailsNews();
   $controlleur_details_news->afficher_header();
   $controlleur_details_news->afficher_menu();
-  if(isset($_GET["detail"])){
+  if (isset($_GET["detail"])) {
     $controlleur_details_news->afficher_news_by_id($_GET["detail"]);
-  }else{
+  } else {
     $controlleur_details_news->afficher_news_by_id($_SESSION["id_news"]);
   }
 

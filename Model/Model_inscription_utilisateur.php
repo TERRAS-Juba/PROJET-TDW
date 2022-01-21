@@ -77,8 +77,8 @@ class ModelInscriptionUtilisateur
     }
     public function add_certification($id_transporteur, $chemin)
     {
-        $str='../Certifications/'.$chemin;
-        $statut='en attente';
+        $str = '../Certifications/' . $chemin;
+        $statut = 'en attente';
         $qtf = (($this->connexion)->connexion())->prepare("INSERT INTO demandecertification(id_transporteur,statut,chemin) values(?,?,?)");
         $qtf->bindParam(1, $id_transporteur);
         $qtf->bindParam(2, $statut);

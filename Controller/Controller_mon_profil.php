@@ -10,6 +10,9 @@ class ControllerMonProfil
       $this->view = new ViewMonProfil();
       $this->model = new ModelMonProfil();
    }
+   public function __destruct()
+   {
+   }
    public function get_infos_utilisateur()
    {
       return $this->model->get_infos_utilisateur();
@@ -70,9 +73,10 @@ class ControllerMonProfil
    {
       return $this->model->get_certification_transporteur();
    }
-   public function modifier_annonce($titre,$description,$emplacement_depart,$emplacement_arrive,$type_transport,$moyen_transport,$fourchette_poid,$fourchette_volume,$id_annonce){
-    $this->model->modifier_annonce($titre,$description,$emplacement_depart,$emplacement_arrive,$type_transport,$moyen_transport,$fourchette_poid,$fourchette_volume,$id_annonce);
-  }
+   public function modifier_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_annonce)
+   {
+      $this->model->modifier_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_annonce);
+   }
    public function ajouter_signalement($id_annonce, $id_client, $id_transporteur, $titre, $description, $emetteur)
    {
       $this->model->ajouter_signalement($id_annonce, $id_client, $id_transporteur, $titre, $description, $emetteur);
@@ -85,19 +89,21 @@ class ControllerMonProfil
    {
       $this->view->noter_transporteur($id_transporteur);
    }
-   public function modifier_client($id_client,$nom,$prenom,$email,$adrese,$numero_telephone,$mot_de_passe){
-      $this->model->modifier_client($id_client,$nom,$prenom,$email,$adrese,$numero_telephone,$mot_de_passe);
+   public function modifier_client($id_client, $nom, $prenom, $email, $adrese, $numero_telephone, $mot_de_passe)
+   {
+      $this->model->modifier_client($id_client, $nom, $prenom, $email, $adrese, $numero_telephone, $mot_de_passe);
    }
-   public function modifier_transporteur($id_client,$nom,$prenom,$email,$adrese,$numero_telephone,$mot_de_passe){
-      $this->model->modifier_transporteur($id_client,$nom,$prenom,$email,$adrese,$numero_telephone,$mot_de_passe);
+   public function modifier_transporteur($id_client, $nom, $prenom, $email, $adrese, $numero_telephone, $mot_de_passe)
+   {
+      $this->model->modifier_transporteur($id_client, $nom, $prenom, $email, $adrese, $numero_telephone, $mot_de_passe);
    }
    public function get_annonce($id_annonce)
    {
-       return $this->model->get_annonce($id_annonce);
+      return $this->model->get_annonce($id_annonce);
    }
    public function afficher_modifier_annonce($id_annonce)
    {
-       $this->view->modifier_annonce($id_annonce);
+      $this->view->modifier_annonce($id_annonce);
    }
    public function afficher_annonces_utilisateur()
    {

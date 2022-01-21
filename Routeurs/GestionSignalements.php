@@ -22,7 +22,7 @@
     $controller->afficher_contenu();
     $controller->afficher_list_signalements();
     ?>
-<script src="../Scripts/Filtrage.js"></script>
+    <script src="../Scripts/Filtrage.js"></script>
 </body>
 
 </html>

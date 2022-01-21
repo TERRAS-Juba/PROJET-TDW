@@ -16,19 +16,19 @@
 
 <body>
     <?php
-   require_once  "../Controller/Controller_gestion_transporteurs.php";
+    require_once  "../Controller/Controller_gestion_transporteurs.php";
     session_start();
     $controller = new ControllerGestionTransporteurs();
-    if(isset($_GET["demande"])){
-         $controller->afficher_demande_certification($_GET["demande"]);
-       }
-    if(isset($_GET["certifie"])){
+    if (isset($_GET["demande"])) {
+        $controller->afficher_demande_certification($_GET["demande"]);
+    }
+    if (isset($_GET["certifie"])) {
         $controller->certifier_transporteur($_GET["certifie"]);
     }
-    if(isset($_GET["valider"])){
+    if (isset($_GET["valider"])) {
         $controller->valider_transporteur($_GET["valider"]);
     }
-    if(isset($_GET["refuser"])){
+    if (isset($_GET["refuser"])) {
         $controller->refuser_transporteur($_GET["refuser"]);
     }
     $controller->afficher_contenu();
@@ -52,16 +52,16 @@
             $controller->afficher_list_transporteurs();
             $controller->afficher_list_transorteurs_non_certifies();
         } else {
-                $controller->afficher_list_transporteurs();
-                $controller->afficher_list_transorteurs_non_certifies();
+            $controller->afficher_list_transporteurs();
+            $controller->afficher_list_transorteurs_non_certifies();
         }
     }
     if (isset($_GET["edit"])) {
         $_SESSION["edit"] = $_GET["edit"];
-        $controller->afficher_modifier_transporteur( $_GET["edit"]);
+        $controller->afficher_modifier_transporteur($_GET["edit"]);
     }
     ?>
-      <script src="../Scripts/Filtrage.js"></script>
+    <script src="../Scripts/Filtrage.js"></script>
 </body>
 
 </html>

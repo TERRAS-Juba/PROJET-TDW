@@ -11,7 +11,7 @@ class ViewDetailsNews
             </div>
             <div class="col-md-3">
             </div>';
-        if(isset($_SESSION["user_name"])){
+        if (isset($_SESSION["user_name"])) {
             echo '
             <div class="col-md-2">
             <div class="d-grid">
@@ -23,7 +23,7 @@ class ViewDetailsNews
                 <a href="../Deconnexion.php" class="my-2 btn btn-danger btn-block rounded-pill">Se deconnecter</a>
             </div>
         </div>';;
-        }else{
+        } else {
             echo '
             <div class="col-md-2">
             <div class="d-grid">
@@ -57,13 +57,13 @@ class ViewDetailsNews
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/News.php">News</a>
                     </li>';
-                    if(!isset($_SESSION["user_name"])){
-                        echo ' 
+        if (!isset($_SESSION["user_name"])) {
+            echo ' 
                         <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/InscriptionUtilisateur.php">Inscription</a>
                         </li>';
-                    }
-                    echo '
+        }
+        echo '
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/Statistiques.php">Statistiques</a>
                     </li>
@@ -119,20 +119,20 @@ class ViewDetailsNews
     {
         $controller_details_annonce = new ControllerDetailsNews();
         $resultat = $controller_details_annonce->get_news_by_id($id);
-        $images=$controller_details_annonce->get_image_news_by_id($id);
+        $images = $controller_details_annonce->get_image_news_by_id($id);
         foreach ($resultat as $row) {
             echo '<div class="Container">
             <div class="row" id="details_news">
               <div class="col">
                 <div class="card" id="' . $row["id_news"] . '">
                 <div class="card-header"><h2>' . $row["titre"] . '</h2></div>';
-                foreach($images as $image){
-                    if($image["id_news"]==$id){
-                        $chemin=$image["chemin"];
-                         echo '<img class="card-img-top img-fluid" src="'.$chemin.'">';
-                    }
+            foreach ($images as $image) {
+                if ($image["id_news"] == $id) {
+                    $chemin = $image["chemin"];
+                    echo '<img class="card-img-top img-fluid" src="' . $chemin . '">';
                 }
-                echo '<div class="card-body">
+            }
+            echo '<div class="card-body">
                                 <h3>Description :</h3>
                                 <p class="card-text">' . $row["description"] . '</p>
                              </div>
@@ -145,5 +145,6 @@ class ViewDetailsNews
           </div>
           </div>';
         }
+        $controller_details_annonce->__destruct();
     }
 }

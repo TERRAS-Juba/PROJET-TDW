@@ -61,12 +61,13 @@ class ViewGestionAnnonces
                 <a  style="width:200px" class="btn btn-danger my-1" href="../Routeurs/GestionAnnonces.php?remove=' . $row["id_annonce"] . '" onclick="return confirm(\'Voulez-vous vraiment supprimer cette annonce ?\')">Supprimer</a>
                 <br>
             </tr>';
-            }
+        }
         echo '</tbody>
         </table>
     </div>
 </div>
 </div>';
+        $controller_annonces->__destruct();
     }
     public function get_list_annonces_en_attente()
     {
@@ -115,8 +116,10 @@ class ViewGestionAnnonces
     </div>
 </div>
 </div>';
+        $controller_annonces->__destruct();
     }
-    public function set_tarif(){
+    public function set_tarif()
+    {
         echo '<div class="container my-4">
          <div class="row">
              <div class="col my-auto text-center">
@@ -127,7 +130,7 @@ class ViewGestionAnnonces
              <div class="col-12 my-auto bg-secondary">
                  <form action="../Routeurs/GestionAnnonces.php" method="post">
                      <label class="mt-2"><h5>ID Annonce :</h5></label>
-                     <input class="form-control my-2" type="text" name="id_annonce" readonly value="'.$_GET["validation"].'">
+                     <input class="form-control my-2" type="text" name="id_annonce" readonly value="' . $_GET["validation"] . '">
                      <label class="mt-2"><h5>Prix :</h5></label>
                      <input class="form-control my-2" type="number" name="tarif" required placeholder="Entre un prix pour l\'annonce" min="0">
                      <button name="enregistrer_tarif" class="btn btn-warning my-4" type="submit">Enregistrer les modifications</button>
@@ -135,12 +138,12 @@ class ViewGestionAnnonces
              </div>
          </div>
      </div>';
-     }
-     public function get_list_annonces_archivees()
-     {
-         $controller_annonces = new ControllerGestionAnnonces();
-         $resultat = $controller_annonces->get_list_annonces_archivees();
-         echo '<div class="container my-5 border border-2">
+    }
+    public function get_list_annonces_archivees()
+    {
+        $controller_annonces = new ControllerGestionAnnonces();
+        $resultat = $controller_annonces->get_list_annonces_archivees();
+        echo '<div class="container my-5 border border-2">
  <div class="row">
      <div class="col my-auto text-center">
          <h1>Gestion des annonces archivées</h1>
@@ -161,8 +164,8 @@ class ViewGestionAnnonces
                  </tr>
              </thead>
              <tbody>';
-         foreach ($resultat as $row) {
-             echo '<tr>
+        foreach ($resultat as $row) {
+            echo '<tr>
                  <td scope="row">' . $row["id_annonce"] . '</td>
                  <td>' . $row["titre"] . '</td>
                  <td>' . $row["emplacement_depart"] . '</td>
@@ -173,11 +176,12 @@ class ViewGestionAnnonces
                  <a  style="width:200px" class="btn btn-danger my-1" href="../Routeurs/GestionAnnonces.php?remove_annonce_archivee=' . $row["id_annonce"] . '" onclick="return confirm(\'Voulez-vous vraiment supprimer cette annonce ?\')">Supprimer</a>
                  <br>
              </tr>';
-             }
-         echo '</tbody>
+        }
+        echo '</tbody>
          </table>
      </div>
  </div>
  </div>';
-     }
+        $controller_annonces->__destruct();
+    }
 }

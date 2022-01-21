@@ -176,6 +176,7 @@ class ViewMonProfil
                 </div>
             </div>
     </div>';
+        $controller_info->__destruct();
     }
     public function get_annonces_valides_client()
     {
@@ -247,6 +248,7 @@ class ViewMonProfil
                 </div>
             </div>
     </div>';
+        $controller_info->__destruct();
     }
     public function get_annonces_en_attente_client()
     {
@@ -291,6 +293,7 @@ class ViewMonProfil
                 </div>
             </div>
     </div>';
+        $controller_info->__destruct();
     }
     public function get_annonces_transaction_client()
     {
@@ -335,6 +338,7 @@ class ViewMonProfil
                 </div>
             </div>
     </div>';
+        $controller_info->__destruct();
     }
     public function get_annonces_transaction_transporteur()
     {
@@ -385,6 +389,7 @@ class ViewMonProfil
                 </div>
             </div>
     </div>';
+        $controller_info->__destruct();
     }
     public function get_annonces_confirmes_transporteur()
     {
@@ -428,6 +433,7 @@ class ViewMonProfil
                 </div>
             </div>
     </div>';
+        $controller_info->__destruct();
     }
     public function get_annonces_confirmes_client()
     {
@@ -474,6 +480,7 @@ class ViewMonProfil
                 </div>
             </div>
     </div>';
+        $controller_info->__destruct();
     }
     public function get_certification_transporteur()
     {
@@ -536,6 +543,7 @@ class ViewMonProfil
         echo '
             </div>
     </div>';
+        $controller_info->__destruct();
     }
     public function effectuer_signalement($id_annonce, $id_client, $id_transporteur)
     {
@@ -607,23 +615,23 @@ class ViewMonProfil
                     <label class="mt-2">
                         <h4>Nom :</h4>
                     </label>
-                    <input class="form-control my-2" type="text" name="nom" required placeholder="Entrez un nouveau nom" value="'.$info["nom"].'">
+                    <input class="form-control my-2" type="text" name="nom" required placeholder="Entrez un nouveau nom" value="' . $info["nom"] . '">
                     <label class="mt-2">
                         <h4>Prenom :</h4>
                     </label>
-                    <input class="form-control my-2" type="text" name="prenom" required placeholder="Entrez un nouveau prenom" value="'.$info["prenom"].'">
+                    <input class="form-control my-2" type="text" name="prenom" required placeholder="Entrez un nouveau prenom" value="' . $info["prenom"] . '">
                     <label>
                     <h4>Email :</h4>
                     </label>
-                    <input class="form-control mt-2" type="email" name="email" required placeholder="Entrez une nouvelle adresse email" value="'.$info["email"].'">
+                    <input class="form-control mt-2" type="email" name="email" required placeholder="Entrez une nouvelle adresse email" value="' . $info["email"] . '">
                     <label>
                     <h4>Adresse :</h4>
                     </label>
-                    <input class="form-control mt-2" type="text" name="adresse" required placeholder="Entrez une nouvelle adresse " value="'.$info["adresse"].'"> 
+                    <input class="form-control mt-2" type="text" name="adresse" required placeholder="Entrez une nouvelle adresse " value="' . $info["adresse"] . '"> 
                     <label>
                     <h4>Numero de telephone :</h4>
                     </label>
-                    <input class="form-control mt-2" type="tel" name="numero_telephone" required pattern="[0-9]{10}" name="numero_telephone" required placeholder="Entrez un nouveau numero de telephone" value="'.$info["numero_telephone"].'"> 
+                    <input class="form-control mt-2" type="tel" name="numero_telephone" required pattern="[0-9]{10}" name="numero_telephone" required placeholder="Entrez un nouveau numero de telephone" value="' . $info["numero_telephone"] . '"> 
                     <label>
                     <h4>Mot de passe :</h4>
                     </label>
@@ -636,16 +644,17 @@ class ViewMonProfil
         ';
             }
         }
+        $controller_profil->__destruct();
     }
     public function modifier_annonce($id_annonce)
     {
         require_once "../Controller/Controller_accueil.php";
-        $controller=new ControllerMonProfil();
+        $controller = new ControllerMonProfil();
         $controller_accueil = new ControllerAccueil();
-        $infos=$controller->get_annonce($id_annonce);
-        foreach($infos as $info){
-        if (isset($_SESSION["user_name"])) {
-            echo '
+        $infos = $controller->get_annonce($id_annonce);
+        foreach ($infos as $info) {
+            if (isset($_SESSION["user_name"])) {
+                echo '
         <div class="container-fluid border bg-white text-dark my-3">
         <div class="row">
             <div class="col">
@@ -654,74 +663,74 @@ class ViewMonProfil
                 </h1>
             </div>
         </div>';
-            echo '
+                echo '
         <div class="container-fluid my-2 p-2">
         <div class="row">
             <div class="col-sm-10 m-auto">
                 <form class="border border-5 p-2" action="../Routeurs/MonProfil.php" method="post">
-                <input class="form-control my-2 invisible" type="text" name="id_annonce"  value="' .$info["id_annonce"]. '">
+                <input class="form-control my-2 invisible" type="text" name="id_annonce"  value="' . $info["id_annonce"] . '">
                     <label class="mt-2">
                         <h4>Titre :</h4>
                     </label>
-                    <input class="form-control my-2" type="text" name="titre" required placeholder="Entrez un titre"  value="' .$info["titre"]. '">
+                    <input class="form-control my-2" type="text" name="titre" required placeholder="Entrez un titre"  value="' . $info["titre"] . '">
                     <h4>Description :</h4>
                     </label>
-                    <textarea class="form-control mt-2" type="text" name="description" required placeholder="Entrez une description" rows="5" value="' .$info["description"]. '"></textarea>';
-            echo '<label class="mt-2">
+                    <textarea class="form-control mt-2" type="text" name="description" required placeholder="Entrez une description" rows="5" value="' . $info["description"] . '"></textarea>';
+                echo '<label class="mt-2">
                      <h4>Point de depart :</h4>
                 </label>
                 <select class="mt-2 form-select" name="emplacement_depart">';
-            $resultat = $controller_accueil->get_wilaya();
-            foreach ($resultat as $row) {
-                echo '<option value="' . $row["num_wilaya"] . '">' . $row["libele"] . '</option>';
-            }
-            echo '</select>';
-            echo '<label class="mt-2">
+                $resultat = $controller_accueil->get_wilaya();
+                foreach ($resultat as $row) {
+                    echo '<option value="' . $row["num_wilaya"] . '">' . $row["libele"] . '</option>';
+                }
+                echo '</select>';
+                echo '<label class="mt-2">
                 <h4>Point d\'arrivée :</h4>
               </label>
              <select class="mt-2 form-select" name="emplacement_arrive">';
-            $resultat = $controller_accueil->get_wilaya();
-            foreach ($resultat as $row) {
-                echo '<option value="' . $row["num_wilaya"] . '">' . $row["libele"] . '</option>';
-            }
-            echo '</select>';
-            $resultat = $controller_accueil->get_type_transport();
-            echo '  <label class="mt-2">
+                $resultat = $controller_accueil->get_wilaya();
+                foreach ($resultat as $row) {
+                    echo '<option value="' . $row["num_wilaya"] . '">' . $row["libele"] . '</option>';
+                }
+                echo '</select>';
+                $resultat = $controller_accueil->get_type_transport();
+                echo '  <label class="mt-2">
                      <h4>Type de transport :</h4>
                 </label>
                 <select class="mt-2 form-select" name="type_transport">';
-            foreach ($resultat as $row) {
-                echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
-            }
-            echo '</select>';
-            $resultat = $controller_accueil->get_moyen_transport();
-            echo '  <label class="mt-2">
+                foreach ($resultat as $row) {
+                    echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
+                }
+                echo '</select>';
+                $resultat = $controller_accueil->get_moyen_transport();
+                echo '  <label class="mt-2">
                      <h4>Moyen de transport :</h4>
                 </label>
                 <select class="mt-2 form-select" name="moyen_transport">';
-            foreach ($resultat as $row) {
-                echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
-            }
-            echo '</select>';
-            $resultat = $controller_accueil->get_fourchette_poid();
-            echo '  <label class="mt-2">
+                foreach ($resultat as $row) {
+                    echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
+                }
+                echo '</select>';
+                $resultat = $controller_accueil->get_fourchette_poid();
+                echo '  <label class="mt-2">
                      <h4>Fourchette de poid :</h4>
                 </label>
                 <select class="mt-2 form-select" name="fourchette_poid">';
-            foreach ($resultat as $row) {
-                echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
-            }
-            echo '</select>';
-            $resultat = $controller_accueil->get_fourchette_volume();
-            echo '  <label class="mt-2">
+                foreach ($resultat as $row) {
+                    echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
+                }
+                echo '</select>';
+                $resultat = $controller_accueil->get_fourchette_volume();
+                echo '  <label class="mt-2">
                      <h4>Fourchette de volume :</h4>
                 </label>
                 <select class="mt-2 form-select" name="fourchette_volume">';
-            foreach ($resultat as $row) {
-                echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
-            }
-            echo '</select>';
-            echo ' 
+                foreach ($resultat as $row) {
+                    echo '<option value="' . $row["libele"] . '">' . $row["libele"] . '</option>';
+                }
+                echo '</select>';
+                echo ' 
         <div class="d-flex justify-content-center text-light">
         <button style="width:50%" name="modifier_annonce" class="rounded btn btn-lg btn-block btn-success my-5 pt-2" type="submit">Modifier annonce</button>
       </div>
@@ -730,9 +739,10 @@ class ViewMonProfil
             </div>
         </div>
         ';
+            }
         }
+        $controller_accueil->__destruct();
     }
-}
     public function get_annonces_utilisateur()
     {
         if ($_SESSION["type_compte"] == "client") {

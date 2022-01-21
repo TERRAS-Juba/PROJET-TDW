@@ -10,6 +10,9 @@ class ControllerDetailsAnnonce
       $this->view = new ViewDetailsAnnonce();
       $this->model = new ModelDetailsAnnonce();
    }
+   public function __destruct()
+   {
+   }
    public function get_annonce_by_id($id)
    {
       return $this->model->get_annonce_by_id($id);

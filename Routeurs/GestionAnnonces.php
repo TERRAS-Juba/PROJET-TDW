@@ -16,24 +16,24 @@
 
 <body>
     <?php
-   require_once "../Controller/Controller_gestion_annonces.php";
-   require_once  "../Controller/Controlleur_details_annonce.php";
+    require_once "../Controller/Controller_gestion_annonces.php";
+    require_once  "../Controller/Controlleur_details_annonce.php";
     $controller = new ControllerGestionAnnonces();
     $controller->afficher_contenu();
-   if(isset($_POST["enregistrer_tarif"])){
-   $controller->valider_annonce($_POST["id_annonce"]);
-   $controller->set_tarif($_POST["id_annonce"],$_POST["tarif"]);
-   echo '<div class="container">';
-   echo '<div class="success alert-success " style="height:50px">';
-   echo '<h5 class="text-success text-center">Validation effectuée avec succéss<h5>';
-   echo '</div>';
-   echo '</div>';
+    if (isset($_POST["enregistrer_tarif"])) {
+        $controller->valider_annonce($_POST["id_annonce"]);
+        $controller->set_tarif($_POST["id_annonce"], $_POST["tarif"]);
+        echo '<div class="container">';
+        echo '<div class="success alert-success " style="height:50px">';
+        echo '<h5 class="text-success text-center">Validation effectuée avec succéss<h5>';
+        echo '</div>';
+        echo '</div>';
     }
-    if(isset($_GET["detail"])){
-        $controller_details=new ControllerDetailsAnnonce();
-         $controller_details->afficher_annonce_by_id($_GET["detail"]);
-       }
-    if(isset($_GET["validation"])){
+    if (isset($_GET["detail"])) {
+        $controller_details = new ControllerDetailsAnnonce();
+        $controller_details->afficher_annonce_by_id($_GET["detail"]);
+    }
+    if (isset($_GET["validation"])) {
         $controller->afficher_set_tarif();
     }
     if (isset($_GET["remove"])) {
@@ -46,8 +46,7 @@
         $controller->afficher_list_annonces();
         $controller->afficher_list_annonces_en_attente();
         $controller->afficher_list_annonces_archivees();
-    }
-    else if(isset($_GET["remove_annonce_archivee"]) ){
+    } else if (isset($_GET["remove_annonce_archivee"])) {
         $controller->supprimer_annonce_archivee($_GET["remove_annonce_archivee"]);
         echo '<div class="container">';
         echo '<div class="danger alert-danger " style="height:50px">';
@@ -57,14 +56,13 @@
         $controller->afficher_list_annonces();
         $controller->afficher_list_annonces_en_attente();
         $controller->afficher_list_annonces_archivees();
-    }
-    else {
-            $controller->afficher_list_annonces();
-            $controller->afficher_list_annonces_en_attente();
-            $controller->afficher_list_annonces_archivees();
+    } else {
+        $controller->afficher_list_annonces();
+        $controller->afficher_list_annonces_en_attente();
+        $controller->afficher_list_annonces_archivees();
     }
     ?>
-<script src="../Scripts/Filtrage.js"></script>
+    <script src="../Scripts/Filtrage.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 <?php
-class ViewPresentation{
+class ViewPresentation
+{
     public function get_header()
     {
         echo '
@@ -10,7 +11,7 @@ class ViewPresentation{
             </div>
             <div class="col-md-3">
             </div>';
-        if(isset($_SESSION["user_name"])){
+        if (isset($_SESSION["user_name"])) {
             echo '
             <div class="col-md-2">
             <div class="d-grid">
@@ -22,7 +23,7 @@ class ViewPresentation{
                 <a href="../Deconnexion.php" class="my-2 btn btn-danger btn-block rounded-pill">Se deconnecter</a>
             </div>
         </div>';
-        }else{
+        } else {
             echo '
             <div class="col-md-2">
             <div class="d-grid">
@@ -56,13 +57,13 @@ class ViewPresentation{
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/News.php">News</a>
                     </li>';
-                    if(!isset($_SESSION["user_name"])){
-                        echo ' 
+        if (!isset($_SESSION["user_name"])) {
+            echo ' 
                         <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/InscriptionUtilisateur.php">Inscription</a>
                         </li>';
-                    }
-                    echo '
+        }
+        echo '
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/Statistiques.php">Statistiques</a>
                     </li>
@@ -113,16 +114,17 @@ class ViewPresentation{
         </div>
     </footer>
         ';
-}
-public function get_contenu(){
-    $controller_presentation=new ControllerPresentation();
-    $presentation=$controller_presentation->get_presentation();
-    foreach($presentation as $row){
-    echo '
+    }
+    public function get_contenu()
+    {
+        $controller_presentation = new ControllerPresentation();
+        $presentation = $controller_presentation->get_presentation();
+        foreach ($presentation as $row) {
+            echo '
     <div class="container-fluid">
         <div class="row bg-dark">
             <div class="col-sm-6">
-                <img src="'.$row["image"].'" class="img-fluid">
+                <img src="' . $row["image"] . '" class="img-fluid">
             </div>
             <div class="col-sm-6 text-center my-auto text-light">
                 <h1>Presentation de Nexus Express</h1>
@@ -143,13 +145,13 @@ public function get_contenu(){
         <div class="row" >
             <div class="col-10 m-auto style=\'height:100px\'">
                 <div class="ratio ratio-16x9">
-                <iframe class="embed-responsive-item" src="'.$row["video"].'" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item" src="' . $row["video"] . '" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
     </div>
     ';
+        }
+        $controller_presentation->__destruct();
+    }
 }
-}
-}
-?>

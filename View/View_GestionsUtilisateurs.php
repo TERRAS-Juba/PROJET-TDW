@@ -1,6 +1,8 @@
 <?php
-class ViewGestionUtilisateurs{
-public function get_contenu(){
+class ViewGestionUtilisateurs
+{
+  public function get_contenu()
+  {
     echo '
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top my-2">
     <div class="container-fluid" id="navbar_admin">
@@ -45,6 +47,5 @@ public function get_contenu(){
       </div>
     </div>
     ';
+  }
 }
-}
-?>

@@ -1,7 +1,9 @@
 <?php
-class ViewDashboardAdministrateur{
-public function get_contenu(){
-    echo '
+class ViewDashboardAdministrateur
+{
+    public function get_contenu()
+    {
+        echo '
     <div class="container-fluid border my-5">
     <h1 class=\'text-center\'>Dasboard de l\'administrateur</h1>
     <div class="row my-5">
@@ -32,6 +34,5 @@ public function get_contenu(){
   </div>
 </div>
     ';
+    }
 }
-}
-?>

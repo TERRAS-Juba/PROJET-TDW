@@ -8,14 +8,14 @@ class ControllerContact
    public function __construct()
    {
       $this->view = new ViewContact();
-      $this->model=new ModelContact();
+      $this->model = new ModelContact();
    }
    function __destruct()
    {
    }
    public function get_contact()
    {
-     return $this->model->get_contact();
+      return $this->model->get_contact();
    }
    public function afficher_header()
    {

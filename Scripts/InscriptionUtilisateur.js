@@ -8,6 +8,3 @@ function get_certification(){
         $("#demande").collapse("hide")
     }); 
 }
-function validation_formulaire(){
-
-}

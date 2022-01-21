@@ -67,7 +67,8 @@ class ModelGestionNews
         $qtf->execute();
         ($this->connexion)->deconnexion();
     }
-    public function get_news($id){
+    public function get_news($id)
+    {
         $qtf = (($this->connexion)->connexion())->prepare("SELECT * FROM news WHERE id_news=?");
         $qtf->bindParam(1, $id);
         $qtf->execute();
@@ -75,4 +76,3 @@ class ModelGestionNews
         return $qtf;
     }
 }
-?>

@@ -46,4 +46,3 @@ class ModelGestionClients
         return $qtf;
     }
 }
-?>

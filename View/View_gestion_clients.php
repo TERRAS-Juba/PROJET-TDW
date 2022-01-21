@@ -1,6 +1,8 @@
 <?php
-class ViewGestionClients{
-public function get_contenu(){
+class ViewGestionClients
+{
+  public function get_contenu()
+  {
     echo '
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top my-2">
     <div class="container-fluid" id="navbar_admin">
@@ -31,12 +33,13 @@ public function get_contenu(){
     </div>
   </div>
     ';
-}
-public function get_list_clients(){
-    $controller_clients=new ControllerGestionClients();
-    $resultat=$controller_clients->get_list_clients();
-    
-echo '
+  }
+  public function get_list_clients()
+  {
+    $controller_clients = new ControllerGestionClients();
+    $resultat = $controller_clients->get_list_clients();
+
+    echo '
 <div class="container my-5 border border-2">
 <div class="row">
     <div class="col my-auto text-center">
@@ -57,33 +60,35 @@ echo '
                 </tr>
             </thead>
             <tbody id="tab_clients">';
-            foreach($resultat as $row){
-                echo '    
+    foreach ($resultat as $row) {
+      echo '    
                 <tr>
-                <td scope="row">'.$row["id_client"].'</td>
-                <td>'.$row["nom"].'</td>
-                <td>'.$row["prenom"].'</td>
-                <td>'.$row["adresse"].'</td>
-                <td>'.$row["email"].'</td>
+                <td scope="row">' . $row["id_client"] . '</td>
+                <td>' . $row["nom"] . '</td>
+                <td>' . $row["prenom"] . '</td>
+                <td>' . $row["adresse"] . '</td>
+                <td>' . $row["email"] . '</td>
                 <td>
-                <a style="width:200px" class="my-1 btn btn-warning "href="../Routeurs/GestionClients.php?edit='.$row["id_client"].'" onclick="return confirm(\'Voulez-vous vraiment modifier ce client ?\')">Modifier</a>
-                <a style="width:200px" class="my-1 btn btn-danger "href="../Routeurs/GestionClients.php?remove='.$row["id_client"].'" onclick="return confirm(\'Voulez-vous vraiment supprimer ce client ?\')">Supprimer</a>
+                <a style="width:200px" class="my-1 btn btn-warning "href="../Routeurs/GestionClients.php?edit=' . $row["id_client"] . '" onclick="return confirm(\'Voulez-vous vraiment modifier ce client ?\')">Modifier</a>
+                <a style="width:200px" class="my-1 btn btn-danger "href="../Routeurs/GestionClients.php?remove=' . $row["id_client"] . '" onclick="return confirm(\'Voulez-vous vraiment supprimer ce client ?\')">Supprimer</a>
                 </td>
             </tr>';
-            }
-                echo '
+    }
+    echo '
             </tbody>
         </table>
     </div>
 </div>
 </div>
 ';
-}
-public function modifier_client($id){
-    $controller_clients=new ControllerGestionClients();
-    $clients=$controller_clients->get_client($id);
-    foreach($clients as $client){
-   echo '<div class="container my-4">
+    $controller_clients->__destruct();
+  }
+  public function modifier_client($id)
+  {
+    $controller_clients = new ControllerGestionClients();
+    $clients = $controller_clients->get_client($id);
+    foreach ($clients as $client) {
+      echo '<div class="container my-4">
     <div class="row">
         <div class="col my-auto text-center">
             <h1>Modification d\'un utilisateur</h1>
@@ -95,19 +100,19 @@ public function modifier_client($id){
                 <label class="mt-2"><h5>Mot de passe :</h5></label>
                 <input class="form-control my-2" type="password" name="mdp" required placeholder="Entrez le nouveau mot de passe">
                 <label class="mt-2"><h5>Nom :</h5></label>
-                <input class="form-control my-2" type="password" name="nom" required placeholder="Entrez le nouveau nom" value="'.$client['nom'].'">
+                <input class="form-control my-2" type="password" name="nom" required placeholder="Entrez le nouveau nom" value="' . $client['nom'] . '">
                 <label class="mt-2"><h5>Prénom :</h5></label>
-                <input class="form-control my-2" type="text" name="prenom" required placeholder="Entrez le nouveau prenom" value="'.$client['prenom'].'">
+                <input class="form-control my-2" type="text" name="prenom" required placeholder="Entrez le nouveau prenom" value="' . $client['prenom'] . '">
                 <label class="mt-2"><h5>Adresse :</h5></label>
-                <input class="form-control my-2" type="text" name="adresse" required placeholder="Entrez la nouvelle adresse" value="'.$client['adresse'].'">
+                <input class="form-control my-2" type="text" name="adresse" required placeholder="Entrez la nouvelle adresse" value="' . $client['adresse'] . '">
                 <label class="mt-2"><h5>email : </h5></label>
-                <input class="form-control my-2" type="text" name="email" required placeholder="Entrez la nouvelle adresse email" value="'.$client['email'].'">
+                <input class="form-control my-2" type="text" name="email" required placeholder="Entrez la nouvelle adresse email" value="' . $client['email'] . '">
                 <button name="enregistrer" class="btn btn-warning my-4" type="submit">Enregistrer les modifications</button>
             </form>
         </div>
     </div>
 </div>';
+    }
+    $controller_clients->__destruct();
+  }
 }
-}
-}
-?>

@@ -10,6 +10,9 @@ class ControllerNews
       $this->view = new ViewNews();
       $this->model = new ModelNews();
    }
+   public function __destruct()
+   {
+   }
    public function get_list_news()
    {
       return $this->model->get_list_news();

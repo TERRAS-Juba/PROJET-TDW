@@ -1,5 +1,6 @@
 <?php
-class ViewContact{
+class ViewContact
+{
     public function get_header()
     {
         echo '
@@ -10,7 +11,7 @@ class ViewContact{
             </div>
             <div class="col-md-3">
             </div>';
-        if(isset($_SESSION["user_name"])){
+        if (isset($_SESSION["user_name"])) {
             echo '
             <div class="col-md-2">
             <div class="d-grid">
@@ -22,7 +23,7 @@ class ViewContact{
                 <a href="../Deconnexion.php" class="my-2 btn btn-danger btn-block rounded-pill">Se deconnecter</a>
             </div>
         </div>';
-        }else{
+        } else {
             echo '
             <div class="col-md-2">
             <div class="d-grid">
@@ -56,13 +57,13 @@ class ViewContact{
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/News.php">News</a>
                     </li>';
-                    if(!isset($_SESSION["user_name"])){
-                        echo ' 
+        if (!isset($_SESSION["user_name"])) {
+            echo ' 
                         <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/InscriptionUtilisateur.php">Inscription</a>
                         </li>';
-                    }
-                    echo '
+        }
+        echo '
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/Statistiques.php">Statistiques</a>
                     </li>
@@ -113,11 +114,12 @@ class ViewContact{
         </div>
     </footer>
         ';
-}
-public function get_contenu(){
-    $controller_contact=new ControllerContact();
-    $infos=$controller_contact->get_contact();
-    echo '
+    }
+    public function get_contenu()
+    {
+        $controller_contact = new ControllerContact();
+        $infos = $controller_contact->get_contact();
+        echo '
     <div class="container-fluid my-5">
         <div class="row">
             <div class="col-12 text-center my-auto ">
@@ -136,21 +138,20 @@ public function get_contenu(){
                         </tr>
                     </thead>
                     <tbody>';
-                    foreach($infos as $info){
-                        echo'
+        foreach ($infos as $info) {
+            echo '
                         <tr>
-                            <td scope="row">'.$info["contact"].'</td>
-                            <td>'.$info["valeur"].'</td>
+                            <td scope="row">' . $info["contact"] . '</td>
+                            <td>' . $info["valeur"] . '</td>
                         </tr>';
-                    }
-                    echo '
+        }
+        echo '
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
     ';
-
+        $controller_contact->__destruct();
+    }
 }
-}
-?>

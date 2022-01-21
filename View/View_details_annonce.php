@@ -160,7 +160,7 @@ class ViewDetailsAnnonce
                     <h3>ID Client :</h3>
                     <p class="card-text">' . $row["id_client"] . '</p>';
                 }
-                if ($_SESSION["type_compte"] == "administrateur" && ($row["statut"]=="confirme"||$row["statut"]=="transaction" )) {
+                if ($_SESSION["type_compte"] == "administrateur" && ($row["statut"] == "confirme" || $row["statut"] == "transaction")) {
                     echo '  
                     <h3>ID Transporteur :</h3>
                     <p class="card-text">' . $row["id_transporteur"] . '</p>';
@@ -173,5 +173,6 @@ class ViewDetailsAnnonce
           </div>
           </div>';
         }
+        $controller_details_annonce->__destruct();
     }
 }

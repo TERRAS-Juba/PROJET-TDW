@@ -19,35 +19,35 @@ class ViewInscriptionUtilisateur
             <label class="mt-2">
                 <h4>Nom d\'utilisateur :</h4>
             </label>
-            <input class="form-control my-2" type="text" name="user_name" required placeholder="Entrez un nom d utilisateur" value="'.(isset($_POST["user_name"]) ? $_POST["user_name"] : "").'">
+            <input class="form-control my-2" type="text" name="user_name" required placeholder="Entrez un nom d utilisateur" value="' . (isset($_POST["user_name"]) ? $_POST["user_name"] : "") . '">
             <label class="mt-2">
                 <h4>Nom :</h4>
             </label>
-            <input class="form-control mt-2" type="text" name="nom" required placeholder="Entrez Votre nom" value="'.(isset($_POST["nom"]) ? $_POST["nom"] : "").'">
+            <input class="form-control mt-2" type="text" name="nom" required placeholder="Entrez Votre nom" value="' . (isset($_POST["nom"]) ? $_POST["nom"] : "") . '">
             <label class="mt-2">
                 <h4>Prenom :</h4>
             </label>
-            <input class="form-control mt-2" type="text" name="prenom" required placeholder="Entrez Votre prenom" value="'.(isset($_POST["prenom"]) ? $_POST["prenom"] : "").'">
+            <input class="form-control mt-2" type="text" name="prenom" required placeholder="Entrez Votre prenom" value="' . (isset($_POST["prenom"]) ? $_POST["prenom"] : "") . '">
             <label class="mt-2">
                 <h4>Adresse :</h4>
             </label>
-            <input class="form-control mt-2" type="text" name="adresse" required placeholder="Entrez Votre adresse" value="'.(isset($_POST["adresse"]) ? $_POST["adresse"] : "").'">
+            <input class="form-control mt-2" type="text" name="adresse" required placeholder="Entrez Votre adresse" value="' . (isset($_POST["adresse"]) ? $_POST["adresse"] : "") . '">
             <label class="mt-2">
                 <h4>Email :</h4>
             </label>
-            <input class="form-control mt-2" type="email" name="email" required placeholder="Entrez Votre adresse mail" value="'.(isset($_POST["email"]) ? $_POST["email"] : "").'">
+            <input class="form-control mt-2" type="email" name="email" required placeholder="Entrez Votre adresse mail" value="' . (isset($_POST["email"]) ? $_POST["email"] : "") . '">
             <label class="mt-2">
                 <h4>Numero de telephone :</h4>
             </label>
-            <input class="form-control mt-2" type="tel" name="numero_telephone" required pattern="[0-9]{10}" placeholder="Numero de telephone, format : 0521321451" value="'. (isset($_POST["numero_telephone"]) ? $_POST["numero_telephone"] : "").'">
+            <input class="form-control mt-2" type="tel" name="numero_telephone" required pattern="[0-9]{10}" placeholder="Numero de telephone, format : 0521321451" value="' . (isset($_POST["numero_telephone"]) ? $_POST["numero_telephone"] : "") . '">
             <label class="mt-2">
                 <h4>Mot de passe :</h4>
             </label>
-            <input class="form-control mt-2" type="password" name="user_password" required placeholder="Entrez un mot de passe" value="'.(isset($_POST["user_password"]) ? $_POST["user_password"] : "").'">
+            <input class="form-control mt-2" type="password" name="user_password" required placeholder="Entrez un mot de passe" value="' . (isset($_POST["user_password"]) ? $_POST["user_password"] : "") . '">
             <label class="mt-2">
                 <h4>Confirmation mot de passe :</h4>
             </label>
-            <input class="form-control mt-2" type="password" name="user_password_confirmation" required placeholder="Retapez a nouveau votre mot de passe" value="'.(isset($_POST["user_password_confirmation"]) ? $_POST["user_password_confirmation"] : "").'">
+            <input class="form-control mt-2" type="password" name="user_password_confirmation" required placeholder="Retapez a nouveau votre mot de passe" value="' . (isset($_POST["user_password_confirmation"]) ? $_POST["user_password_confirmation"] : "") . '">
             <label class="mt-2">
                 <h4>Type de compte :</h4>
             </label>
@@ -113,5 +113,6 @@ class ViewInscriptionUtilisateur
             </div>
         </div>
     </div>';
+        $controller_connexion->__destruct();
     }
 }

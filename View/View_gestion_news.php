@@ -62,6 +62,7 @@ class ViewGestionNews
     </div>
 </div>
 </div>';
+        $controller_annonces->__destruct();
     }
     public function modifier_news($id)
     {
@@ -78,17 +79,18 @@ class ViewGestionNews
              <div class="col-12 my-auto bg-secondary">
                  <form action="../Routeurs/GestionNews.php" method="post">
                      <label class="mt-2"><h5>Titre :</h5></label>
-                     <input class="form-control my-2" type="text" name="titre" required placeholder="Entrez le nouveau titre" value="'.$row["titre"].'">
+                     <input class="form-control my-2" type="text" name="titre" required placeholder="Entrez le nouveau titre" value="' . $row["titre"] . '">
                      <label class="mt-2"><h5>Description :</h5></label>
                      <textarea class="form-control my-2" rows="5"  name="description"  required placeholder="Entrez la nouvelle description"></textarea>
                      <label class="mt-2"><h5>Nouvelle image :</h5></label>
-                     <input class="form-control my-2" type="file" name="chemin" required placeholder="Entrez le nouveau chemin de l\'image"  value="'.$row["titre"].'">
+                     <input class="form-control my-2" type="file" name="chemin" required placeholder="Entrez le nouveau chemin de l\'image"  value="' . $row["titre"] . '">
                      <button name="enregistrer" class="btn btn-warning my-4" type="submit">Enregistrer les modifications</button>
                  </form>
              </div>
          </div>
      </div>';
         }
+        $controller_news->__destruct();
     }
     public function inserer_news()
     {

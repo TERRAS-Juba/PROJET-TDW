@@ -31,7 +31,7 @@ class ControllerGestionSignalements
    }
    public function get_transporteur_signalement($id)
    {
-     
+
       return $this->model->get_tranporteur_signalement($id);
    }
 }

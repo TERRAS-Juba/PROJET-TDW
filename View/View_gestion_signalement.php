@@ -91,5 +91,6 @@ class ViewGestionSignalements
             </div>
         </div>';
         }
+        $controller_signalements->__destruct();
     }
 }

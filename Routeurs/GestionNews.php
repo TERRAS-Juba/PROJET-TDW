@@ -21,28 +21,26 @@
     session_start();
     $controller = new ControllerGestionNews();
     $controller->afficher_contenu();
-    if(isset($_POST["ajouter"])){
-        $news=uniqid($_POST["titre"],FALSE);
-        $image=uniqid($_POST["chemin"],FALSE);
-        $controller->inserer_news($news,$_POST["titre"],$_POST["description"],$_POST["date"]);
-        $controller->enregistrer_images_news($news,$image,"../News/".$_POST["chemin"]);
+    if (isset($_POST["ajouter"])) {
+        $news = uniqid($_POST["titre"], FALSE);
+        $image = uniqid($_POST["chemin"], FALSE);
+        $controller->inserer_news($news, $_POST["titre"], $_POST["description"], $_POST["date"]);
+        $controller->enregistrer_images_news($news, $image, "../News/" . $_POST["chemin"]);
         echo '<div class="container">';
         echo '<div class="success alert-success " style="height:50px">';
         echo '<h5 class="text-succes text-center">Insertion effectuée avec succéss<h5>';
         echo '</div>';
         echo '</div>';
-
     }
-    if(isset($_POST["enregistrer"])){
-        $image=uniqid($_POST["chemin"],FALSE);
-        $controller->enregistrer_modifcations_news( $_SESSION["id_news"],$_POST["titre"],$_POST["description"]);
-        $controller->enregistrer_images_news($_SESSION["id_news"],$image,"../News/".$_POST["chemin"]);
+    if (isset($_POST["enregistrer"])) {
+        $image = uniqid($_POST["chemin"], FALSE);
+        $controller->enregistrer_modifcations_news($_SESSION["id_news"], $_POST["titre"], $_POST["description"]);
+        $controller->enregistrer_images_news($_SESSION["id_news"], $image, "../News/" . $_POST["chemin"]);
         echo '<div class="container">';
         echo '<div class="success alert-success " style="height:50px">';
         echo '<h5 class="text-succes text-center">Modification effectuée avec succéss<h5>';
         echo '</div>';
         echo '</div>';
-
     }
     if (isset($_GET["remove"])) {
         $controller->supprimer_news($_GET["remove"]);
@@ -51,15 +49,15 @@
         echo '<h5 class="text-danger text-center">Suppression effectuée avec succéss<h5>';
         echo '</div>';
         echo '</div>';
-    } 
+    }
     $controller->afficher_list_news();
     $controller->afficher_inserer_news();
     if (isset($_GET["modifier"])) {
-        $_SESSION["id_news"]=$_GET["modifier"];
+        $_SESSION["id_news"] = $_GET["modifier"];
         $controller->afficher_modifier_news($_GET["modifier"]);
     }
     ?>
-   <script src="../Scripts/Filtrage.js"></script>
+    <script src="../Scripts/Filtrage.js"></script>
 </body>
 
 </html>

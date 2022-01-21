@@ -18,10 +18,10 @@ class ViewConnexionUtilisateur
             <label class="mt-2">
                 <h4>Nom d\'utilisateur :</h4>
             </label>
-            <input class="form-control my-2" type="text" name="user_name" required placeholder="Entrez votre nom d utilisateur" value="'.(isset($_POST["user_name"]) ? $_POST["user_name"] : "").'">
+            <input class="form-control my-2" type="text" name="user_name" required placeholder="Entrez votre nom d utilisateur" value="' . (isset($_POST["user_name"]) ? $_POST["user_name"] : "") . '">
                 <h4>Mot de passe :</h4>
             </label>
-            <input class="form-control mt-2" type="password" name="user_password" required placeholder="Entrez votre mot de passe" value="'.(isset($_POST["user_password"]) ? $_POST["user_password"] : "").'">
+            <input class="form-control mt-2" type="password" name="user_password" required placeholder="Entrez votre mot de passe" value="' . (isset($_POST["user_password"]) ? $_POST["user_password"] : "") . '">
             <label class="mt-2">
                 <h4>Type de compte :</h4>
             </label>

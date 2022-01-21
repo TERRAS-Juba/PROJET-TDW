@@ -16,12 +16,12 @@
     <?php
     session_start();
     require_once "../Controller/Controller_mon_profil.php";
-    $controlleur_profil=new ControllerMonProfil();
-    if(isset($_GET["annonce_decline"])){
+    $controlleur_profil = new ControllerMonProfil();
+    if (isset($_GET["annonce_decline"])) {
         $controlleur_profil->decliner_annonce($_GET["annonce_decline"]);
     }
-    if(isset($_GET["annonce_accepte"])){
-        if(strcmp($_GET["certifie"], "valide")==!0 && $_GET["garantie"]==1){
+    if (isset($_GET["annonce_accepte"])) {
+        if (strcmp($_GET["certifie"], "valide") == !0 && $_GET["garantie"] == 1) {
             echo "
             <script>
             Swal.fire({
@@ -32,14 +32,12 @@
             })
             </script>
              ";
-
-        }else{
-             $controlleur_profil->accepter_annonce($_GET["annonce_accepte"]);
+        } else {
+            $controlleur_profil->accepter_annonce($_GET["annonce_accepte"]);
         }
-       
     }
-    if(isset($_POST["ajouter_transporteur"])){
-        $controlleur_profil->ajouter_transporteur_annonce($_POST["id_transporteur"],$_POST["id_annonce"]);
+    if (isset($_POST["ajouter_transporteur"])) {
+        $controlleur_profil->ajouter_transporteur_annonce($_POST["id_transporteur"], $_POST["id_annonce"]);
         echo "
         <script>
         Swal.fire({
@@ -51,7 +49,7 @@
         </script>
          ";
     }
-    if(isset($_GET["id_annonce"])){
+    if (isset($_GET["id_annonce"])) {
         $controlleur_profil->supprimer_annonce($_GET["id_annonce"]);
         echo "
         <script>
@@ -65,11 +63,11 @@
     }
     $controlleur_profil->afficher_header();
     $controlleur_profil->afficher_menu();
-    if(isset($_GET["modifier_annonce"])){
+    if (isset($_GET["modifier_annonce"])) {
         $controlleur_profil->afficher_modifier_annonce($_GET["modifier_annonce"]);
     }
-    if(isset($_POST["modifier_annonce"])){
-        $controlleur_profil->modifier_annonce($_POST["titre"],$_POST["description"],$_POST["emplacement_depart"],$_POST["emplacement_arrive"],$_POST["type_transport"],$_POST["moyen_transport"],$_POST["fourchette_poid"],$_POST["fourchette_volume"],$_POST["id_annonce"]);
+    if (isset($_POST["modifier_annonce"])) {
+        $controlleur_profil->modifier_annonce($_POST["titre"], $_POST["description"], $_POST["emplacement_depart"], $_POST["emplacement_arrive"], $_POST["type_transport"], $_POST["moyen_transport"], $_POST["fourchette_poid"], $_POST["fourchette_volume"], $_POST["id_annonce"]);
         echo "
         <script>
         Swal.fire({
@@ -81,12 +79,12 @@
          ";
     }
     $controlleur_profil->afficher_infos_utilisateur();
-    if(isset($_GET["modifier_profil"])){
+    if (isset($_GET["modifier_profil"])) {
         $controlleur_profil->afficher_modifier_profil();
     }
-    if(isset($_POST["modifier_profil"])){
-        if($_SESSION["type_compte"]==="client"){
-            $controlleur_profil->modifier_client($_SESSION["user_name"],$_POST["nom"],$_POST["prenom"],$_POST["email"],$_POST["adresse"],$_POST["numero_telephone"],$_POST["mot_de_passe"]);
+    if (isset($_POST["modifier_profil"])) {
+        if ($_SESSION["type_compte"] === "client") {
+            $controlleur_profil->modifier_client($_SESSION["user_name"], $_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["adresse"], $_POST["numero_telephone"], $_POST["mot_de_passe"]);
             echo "
             <script>
             Swal.fire({
@@ -96,8 +94,8 @@
             })
             </script>
              ";
-        }else{
-            $controlleur_profil->modifier_transporteur($_SESSION["user_name"],$_POST["nom"],$_POST["prenom"],$_POST["email"],$_POST["adresse"],$_POST["numero_telephone"],$_POST["mot_de_passe"]);
+        } else {
+            $controlleur_profil->modifier_transporteur($_SESSION["user_name"], $_POST["nom"], $_POST["prenom"], $_POST["email"], $_POST["adresse"], $_POST["numero_telephone"], $_POST["mot_de_passe"]);
             echo "
             <script>
             Swal.fire({
@@ -110,11 +108,11 @@
         }
     }
     $controlleur_profil->afficher_annonces_utilisateur();
-    if(isset($_GET["id_annonce_signalement"])){
-        $controlleur_profil->afficher_effectuer_signalement($_GET["id_annonce_signalement"],$_GET["id_client_signalement"],$_GET["id_transporteur_signalement"]);
+    if (isset($_GET["id_annonce_signalement"])) {
+        $controlleur_profil->afficher_effectuer_signalement($_GET["id_annonce_signalement"], $_GET["id_client_signalement"], $_GET["id_transporteur_signalement"]);
     }
-    if(isset($_POST["effectuer_signalement"])){
-        $controlleur_profil->ajouter_signalement($_POST["id_annonce"],$_POST["id_client"],$_POST["id_transporteur"],$_POST["titre"],$_POST["description"],$_SESSION["type_compte"]);
+    if (isset($_POST["effectuer_signalement"])) {
+        $controlleur_profil->ajouter_signalement($_POST["id_annonce"], $_POST["id_client"], $_POST["id_transporteur"], $_POST["titre"], $_POST["description"], $_SESSION["type_compte"]);
         echo "
         <script>
         Swal.fire({
@@ -125,11 +123,11 @@
         </script>
          ";
     }
-    if(isset($_GET["id_transporteur_note"])){
+    if (isset($_GET["id_transporteur_note"])) {
         $controlleur_profil->afficher_noter_transporteur($_GET["id_transporteur_note"]);
     }
-    if(isset($_POST["noter_transporteur"])){
-        $controlleur_profil->noter_transporteur($_POST["id_transporteur"],$_POST["note"]);
+    if (isset($_POST["noter_transporteur"])) {
+        $controlleur_profil->noter_transporteur($_POST["id_transporteur"], $_POST["note"]);
         echo "
         <script>
         Swal.fire({

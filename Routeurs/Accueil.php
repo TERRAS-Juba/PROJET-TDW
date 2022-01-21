@@ -18,12 +18,12 @@
     require_once "../Controller/Controller_accueil.php";
     $controlleur_accueil = new ControllerAccueil();
     if (isset($_POST["ajouter_annonce"])) {
-        $hach =   uniqid($_POST["emplacement_depart"],FALSE);
-        $hach2= uniqid($_POST["emplacement_arrive"],FALSE);
-        $garantie=$controlleur_accueil->get_garantie($_POST["type_transport"]);
-        $controlleur_accueil->ajouter_annonce($_POST["titre"], $_POST["description"], $_POST["emplacement_depart"], $_POST["emplacement_arrive"], $_POST["type_transport"], $_POST["moyen_transport"], $_POST["fourchette_poid"], $_POST["fourchette_volume"], $_SESSION["user_name"], $hach,$garantie);
+        $hach =   uniqid($_POST["emplacement_depart"], FALSE);
+        $hach2 = uniqid($_POST["emplacement_arrive"], FALSE);
+        $garantie = $controlleur_accueil->get_garantie($_POST["type_transport"]);
+        $controlleur_accueil->ajouter_annonce($_POST["titre"], $_POST["description"], $_POST["emplacement_depart"], $_POST["emplacement_arrive"], $_POST["type_transport"], $_POST["moyen_transport"], $_POST["fourchette_poid"], $_POST["fourchette_volume"], $_SESSION["user_name"], $hach, $garantie);
         $controlleur_accueil->ajouter_image($hach2, "../Assets/" . $_POST["image"]);
-        $controlleur_accueil->ajouter_images_annonce($hach2,$hach);
+        $controlleur_accueil->ajouter_images_annonce($hach2, $hach);
         echo "
             <script>
             Swal.fire({

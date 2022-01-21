@@ -1,5 +1,6 @@
 <?php
-class ViewStatistiques{
+class ViewStatistiques
+{
     public function get_header()
     {
         echo '
@@ -10,7 +11,7 @@ class ViewStatistiques{
             </div>
             <div class="col-md-3">
             </div>';
-        if(isset($_SESSION["user_name"])){
+        if (isset($_SESSION["user_name"])) {
             echo '
             <div class="col-md-2">
             <div class="d-grid">
@@ -22,7 +23,7 @@ class ViewStatistiques{
                 <a href="../Deconnexion.php" class="my-2 btn btn-danger btn-block rounded-pill">Se deconnecter</a>
             </div>
         </div>';
-        }else{
+        } else {
             echo '
             <div class="col-md-2">
             <div class="d-grid">
@@ -56,13 +57,13 @@ class ViewStatistiques{
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/News.php">News</a>
                     </li>';
-                    if(!isset($_SESSION["user_name"])){
-                        echo ' 
+        if (!isset($_SESSION["user_name"])) {
+            echo ' 
                         <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/InscriptionUtilisateur.php">Inscription</a>
                         </li>';
-                    }
-                    echo '
+        }
+        echo '
                     <li class="nav-item">
                         <a class="nav-link" href="../Routeurs/Statistiques.php">Statistiques</a>
                     </li>
@@ -113,25 +114,26 @@ class ViewStatistiques{
         </div>
     </footer>
         ';
-}
-public function get_contenu(){
-    $controller_statistiques=new ControllerStatistiques();
-    foreach($controller_statistiques->get_nombre_annonces() as $row){
-        $nombre_annonces=$row["nb"];
     }
-    foreach($controller_statistiques->get_nombre_transporteurs() as $row){
-        $nombre_transporteurs=$row["nb"];
-    }
-    foreach($controller_statistiques->get_nombre_news() as $row){
-        $nombre_news=$row["nb"];
-    }
-    foreach($controller_statistiques->get_nombre_transporteurs_certifies() as $row){
-        $nombre_transporteurs_certifies=$row["nb"];
-    }
-    foreach($controller_statistiques->get_nombre_clients() as $row){
-        $nombre_clients=$row["nb"];
-    }
-    echo '
+    public function get_contenu()
+    {
+        $controller_statistiques = new ControllerStatistiques();
+        foreach ($controller_statistiques->get_nombre_annonces() as $row) {
+            $nombre_annonces = $row["nb"];
+        }
+        foreach ($controller_statistiques->get_nombre_transporteurs() as $row) {
+            $nombre_transporteurs = $row["nb"];
+        }
+        foreach ($controller_statistiques->get_nombre_news() as $row) {
+            $nombre_news = $row["nb"];
+        }
+        foreach ($controller_statistiques->get_nombre_transporteurs_certifies() as $row) {
+            $nombre_transporteurs_certifies = $row["nb"];
+        }
+        foreach ($controller_statistiques->get_nombre_clients() as $row) {
+            $nombre_clients = $row["nb"];
+        }
+        echo '
     <div class="container-fluid">
         <div class="row bg-dark">
             <div class="col-sm-6">
@@ -144,37 +146,37 @@ public function get_contenu(){
         </div>
     </div>
     ';
-    echo '
+        echo '
     <div class="container-fluid">
         <div class="row my-5">
             <div class="col-sm-4 text-center my-auto">
                 <img src="../Assets/client.png" class="img-fluid rounded-circle my-auto" style="height: 300px;">
                 <h1>Nombre de clients</h1>
-                <p>'.$nombre_clients.' clients inscrits sur notre site.</p>
+                <p>' . $nombre_clients . ' clients inscrits sur notre site.</p>
             </div>
             <div class="col-sm-4 text-center my-auto">
                 <img src="../Assets/driver.png" class="img-fluid rounded-circle my-auto" style="height: 300px;">
                 <h1>Nombre de transporteurs</h1>
-                <p>'.$nombre_transporteurs.' transporteurs inscrits sur notre site.</p>
+                <p>' . $nombre_transporteurs . ' transporteurs inscrits sur notre site.</p>
             </div>
             <div class="col-sm-4 text-center my-auto">
                 <img src="../Assets/certificate.png" class="img-fluid rounded-circle my-auto" style="height: 300px;">
                 <h1>Nombre de transporteurs certfiés</h1>
-                <p>'.$nombre_transporteurs_certifies.' transporteurs certfiés par notre site.</p>
+                <p>' . $nombre_transporteurs_certifies . ' transporteurs certfiés par notre site.</p>
             </div>
             <div class="col-sm-6 text-center my-auto">
                 <img src="../Assets/annoncement.png" class="img-fluid rounded-circle my-auto" style="height: 300px;">
                 <h1>Nombre d\'annonces</h1>
-                <p>'.$nombre_annonces.' annonces publiées sur notre site.</p>
+                <p>' . $nombre_annonces . ' annonces publiées sur notre site.</p>
             </div>
             <div class="col-sm-6 text-center my-auto">
                 <img src="../Assets/news.png" class="img-fluid rounded-circle my-auto" style="height: 300px;">
                 <h1>Nombre de news</h1>
-                <p>Restez d\'actualités avec'.$nombre_news.' news.</p>
+                <p>Restez d\'actualités avec' . $nombre_news . ' news.</p>
             </div>
         </div>
     </div>
     ';
+        $controller_statistiques->__destruct();
+    }
 }
-}
-?>

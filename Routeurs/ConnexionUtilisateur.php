@@ -13,23 +13,22 @@
 </head>
 
 <body>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <?php
     session_start();
     require_once "../Controller/Controller_connexion_utilisateur.php";
-    $controller_connexion =new ControllerConnexionUtilisateur();
-    if(isset($_POST["connexion"])){
+    $controller_connexion = new ControllerConnexionUtilisateur();
+    if (isset($_POST["connexion"])) {
         $_SESSION["user_name"] = $_POST["user_name"];
         $_SESSION["type_compte"] = $_POST["type_compte"];
         try {
-            if($controller_connexion->connexion($_POST["user_name"],$_POST["user_password"],$_POST["type_compte"])==true){
-                if($_POST["type_compte"]=="client"){
+            if ($controller_connexion->connexion($_POST["user_name"], $_POST["user_password"], $_POST["type_compte"]) == true) {
+                if ($_POST["type_compte"] == "client") {
                     header("location:../Routeurs/Accueil.php");
-                }else{
+                } else {
                     header("location:../Routeurs/Accueil.php");
                 }
-            }else{
+            } else {
                 echo "
             <script>
             Swal.fire({

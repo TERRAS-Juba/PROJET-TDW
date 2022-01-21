@@ -78,6 +78,7 @@ class ViewGestionTransporteurs
     </div>
 </div>
 </div>';
+        $controller_clients->__destruct();
     }
     public function modifier_transporteur($id)
     {
@@ -108,6 +109,7 @@ class ViewGestionTransporteurs
         </div>
     </div>
 </div>';
+            $controller->__destruct();
         }
     }
     public function get_list_transporteurs_non_certifies()
@@ -155,6 +157,7 @@ class ViewGestionTransporteurs
     </div>
 </div>
 </div>';
+        $controller_clients->__destruct();
     }
     public function get_demande_certification($id)
     {
@@ -167,5 +170,6 @@ class ViewGestionTransporteurs
             header('Accept-Ranges: bytes');
             @readfile($row["chemin"]);
         }
+        $controller->__destruct();
     }
 }

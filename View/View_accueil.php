@@ -57,7 +57,7 @@ class ViewAccueil
                         <div class="carousel-item active" data-bs-interval="3000">
                             <a target="_blank" href="' . $image["lien"] . '" ><img src="' . $image["chemin"] . '" class="d-block w-100 h-100 img-thumbnail"></a>
                         </div>';
-                        $cpt=$cpt+1;
+                $cpt = $cpt + 1;
             } else {
                 echo '
                         <div class="carousel-item" data-bs-interval="3000">
@@ -79,6 +79,7 @@ class ViewAccueil
             </div>
         </div>
     </div>';
+        $controller_diaporama->__destruct();
     }
     public function get_menu()
     {
@@ -260,6 +261,7 @@ class ViewAccueil
             echo '</div>';
         }
         $_GET["id_annonce"] = "";
+        $controller->__destruct();
     }
     public function get_annonces_by_emplacement($emplacement_depart, $emplcement_arrive)
     {
@@ -301,6 +303,7 @@ class ViewAccueil
         echo "</div>";
         echo "</div>";
         echo '</div>';
+        $controller->__destruct();
     }
     public function comment_sa_mache()
     {
@@ -416,5 +419,6 @@ class ViewAccueil
         </div>
         ';
         }
+        $controller->__destruct();
     }
 }

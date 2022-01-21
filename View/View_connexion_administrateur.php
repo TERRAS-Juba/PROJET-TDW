@@ -1,7 +1,9 @@
 <?php
-class ViewConnexionAdministrateur{
-   public function connexion_administrateur(){
-echo '   <div class="container-fluid">
+class ViewConnexionAdministrateur
+{
+  public function connexion_administrateur()
+  {
+    echo '   <div class="container-fluid">
 <div class="row">
     <div class="col-sm-7">
         <img style="width:100%" src="../Assets/admin1.png" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
@@ -40,6 +42,5 @@ echo '   <div class="container-fluid">
     </div>
   </div>
 </div>';
-   }
+  }
 }
-?>

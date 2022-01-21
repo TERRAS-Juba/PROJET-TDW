@@ -27,4 +27,3 @@ class ModelDetailsNews
         return $qtf;
     }
 }
-?>

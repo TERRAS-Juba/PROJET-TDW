@@ -148,58 +148,63 @@ class ModelMonProfil
         $requete->execute();
         ($this->connexion)->deconnexion();
     }
-    
-    public function get_certification_transporteur(){
+
+    public function get_certification_transporteur()
+    {
         $conn = ($this->connexion)->connexion();
         $requete = $conn->prepare("SELECT * from transporteur WHERE id_transporteur=?");
-        $requete->bindParam(1,$_SESSION["user_name"]);
+        $requete->bindParam(1, $_SESSION["user_name"]);
         $requete->execute();
         ($this->connexion)->deconnexion();
         return $requete;
     }
-    public function ajouter_signalement($id_annonce,$id_client,$id_transporteur,$titre,$description,$emetteur){
+    public function ajouter_signalement($id_annonce, $id_client, $id_transporteur, $titre, $description, $emetteur)
+    {
         $conn = ($this->connexion)->connexion();
         $requete = $conn->prepare("INSERT INTO signalement(id_annonce,id_client,id_transporteur,titre,description,emetteur) VALUES (?,?,?,?,?,?)");
-        $requete->bindParam(1,$id_annonce);
-        $requete->bindParam(2,$id_client);
-        $requete->bindParam(3,$id_transporteur);
-        $requete->bindParam(4,$titre);
-        $requete->bindParam(5,$description);
-        $requete->bindParam(6,$emetteur);
+        $requete->bindParam(1, $id_annonce);
+        $requete->bindParam(2, $id_client);
+        $requete->bindParam(3, $id_transporteur);
+        $requete->bindParam(4, $titre);
+        $requete->bindParam(5, $description);
+        $requete->bindParam(6, $emetteur);
         $requete->execute();
         ($this->connexion)->deconnexion();
     }
-    public function noter_transporteur($id_transporteur,$note){
+    public function noter_transporteur($id_transporteur, $note)
+    {
         $conn = ($this->connexion)->connexion();
         $requete = $conn->prepare("UPDATE transporteur SET note=(note+?)/2 where  id_transporteur=?");
-        $requete->bindParam(1,$note);
-        $requete->bindParam(2,$id_transporteur);
+        $requete->bindParam(1, $note);
+        $requete->bindParam(2, $id_transporteur);
         $requete->execute();
         ($this->connexion)->deconnexion();
     }
-    public function modifier_client($id_client,$nom,$prenom,$email,$adresse,$numero_telephone,$mot_de_passe){
+    public function modifier_client($id_client, $nom, $prenom, $email, $adresse, $numero_telephone, $mot_de_passe)
+    {
         $conn = ($this->connexion)->connexion();
         $requete = $conn->prepare("UPDATE client set nom=?,prenom=?,email=?,adresse=?,numero_telephone=?,mot_de_passe=? where id_client=?");
-        $requete->bindParam(1,$nom);
-        $requete->bindParam(2,$prenom);
-        $requete->bindParam(3,$email);
-        $requete->bindParam(4,$adresse);
-        $requete->bindParam(5,$numero_telephone);
-        $requete->bindParam(6,$mot_de_passe);
-        $requete->bindParam(7,$id_client);
+        $requete->bindParam(1, $nom);
+        $requete->bindParam(2, $prenom);
+        $requete->bindParam(3, $email);
+        $requete->bindParam(4, $adresse);
+        $requete->bindParam(5, $numero_telephone);
+        $requete->bindParam(6, $mot_de_passe);
+        $requete->bindParam(7, $id_client);
         $requete->execute();
         ($this->connexion)->deconnexion();
     }
-    public function modifier_transporteur($id_transporteur,$nom,$prenom,$email,$adresse,$numero_telephone,$mot_de_passe){
+    public function modifier_transporteur($id_transporteur, $nom, $prenom, $email, $adresse, $numero_telephone, $mot_de_passe)
+    {
         $conn = ($this->connexion)->connexion();
         $requete = $conn->prepare("UPDATE transporteur set nom=?,prenom=?,email=?,adresse=?,numero_telephone=?,mot_de_passe=? where id_transporteur=?");
-        $requete->bindParam(1,$nom);
-        $requete->bindParam(2,$prenom);
-        $requete->bindParam(3,$email);
-        $requete->bindParam(4,$adresse);
-        $requete->bindParam(5,$numero_telephone);
-        $requete->bindParam(6,$mot_de_passe);
-        $requete->bindParam(7,$id_transporteur);
+        $requete->bindParam(1, $nom);
+        $requete->bindParam(2, $prenom);
+        $requete->bindParam(3, $email);
+        $requete->bindParam(4, $adresse);
+        $requete->bindParam(5, $numero_telephone);
+        $requete->bindParam(6, $mot_de_passe);
+        $requete->bindParam(7, $id_transporteur);
         $requete->execute();
         ($this->connexion)->deconnexion();
     }
@@ -212,18 +217,19 @@ class ModelMonProfil
         ($this->connexion)->deconnexion();
         return $requete;
     }
-    public function modifier_annonce($titre,$description,$emplacement_depart,$emplacement_arrive,$type_transport,$moyen_transport,$fourchette_poid,$fourchette_volume,$id_annonce){
+    public function modifier_annonce($titre, $description, $emplacement_depart, $emplacement_arrive, $type_transport, $moyen_transport, $fourchette_poid, $fourchette_volume, $id_annonce)
+    {
         $conn = ($this->connexion)->connexion();
         $qtf = $conn->prepare("UPDATE annonce set titre=?,description=?,emplacement_depart=?,emplacement_arrive=?,type_transport=?,moyen_transport=?,fourchette_poid=?,fourchette_volume=? where id_annonce=?");
-        $qtf->bindParam(1,$titre);
-        $qtf->bindParam(2,$description);
-        $qtf->bindParam(3,$emplacement_depart);
-        $qtf->bindParam(4,$emplacement_arrive);
-        $qtf->bindParam(5,$type_transport);
-        $qtf->bindParam(6,$moyen_transport);
-        $qtf->bindParam(7,$fourchette_poid);
-        $qtf->bindParam(8,$fourchette_volume);
-        $qtf->bindParam(9,$id_annonce);
+        $qtf->bindParam(1, $titre);
+        $qtf->bindParam(2, $description);
+        $qtf->bindParam(3, $emplacement_depart);
+        $qtf->bindParam(4, $emplacement_arrive);
+        $qtf->bindParam(5, $type_transport);
+        $qtf->bindParam(6, $moyen_transport);
+        $qtf->bindParam(7, $fourchette_poid);
+        $qtf->bindParam(8, $fourchette_volume);
+        $qtf->bindParam(9, $id_annonce);
         $qtf->execute();
         ($this->connexion)->deconnexion();
     }

@@ -70,6 +70,7 @@ class ViewGestionContenu
     </div>
 </div>
 </div>';
+        $controller_contenu->__destruct();
     }
     public function get_list_moyen_transport()
     {
@@ -116,6 +117,7 @@ class ViewGestionContenu
     </div>
 </div>
 </div>';
+        $controller_contenu->__destruct();
     }
     public function get_list_fourchette_poid()
     {
@@ -162,6 +164,7 @@ class ViewGestionContenu
     </div>
 </div>
 </div>';
+        $controller_contenu->__destruct();
     }
     public function get_list_fourchette_volume()
     {
@@ -208,6 +211,7 @@ class ViewGestionContenu
     </div>
 </div>
 </div>';
+        $controller_contenu->__destruct();
     }
     public function modifier_type_transport($id_type)
     {
@@ -235,6 +239,7 @@ class ViewGestionContenu
          </div>
      </div>';
         }
+        $controller_contenu->__destruct();
     }
     public function modifier_moyen_transport($id_type)
     {
@@ -260,6 +265,7 @@ class ViewGestionContenu
          </div>
      </div>';
         }
+        $controller_contenu->__destruct();
     }
     public function modifier_fourchette_poid($id_type)
     {
@@ -285,6 +291,7 @@ class ViewGestionContenu
          </div>
      </div>';
         }
+        $controller_contenu->__destruct();
     }
     public function modifier_fourchette_volume($id_type)
     {
@@ -310,5 +317,6 @@ class ViewGestionContenu
          </div>
      </div>';
         }
+        $controller_contenu->__destruct();
     }
 }

@@ -10,6 +10,9 @@ class ControllerDetailsNews
       $this->view = new ViewDetailsNews();
       $this->model = new ModelDetailsNews();
    }
+   public function __destruct()
+   {
+   }
    public function get_news_by_id($id)
    {
       return $this->model->get_news_by_id($id);
