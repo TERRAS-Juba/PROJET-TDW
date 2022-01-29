@@ -504,7 +504,7 @@ class ViewMonProfil
             } else if (($row["certifie"] == "en cours de traitement")) {
                 echo '
                 <h3 class="text-center text-success">
-                Votre demande est a été bien recue et en est en cours de traitement.
+                Votre demande est a été bien recue et elle est en cours de traitement.
                 <h4>Statut de demande de certification: <h4 class="text-warning">' . $row["certifie"] . '</h4></h4>
                 </h3>';
             } else if (($row["certifie"] == "valide")) {

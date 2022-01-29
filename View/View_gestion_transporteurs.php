@@ -147,7 +147,7 @@ class ViewGestionTransporteurs
                 <td>' . $row["email"] . '</td>
                 <td>' . $row["certifie"] . '</td>
                 <td>
-                <a style="width:200px" class="my-1 btn btn-success" href="../Routeurs/GestionTransporteurs.php?certifie=' . $row["id_transporteur"] . '" onclick="return confirm(\'Voulez-vous vraiment certifier ce transporteur ?\')">Certifier</a>
+                <a style="width:200px" class="my-1 btn btn-success" href="../Routeurs/GestionTransporteurs.php?certifie=' . $row["id_transporteur"] . '" onclick="return confirm(\'Voulez-vous vraiment certifier ce transporteur ?\')">Accepter</a>
                 <a style="width:200px" class="my-1 btn btn-primary" href="../Routeurs/GestionTransporteurs.php?demande=' . $row["id_transporteur"] . '" onclick="return confirm(\'Voulez-vous vraiment afficher la demande de certification de ce transporteur ?\')">Afficher demande</a>
                 </td>
             </tr>';
